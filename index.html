@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aureum | Premium Handcrafted Toothpicks</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .mono-text-clip {
+            background: linear-gradient(to right, #ffffff, #a3a3a3, #404040);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .mono-border-glow {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-black text-neutral-100 font-sans min-h-screen selection:bg-white selection:text-black overflow-x-hidden">
+
+    <!-- Sticky Navigation Bar (With Guild section removed) -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-black/90 border-b border-neutral-900 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <span class="font-serif text-2xl tracking-[0.2em] mono-text-clip font-bold">AUREUM</span>
+                    <span class="text-xs tracking-widest text-neutral-400 border border-neutral-700 px-1.5 py-0.5 rounded font-light">TOOTHPICKS</span>
+                </div>
+
+                <!-- Desktop Nav Links (The Guild link removed) -->
+                <nav class="hidden md:flex space-x-8 text-sm tracking-widest uppercase font-medium">
+                    <a href="#heritage" class="text-neutral-400 hover:text-white transition-colors duration-200">Heritage</a>
+                    <a href="#collection" class="text-neutral-400 hover:text-white transition-colors duration-200">The Collection</a>
+                    <a href="#craft" class="text-neutral-400 hover:text-white transition-colors duration-200">The Craft</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:block">
+                    <button onclick="openModal('Reserve Exclusive Kit')" class="px-5 py-2.5 bg-white text-black text-xs tracking-widest uppercase font-semibold rounded hover:bg-neutral-200 transition-all duration-300 shadow-md">
+                        Reserve Now
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-neutral-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars-staggered text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Guild Link & Gold styles removed) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-neutral-900 px-4 pt-2 pb-6 space-y-3 transition-all duration-300">
+            <a href="#heritage" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Heritage</a>
+            <a href="#collection" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">The Collection</a>
+            <a href="#craft" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">The Craft</a>
+            <button onclick="toggleMobileMenu(); openModal('Reserve Exclusive Kit')" class="w-full text-center px-4 py-3 bg-white text-black text-xs tracking-widest uppercase font-semibold rounded mt-2">
+                Reserve Now
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <p class="text-xs tracking-[0.4em] uppercase text-neutral-400 mb-4 font-semibold">The Ultimate Post-Dining Ritual</p>
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+                Craftsmanship in its <br><span class="mono-text-clip font-serif italic">Purest Form</span>
+            </h1>
+            <p class="text-neutral-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Meticulously shaved from centuries-old Nordic White Birch and infused with pure essential oils. Aureum elevates a simple act into an experience of singular refinement.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="openModal('Inquire About Bespoke Sets')" class="w-full sm:w-auto px-8 py-4 bg-white text-black text-sm tracking-widest uppercase font-bold rounded hover:bg-neutral-200 transition-all duration-300 shadow-lg">
+                    Explore The Reserve
+                </button>
+                <a href="#collection" class="w-full sm:w-auto px-8 py-4 border border-neutral-800 hover:border-white text-neutral-300 hover:text-white text-sm tracking-widest uppercase font-semibold rounded transition-all duration-300 bg-neutral-900/20">
+                    View Collections
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heritage & Details Section -->
+    <section id="heritage" class="py-24 border-t border-neutral-900 bg-neutral-950/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 text-center lg:text-left">
+                <div class="space-y-4">
+                    <div class="text-white text-3xl mb-2">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-semibold">100% Sustainable Wood</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed font-light">
+                        Harvested exclusively from FSC-certified Nordic forests. Only the straightest, finest-grain white birch meets our rigorous standard.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <div class="text-white text-3xl mb-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-semibold">Single-Sourced Botanicals</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed font-light">
+                        Infused for 14 days with organic, cold-pressed peppermint, bourbon vanilla, or single-malt Scotch essences to clean and clarify.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <div class="text-white text-3xl mb-2">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-semibold">Luxury Travel Case</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed font-light">
+                        Designed to safeguard your toothpicks. Each set resides in a heavy-brushed, anodized metal cylinder built to last generations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Section (The 2 Photos represented with Premium Monochrome SVGs) -->
+    <section id="collection" class="py-24 bg-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-2 font-semibold">Curated Offerings</p>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold">The Signature Editions</h2>
+                <div class="w-20 h-[1px] bg-neutral-800 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Product 1: Nordic Frost White Mint -->
+                <div class="bg-neutral-950/50 border border-neutral-900 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all duration-300 mono-border-glow">
+                    <!-- High-quality grayscale Vector illustration of the Premium Toothpick and Case -->
+                    <div class="h-80 w-full bg-neutral-950 flex items-center justify-center p-8 relative overflow-hidden">
+                        
+                        <svg viewBox="0 0 400 300" class="w-full h-full max-w-xs transition-transform duration-700 group-hover:scale-105" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffffff" />
+                                    <stop offset="50%" stop-color="#8e8e8e" />
+                                    <stop offset="100%" stop-color="#1c1c1c" />
+                                </linearGradient>
+                                <linearGradient id="woodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffffff" />
+                                    <stop offset="80%" stop-color="#d1d1d1" />
+                                    <stop offset="100%" stop-color="#737373" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Elegant shadow background -->
+                            <ellipse cx="200" cy="240" rx="90" ry="12" fill="rgba(255,255,255,0.05)"></ellipse>
+                            
+                            <!-- Premium Travel Case in Grayscale -->
+                            <rect x="175" y="80" width="50" height="150" rx="25" fill="url(#silverGrad)" stroke="#525252" stroke-width="1.5"></rect>
+                            <line x1="175" y1="130" x2="225" y2="130" stroke="#171717" stroke-width="2"></line>
+                            <!-- Elegant Crest Emblem on Case -->
+                            <polygon points="200,100 206,108 200,116 194,108" fill="rgba(0,0,0,0.6)" />
+                            
+                            <!-- Shaved Premium Toothpick leaning on case -->
+                            <path d="M 155,90 Q 155,100 156,230 Q 156,235 152,242 L 157,230 Z" fill="url(#woodGrad)"></path>
+                            <!-- Elegant stylized monochrome leaves near stick -->
+                            <path d="M 140,190 C 130,185 130,170 145,175 C 150,180 145,190 140,190 Z" fill="#737373" opacity="0.85"></path>
+                            <path d="M 145,175 C 155,170 160,180 150,185 C 145,185 142,180 145,175 Z" fill="#a3a3a3" opacity="0.85"></path>
+                        </svg>
+                        
+                        <span class="absolute top-4 right-4 bg-neutral-900 border border-neutral-800 text-neutral-300 text-[10px] tracking-widest uppercase font-semibold px-2.5 py-1 rounded">
+                            Peppermint Infused
+                        </span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-serif text-2xl font-bold text-white">The Nordic Mint</h3>
+                            <span class="text-white font-serif text-lg">$45 USD</span>
+                        </div>
+                        <p class="text-neutral-400 text-sm font-light mb-6">
+                            Crisp white birch steeped in natural, single-estate Oregon peppermint oils. Packaged in our polished brushed monochrome pocket-vessel. Includes 30 artisanal picks.
+                        </p>
+                        <button onclick="openModal('Nordic Mint Collection Reserve')" class="w-full py-3 bg-neutral-900 border border-neutral-800 hover:border-white text-neutral-300 hover:text-black hover:bg-white text-xs tracking-widest uppercase font-semibold rounded transition-all duration-300">
+                            Reserve Selection
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2: Single Malt Oak -->
+                <div class="bg-neutral-950/50 border border-neutral-800 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all duration-300 mono-border-glow">
+                    <!-- High-quality grayscale Vector illustration of the Premium Toothpick and Case -->
+                    <div class="h-80 w-full bg-neutral-950 flex items-center justify-center p-8 relative overflow-hidden">
+                        
+                        <svg viewBox="0 0 400 300" class="w-full h-full max-w-xs transition-transform duration-700 group-hover:scale-105" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="charcoalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#e5e5e5" />
+                                    <stop offset="50%" stop-color="#525252" />
+                                    <stop offset="100%" stop-color="#171717" />
+                                </linearGradient>
+                                <linearGradient id="darkWoodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#a3a3a3" />
+                                    <stop offset="80%" stop-color="#404040" />
+                                    <stop offset="100%" stop-color="#171717" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Elegant shadow background -->
+                            <ellipse cx="200" cy="240" rx="90" ry="12" fill="rgba(255,255,255,0.05)"></ellipse>
+                            
+                            <!-- Premium Travel Case in Grayscale -->
+                            <rect x="175" y="80" width="50" height="150" rx="25" fill="url(#charcoalGrad)" stroke="#262626" stroke-width="1.5"></rect>
+                            <line x1="175" y1="130" x2="225" y2="130" stroke="#171717" stroke-width="2"></line>
+                            <!-- Elegant Crest Emblem on Case -->
+                            <polygon points="200,100 206,108 200,116 194,108" fill="rgba(0,0,0,0.6)" />
+                            
+                            <!-- Smoked Premium Toothpick leaning on case -->
+                            <path d="M 245,100 Q 240,110 236,230 Q 235,235 230,242 L 237,230 Z" fill="url(#darkWoodGrad)"></path>
+                            <!-- Elegant grain splash near stick -->
+                            <circle cx="250" cy="180" r="3" fill="#a3a3a3" opacity="0.6"></circle>
+                            <circle cx="260" cy="195" r="2" fill="#737373" opacity="0.4"></circle>
+                        </svg>
+                        
+                        <span class="absolute top-4 right-4 bg-neutral-900 border border-neutral-800 text-neutral-300 text-[10px] tracking-widest uppercase font-semibold px-2.5 py-1 rounded">
+                            Bourbon Barrel Infused
+                        </span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-serif text-2xl font-bold text-white">The Single Malt Reserve</h3>
+                            <span class="text-white font-serif text-lg">$60 USD</span>
+                        </div>
+                        <p class="text-neutral-400 text-sm font-light mb-6">
+                            Smoked oak fibers infused with premium Islay Single Malt Scotch. Delivers a sophisticated scent and subtle warm undertones of peat and caramel oak wood. 
+                        </p>
+                        <button onclick="openModal('Single Malt Collection Reserve')" class="w-full py-3 bg-neutral-900 border border-neutral-800 hover:border-white text-neutral-300 hover:text-black hover:bg-white text-xs tracking-widest uppercase font-semibold rounded transition-all duration-300">
+                            Reserve Selection
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section (YouTube Embed inside minimalist luxury frame) -->
+    <section id="craft" class="py-24 bg-black border-t border-neutral-900 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-2 font-semibold">Behind The Lathe</p>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold">The Art of Lathe Shaving</h2>
+                <p class="text-neutral-400 text-sm mt-4 max-w-md mx-auto font-light">
+                    Every toothpick is single-lathe carved to tolerances within fractions of a millimeter. Watch the master artisan at work.
+                </p>
+                <div class="w-20 h-[1px] bg-neutral-800 mx-auto mt-6"></div>
+            </div>
+
+            <!-- YouTube Video Wrapper with Minimalist Frame -->
+            <div class="relative rounded-2xl overflow-hidden border border-neutral-900 bg-neutral-950 p-3 sm:p-4 shadow-2xl mono-border-glow">
+                <div class="aspect-video w-full rounded-xl overflow-hidden bg-black relative">
+                    <iframe 
+                        class="absolute inset-0 w-full h-full grayscale contrast-115"
+                        src="https://www.youtube.com/embed/S7fA8i46Wv8?si=Z6M6z-s-v6n_36rV&autoplay=0&mute=1" 
+                        title="Aureum Toothpicks Craftmanship" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-neutral-900 py-12 text-sm text-neutral-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <span class="font-serif text-lg tracking-[0.2em] font-semibold text-white">AUREUM</span>
+                <span class="text-[10px] text-neutral-600">© 2026 Aureum Reserve Inc.</span>
+            </div>
+            <div class="flex gap-6 text-neutral-400">
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-pinterest-p text-lg"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube text-lg"></i></a>
+            </div>
+            <p class="text-xs text-neutral-600">
+                Excellence is in the detail. Handcrafted for refined palates.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Custom Premium Modal (Replaces unsafe window.alert) -->
+    <div id="reserve-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-neutral-950 border border-neutral-900 rounded-2xl max-w-md w-full p-8 relative transform scale-95 transition-all duration-300">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-neutral-900 border border-neutral-800 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl">
+                    <i class="fa-solid fa-signature"></i>
+                </div>
+                <h3 id="modal-title" class="font-serif text-2xl font-bold text-white mb-2">Request Exclusive Allocation</h3>
+                <p class="text-neutral-400 text-sm mb-6 font-light">Our bespoke toothpicks are carved in limited weekly numbers. Submit your details to claim the next available slot.</p>
+                
+                <form id="modal-form" onsubmit="handleModalSubmit(event)" class="space-y-4 text-left">
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-neutral-400 mb-1.5 font-semibold">Your Name</label>
+                        <input type="text" required class="w-full px-4 py-3 bg-black border border-neutral-800 rounded text-white text-sm focus:outline-none focus:border-white transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-neutral-400 mb-1.5 font-semibold">Email Address</label>
+                        <input type="email" required class="w-full px-4 py-3 bg-black border border-neutral-800 rounded text-white text-sm focus:outline-none focus:border-white transition-colors">
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-white text-black text-xs tracking-widest uppercase font-bold rounded hover:bg-neutral-200 transition-all duration-300 shadow-lg">
+                        Confirm Allocation Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-neutral-950 border border-neutral-900 rounded-2xl max-w-sm w-full p-8 text-center relative">
+            <div class="w-16 h-16 bg-neutral-900 border border-neutral-800 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-white mb-2">Registry Complete</h3>
+            <p class="text-neutral-400 text-sm mb-6 font-light">An Aureum Concierge representative will contact you shortly with your exclusive allocation options.</p>
+            <button onclick="closeSuccessModal()" class="w-full py-3 bg-white text-black text-xs tracking-widest uppercase font-semibold rounded transition-colors hover:bg-neutral-200">
+                Return To Gallery
+            </button>
+        </div>
+    </div>
+
+    <!-- Javascript Handlers -->
+    <script>
+        // Toggle Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Modal Elements
+        const reserveModal = document.getElementById('reserve-modal');
+        const successModal = document.getElementById('success-modal');
+        const modalTitle = document.getElementById('modal-title');
+        
+        // Open Modal
+        function openModal(actionName) {
+            modalTitle.textContent = actionName;
+            reserveModal.classList.remove('opacity-0', 'pointer-events-none');
+            reserveModal.children[0].classList.remove('scale-95');
+            reserveModal.children[0].classList.add('scale-100');
+        }
+
+        // Close Modal
+        function closeModal() {
+            reserveModal.classList.add('opacity-0', 'pointer-events-none');
+            reserveModal.children[0].classList.add('scale-95');
+            reserveModal.children[0].classList.remove('scale-100');
+        }
+
+        // Handle Form Submissions
+        function handleModalSubmit(event) {
+            event.preventDefault();
+            closeModal();
+            // Show Success Dialog
+            setTimeout(() => {
+                successModal.classList.remove('opacity-0', 'pointer-events-none');
+            }, 300);
+            event.target.reset();
+        }
+
+        function closeSuccessModal() {
+            successModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Smooth Navbar Shrink on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-1', 'shadow-2xl');
+                header.classList.remove('py-0');
+            } else {
+                header.classList.remove('py-1', 'shadow-2xl');
+            }
+        });
+    </script>
+</body>
+</html>

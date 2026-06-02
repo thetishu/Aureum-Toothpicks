@@ -52,6 +52,7 @@
                 <nav class="hidden md:flex space-x-8 text-sm tracking-widest uppercase font-medium">
                     <a href="#heritage" class="text-neutral-400 hover:text-white transition-colors duration-200">Heritage</a>
                     <a href="#collection" class="text-neutral-400 hover:text-white transition-colors duration-200">The Collection</a>
+                    <a href="#ritual" class="text-neutral-400 hover:text-white transition-colors duration-200">The Ritual</a>
                     <a href="#specs" class="text-neutral-400 hover:text-white transition-colors duration-200">Specifications</a>
                 </nav>
 
@@ -71,10 +72,11 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (Removed Craft link) -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-neutral-900 px-4 pt-2 pb-6 space-y-3 transition-all duration-300">
             <a href="#heritage" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Heritage</a>
             <a href="#collection" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">The Collection</a>
+            <a href="#ritual" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">The Ritual</a>
             <a href="#specs" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Specifications</a>
             <button onclick="toggleMobileMenu(); openModal('Reserve Exclusive Kit')" class="w-full text-center px-4 py-3 bg-white text-black text-xs tracking-widest uppercase font-semibold rounded mt-2">
                 Reserve Now
@@ -251,6 +253,81 @@
                             Reserve Selection
                         </button>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Ritual & Standards Section (Ordered & Unordered Lists) -->
+    <section id="ritual" class="py-24 border-t border-neutral-900 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-2 font-semibold">The Method & Quality</p>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold">The Ritual & Standards</h2>
+                <div class="w-20 h-[1px] bg-neutral-800 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Unordered List: Material Standards -->
+                <div class="bg-neutral-950/50 border border-neutral-900 rounded-2xl p-8 sm:p-10 mono-border-glow">
+                    <h3 class="font-serif text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="text-neutral-500 text-lg">■</span> Materials & Assembly
+                    </h3>
+                    <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
+                        Every single implement that leaves our Swedish atelier conforms to five essential physical milestones:
+                    </p>
+                    <ul class="space-y-4 text-sm text-neutral-300 font-light list-none">
+                        <li class="flex items-start gap-3">
+                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
+                            <span>Selected exclusively from the lower meter of slow-grown Nordic White Birch trunks for maximum fiber density.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
+                            <span>Dried naturally in a humidity-controlled atmosphere for 180 days to eliminate trace structural moisture.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
+                            <span>Shaved to a microscopic taper ranging between 0.35mm at the tip and 2.1mm at the base.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
+                            <span>Soaked via direct infusion containing zero synthetic carrier liquids, alcohol, or stabilizing compounds.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
+                            <span>Inspected by hand under magnifying optics before being sealed inside your protective metallic travel cylinder.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Ordered List: Post-Dining Ritual -->
+                <div class="bg-neutral-950/50 border border-neutral-900 rounded-2xl p-8 sm:p-10 mono-border-glow">
+                    <h3 class="font-serif text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="text-neutral-500 text-lg">Ⅰ</span> The Post-Dining Ritual
+                    </h3>
+                    <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
+                        To extract the sensory value of our steeped botanical finishes, follow this four-stage sensory experience:
+                    </p>
+                    <ol class="space-y-4 text-sm text-neutral-300 font-light list-none">
+                        <li class="flex items-start gap-4">
+                            <span class="text-black bg-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+                            <span>Gently slide open the anodized seal of your travel case and withdraw a single grain-aligned toothpick.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-black bg-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+                            <span>Hold the tip near the olfactory area for five seconds to release the cold-pressed peppermint or barrel peat notes.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-black bg-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+                            <span>Gently apply across the palate. The organic infusion is heat-activated by contact to refresh oral tissue.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-black bg-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</span>
+                            <span>Secure the threaded metallic cap onto your cylinder immediately to maintain ambient flavor integrity for remaining picks.</span>
+                        </li>
+                    </ol>
                 </div>
 
             </div>

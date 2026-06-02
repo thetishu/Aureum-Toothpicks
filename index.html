@@ -4,113 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aureum | Premium Handcrafted Toothpicks</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Playfair Display & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#fdfbf7',
+                            100: '#fbf7ed',
+                            200: '#f4ebb6',
+                            300: '#edd87a',
+                            400: '#e1bd45',
+                            500: '#d4af37', // Classic metallic gold
+                            600: '#b8902b',
+                            700: '#947022',
+                            800: '#72521c',
+                            900: '#543c17',
+                        }
                     }
                 }
             }
         }
     </script>
     <style>
-        .mono-text-clip {
-            background: linear-gradient(to right, #ffffff, #a3a3a3, #404040);
+        .gold-text-clip {
+            background: linear-gradient(to right, #f4ebb6, #d4af37, #947022);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .mono-border-glow {
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
         }
     </style>
 </head>
-<body class="bg-black text-neutral-100 font-sans min-h-screen selection:bg-white selection:text-black overflow-x-hidden">
+<body class="bg-gradient-to-br from-neutral-950 via-neutral-900 to-amber-950 text-neutral-100 font-sans min-h-screen selection:bg-gold-500 selection:text-neutral-950 overflow-x-hidden">
 
-    <!-- Sticky Navigation Bar -->
-    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-black/90 border-b border-neutral-900 transition-all duration-300">
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-neutral-950/80 border-b border-neutral-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
+        
                 <div class="flex-shrink-0 flex items-center gap-2">
-                    <span class="font-serif text-2xl tracking-[0.2em] mono-text-clip font-bold">AUREUM</span>
-                    <span class="text-xs tracking-widest text-neutral-400 border border-neutral-700 px-1.5 py-0.5 rounded font-light">TOOTHPICKS</span>
+                    <span class="font-serif text-2xl tracking-[0.2em] gold-text-clip font-bold">AUREUM</span>
+                    <span class="text-xs tracking-widest text-gold-400 border border-gold-500/30 px-1.5 py-0.5 rounded font-light">TOOTHPICKS</span>
                 </div>
 
-                <!-- Desktop Nav Links -->
                 <nav class="hidden md:flex space-x-8 text-sm tracking-widest uppercase font-medium">
-                    <a href="#heritage" class="text-neutral-400 hover:text-white transition-colors duration-200">Heritage</a>
-                    <a href="#collection" class="text-neutral-400 hover:text-white transition-colors duration-200">The Collection</a>
-                    <a href="#ritual" class="text-neutral-400 hover:text-white transition-colors duration-200">The Ritual</a>
-                    <a href="#specs" class="text-neutral-400 hover:text-white transition-colors duration-200">Specifications</a>
+                    <a href="#heritage" class="text-neutral-300 hover:text-gold-400 transition-colors duration-200">Heritage</a>
+                    <a href="#collection" class="text-neutral-300 hover:text-gold-400 transition-colors duration-200">The Collection</a>
+                    <a href="#craft" class="text-neutral-300 hover:text-gold-400 transition-colors duration-200">The Craft</a>
+                    <a href="#membership" class="text-neutral-300 hover:text-gold-400 transition-colors duration-200">The Guild</a>
                 </nav>
 
-                <!-- Action Button -->
                 <div class="hidden md:block">
-                    <button onclick="openModal('Reserve Exclusive Kit')" class="px-5 py-2.5 bg-white text-black text-xs tracking-widest uppercase font-semibold rounded hover:bg-neutral-200 transition-all duration-300 shadow-md">
+                    <button onclick="openModal('Reserve Exclusive Kit')" class="px-5 py-2.5 bg-gradient-to-r from-gold-600 to-gold-400 text-neutral-950 text-xs tracking-widest uppercase font-semibold rounded hover:from-gold-500 hover:to-gold-300 transition-all duration-300 shadow-md hover:shadow-gold-500/20">
                         Reserve Now
                     </button>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-neutral-300 hover:text-white focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-neutral-300 hover:text-gold-400 focus:outline-none focus:text-gold-400">
                         <i class="fa-solid fa-bars-staggered text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-neutral-900 px-4 pt-2 pb-6 space-y-3 transition-all duration-300">
-            <a href="#heritage" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Heritage</a>
-            <a href="#collection" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">The Collection</a>
-            <a href="#ritual" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">The Ritual</a>
-            <a href="#specs" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Specifications</a>
-            <button onclick="toggleMobileMenu(); openModal('Reserve Exclusive Kit')" class="w-full text-center px-4 py-3 bg-white text-black text-xs tracking-widest uppercase font-semibold rounded mt-2">
+        <div id="mobile-menu" class="hidden md:hidden bg-neutral-950/95 border-b border-neutral-800 px-4 pt-2 pb-6 space-y-3 transition-all duration-300">
+            <a href="#heritage" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-gold-400">Heritage</a>
+            <a href="#collection" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-gold-400">The Collection</a>
+            <a href="#craft" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-gold-400">The Craft</a>
+            <a href="#membership" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-gold-400">The Guild</a>
+            <button onclick="toggleMobileMenu(); openModal('Reserve Exclusive Kit')" class="w-full text-center px-4 py-3 bg-gold-500 text-neutral-950 text-xs tracking-widest uppercase font-semibold rounded mt-2">
                 Reserve Now
             </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-20 px-4">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-700/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <p class="text-xs tracking-[0.4em] uppercase text-neutral-400 mb-4 font-semibold">The Ultimate Post-Dining Ritual</p>
+            <p class="text-xs tracking-[0.4em] uppercase text-gold-400 mb-4 font-semibold">The Ultimate Post-Dining Ritual</p>
             <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-                Craftsmanship in its <br><span class="mono-text-clip font-serif italic">Purest Form</span>
+                Craftsmanship in its <br><span class="gold-text-clip font-serif italic">Purest Form</span>
             </h1>
             <p class="text-neutral-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed">
                 Meticulously shaved from centuries-old Nordic White Birch and infused with pure essential oils. Aureum elevates a simple act into an experience of singular refinement.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button onclick="openModal('Inquire About Bespoke Sets')" class="w-full sm:w-auto px-8 py-4 bg-white text-black text-sm tracking-widest uppercase font-bold rounded hover:bg-neutral-200 transition-all duration-300 shadow-lg">
+                <button onclick="openModal('Inquire About Bespoke Sets')" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold-600 to-gold-400 text-neutral-950 text-sm tracking-widest uppercase font-bold rounded hover:from-gold-500 hover:to-gold-300 transition-all duration-300 shadow-lg hover:shadow-gold-500/30">
                     Explore The Reserve
                 </button>
-                <a href="#collection" class="w-full sm:w-auto px-8 py-4 border border-neutral-800 hover:border-white text-neutral-300 hover:text-white text-sm tracking-widest uppercase font-semibold rounded transition-all duration-300 bg-neutral-900/20">
+                <a href="#collection" class="w-full sm:w-auto px-8 py-4 border border-neutral-700 hover:border-gold-500/50 text-neutral-300 hover:text-white text-sm tracking-widest uppercase font-semibold rounded transition-all duration-300 bg-neutral-900/40">
                     View Collections
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Heritage & Details Section -->
-    <section id="heritage" class="py-24 border-t border-neutral-900 bg-neutral-950/20">
+    <section id="heritage" class="py-24 border-t border-neutral-900 bg-neutral-950/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 text-center lg:text-left">
                 <div class="space-y-4">
-                    <div class="text-white text-3xl mb-2">
+                    <div class="text-gold-400 text-3xl mb-2">
                         <i class="fa-solid fa-seedling"></i>
                     </div>
                     <h3 class="font-serif text-2xl font-semibold">100% Sustainable Wood</h3>
@@ -119,7 +127,7 @@
                     </p>
                 </div>
                 <div class="space-y-4">
-                    <div class="text-white text-3xl mb-2">
+                    <div class="text-gold-400 text-3xl mb-2">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </div>
                     <h3 class="font-serif text-2xl font-semibold">Single-Sourced Botanicals</h3>
@@ -128,128 +136,121 @@
                     </p>
                 </div>
                 <div class="space-y-4">
-                    <div class="text-white text-3xl mb-2">
+                    <div class="text-gold-400 text-3xl mb-2">
                         <i class="fa-solid fa-gem"></i>
                     </div>
-                    <h3 class="font-serif text-2xl font-semibold">Luxury Travel Case</h3>
+                    <h3 class="font-serif text-2xl font-semibold">Gold-Plated Travel Case</h3>
                     <p class="text-neutral-400 text-sm leading-relaxed font-light">
-                        Designed to safeguard your toothpicks. Each set resides in a heavy-brushed, anodized metal cylinder built to last generations.
+                        Designed to safeguard your toothpicks. Each set resides in a heavy-brushed, 24k gold-plated cylinder built to last generations.
                     </p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Photo Section (The 2 Photos represented with Premium Monochrome SVGs) -->
-    <section id="collection" class="py-24 bg-black relative">
+    <section id="collection" class="py-24 bg-gradient-to-b from-neutral-900 to-neutral-950 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-2 font-semibold">Curated Offerings</p>
+                <p class="text-xs tracking-[0.3em] uppercase text-gold-400 mb-2 font-semibold">Curated Offerings</p>
                 <h2 class="font-serif text-3xl sm:text-5xl font-bold">The Signature Editions</h2>
-                <div class="w-20 h-[1px] bg-neutral-800 mx-auto mt-4"></div>
+                <div class="w-20 h-[2px] bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                
-                <!-- Product 1: Nordic Frost White Mint -->
-                <div class="bg-neutral-950/50 border border-neutral-900 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all duration-300 mono-border-glow">
-                    <!-- High-quality grayscale Vector illustration of the Premium Toothpick and Case -->
-                    <div class="h-80 w-full bg-neutral-950 flex items-center justify-center p-8 relative overflow-hidden">
-                        
+                <div class="bg-neutral-950/50 border border-neutral-800 rounded-2xl overflow-hidden group hover:border-gold-500/30 transition-all duration-300 gold-border-glow">
+                    <div class="h-80 w-full bg-gradient-to-br from-teal-950/40 via-neutral-900 to-neutral-950 flex items-center justify-center p-8 relative overflow-hidden">
+
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-teal-500/5 via-transparent to-transparent opacity-60"></div>
+
                         <svg viewBox="0 0 400 300" class="w-full h-full max-w-xs transition-transform duration-700 group-hover:scale-105" aria-hidden="true">
                             <defs>
-                                <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#ffffff" />
-                                    <stop offset="50%" stop-color="#8e8e8e" />
-                                    <stop offset="100%" stop-color="#1c1c1c" />
+                                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#fdfbf7" />
+                                    <stop offset="50%" stop-color="#d4af37" />
+                                    <stop offset="100%" stop-color="#543c17" />
                                 </linearGradient>
                                 <linearGradient id="woodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" stop-color="#ffffff" />
-                                    <stop offset="80%" stop-color="#d1d1d1" />
-                                    <stop offset="100%" stop-color="#737373" />
+                                    <stop offset="0%" stop-color="#f5efe6" />
+                                    <stop offset="80%" stop-color="#e1d2be" />
+                                    <stop offset="100%" stop-color="#c4b295" />
                                 </linearGradient>
                             </defs>
-                            <!-- Elegant shadow background -->
-                            <ellipse cx="200" cy="240" rx="90" ry="12" fill="rgba(255,255,255,0.05)"></ellipse>
-                            
-                            <!-- Premium Travel Case in Grayscale -->
-                            <rect x="175" y="80" width="50" height="150" rx="25" fill="url(#silverGrad)" stroke="#525252" stroke-width="1.5"></rect>
-                            <line x1="175" y1="130" x2="225" y2="130" stroke="#171717" stroke-width="2"></line>
-                            <!-- Elegant Crest Emblem on Case -->
-                            <polygon points="200,100 206,108 200,116 194,108" fill="rgba(0,0,0,0.6)" />
-                            
-                            <!-- Shaved Premium Toothpick leaning on case -->
+
+                            <ellipse cx="200" cy="240" rx="90" ry="12" fill="rgba(0,0,0,0.5)"></ellipse>
+
+                            <rect x="175" y="80" width="50" height="150" rx="25" fill="url(#goldGrad)" stroke="#4a3712" stroke-width="1.5"></rect>
+                            <line x1="175" y1="130" x2="225" y2="130" stroke="#543c17" stroke-width="2"></line>
+
+                            <polygon points="200,100 206,108 200,116 194,108" fill="rgba(255,255,255,0.4)" />
+
                             <path d="M 155,90 Q 155,100 156,230 Q 156,235 152,242 L 157,230 Z" fill="url(#woodGrad)"></path>
-                            <!-- Elegant stylized monochrome leaves near stick -->
-                            <path d="M 140,190 C 130,185 130,170 145,175 C 150,180 145,190 140,190 Z" fill="#737373" opacity="0.85"></path>
-                            <path d="M 145,175 C 155,170 160,180 150,185 C 145,185 142,180 145,175 Z" fill="#a3a3a3" opacity="0.85"></path>
+
+                            <path d="M 140,190 C 130,185 130,170 145,175 C 150,180 145,190 140,190 Z" fill="#2d5a27" opacity="0.85"></path>
+                            <path d="M 145,175 C 155,170 160,180 150,185 C 145,185 142,180 145,175 Z" fill="#4d8246" opacity="0.85"></path>
                         </svg>
                         
-                        <span class="absolute top-4 right-4 bg-neutral-900 border border-neutral-800 text-neutral-300 text-[10px] tracking-widest uppercase font-semibold px-2.5 py-1 rounded">
+                        <span class="absolute top-4 right-4 bg-teal-950/80 border border-teal-500/30 text-teal-300 text-[10px] tracking-widest uppercase font-semibold px-2.5 py-1 rounded">
                             Peppermint Infused
                         </span>
                     </div>
                     <div class="p-8">
                         <div class="flex items-center justify-between mb-2">
                             <h3 class="font-serif text-2xl font-bold text-white">The Nordic Mint</h3>
-                            <span class="text-white font-serif text-lg">$45 USD</span>
+                            <span class="text-gold-400 font-serif text-lg">$45 USD</span>
                         </div>
                         <p class="text-neutral-400 text-sm font-light mb-6">
-                            Crisp white birch steeped in natural, single-estate Oregon peppermint oils. Packaged in our polished brushed monochrome pocket-vessel. Includes 30 artisanal picks.
+                            Crisp white birch steeped in natural, single-estate Oregon peppermint oils. Packaged in our polished brushed 24k gold pocket-vessel. Includes 30 artisanal picks.
                         </p>
-                        <button onclick="openModal('Nordic Mint Collection Reserve')" class="w-full py-3 bg-neutral-900 border border-neutral-800 hover:border-white text-neutral-300 hover:text-black hover:bg-white text-xs tracking-widest uppercase font-semibold rounded transition-all duration-300">
+                        <button onclick="openModal('Nordic Mint Collection Reserve')" class="w-full py-3 bg-neutral-900 border border-neutral-800 hover:border-gold-500 text-neutral-300 hover:text-white text-xs tracking-widest uppercase font-semibold rounded transition-all duration-300 group-hover:bg-gold-500 group-hover:text-neutral-950">
                             Reserve Selection
                         </button>
                     </div>
                 </div>
 
-                <!-- Product 2: Single Malt Oak -->
-                <div class="bg-neutral-950/50 border border-neutral-800 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all duration-300 mono-border-glow">
-                    <!-- High-quality grayscale Vector illustration of the Premium Toothpick and Case -->
-                    <div class="h-80 w-full bg-neutral-950 flex items-center justify-center p-8 relative overflow-hidden">
-                        
+                <div class="bg-neutral-950/50 border border-neutral-800 rounded-2xl overflow-hidden group hover:border-gold-500/30 transition-all duration-300 gold-border-glow">
+                    <div class="h-80 w-full bg-gradient-to-br from-amber-950/40 via-neutral-900 to-neutral-950 flex items-center justify-center p-8 relative overflow-hidden">
+
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent opacity-60"></div>
+
                         <svg viewBox="0 0 400 300" class="w-full h-full max-w-xs transition-transform duration-700 group-hover:scale-105" aria-hidden="true">
                             <defs>
-                                <linearGradient id="charcoalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#e5e5e5" />
-                                    <stop offset="50%" stop-color="#525252" />
-                                    <stop offset="100%" stop-color="#171717" />
+                                <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#cca772" />
+                                    <stop offset="50%" stop-color="#805b2a" />
+                                    <stop offset="100%" stop-color="#3d270c" />
                                 </linearGradient>
-                                <linearGradient id="darkWoodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" stop-color="#a3a3a3" />
-                                    <stop offset="80%" stop-color="#404040" />
-                                    <stop offset="100%" stop-color="#171717" />
+                                <linearGradient id="oakGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#8c7355" />
+                                    <stop offset="80%" stop-color="#6e573b" />
+                                    <stop offset="100%" stop-color="#4a361e" />
                                 </linearGradient>
                             </defs>
-                            <!-- Elegant shadow background -->
-                            <ellipse cx="200" cy="240" rx="90" ry="12" fill="rgba(255,255,255,0.05)"></ellipse>
-                            
-                            <!-- Premium Travel Case in Grayscale -->
-                            <rect x="175" y="80" width="50" height="150" rx="25" fill="url(#charcoalGrad)" stroke="#262626" stroke-width="1.5"></rect>
-                            <line x1="175" y1="130" x2="225" y2="130" stroke="#171717" stroke-width="2"></line>
-                            <!-- Elegant Crest Emblem on Case -->
-                            <polygon points="200,100 206,108 200,116 194,108" fill="rgba(0,0,0,0.6)" />
-                            
-                            <!-- Smoked Premium Toothpick leaning on case -->
-                            <path d="M 245,100 Q 240,110 236,230 Q 235,235 230,242 L 237,230 Z" fill="url(#darkWoodGrad)"></path>
-                            <!-- Elegant grain splash near stick -->
-                            <circle cx="250" cy="180" r="3" fill="#a3a3a3" opacity="0.6"></circle>
-                            <circle cx="260" cy="195" r="2" fill="#737373" opacity="0.4"></circle>
+
+                            <ellipse cx="200" cy="240" rx="90" ry="12" fill="rgba(0,0,0,0.5)"></ellipse>
+
+                            <rect x="175" y="80" width="50" height="150" rx="25" fill="url(#bronzeGrad)" stroke="#3d270c" stroke-width="1.5"></rect>
+                            <line x1="175" y1="130" x2="225" y2="130" stroke="#3d270c" stroke-width="2"></line>
+
+                            <polygon points="200,100 206,108 200,116 194,108" fill="rgba(255,255,255,0.4)" />
+ 
+                            <path d="M 245,100 Q 240,110 236,230 Q 235,235 230,242 L 237,230 Z" fill="url(#oakGrad)"></path>
+
+                            <circle cx="250" cy="180" r="3" fill="#cca772" opacity="0.6"></circle>
+                            <circle cx="260" cy="195" r="2" fill="#cca772" opacity="0.4"></circle>
                         </svg>
                         
-                        <span class="absolute top-4 right-4 bg-neutral-900 border border-neutral-800 text-neutral-300 text-[10px] tracking-widest uppercase font-semibold px-2.5 py-1 rounded">
-                            Bourbon Barrel Infused
+                        <span class="absolute top-4 right-4 bg-amber-950/80 border border-amber-500/30 text-amber-300 text-[10px] tracking-widest uppercase font-semibold px-2.5 py-1 rounded">
+                            Islay Bourbon Barrel Infused
                         </span>
                     </div>
                     <div class="p-8">
                         <div class="flex items-center justify-between mb-2">
                             <h3 class="font-serif text-2xl font-bold text-white">The Single Malt Reserve</h3>
-                            <span class="text-white font-serif text-lg">$60 USD</span>
+                            <span class="text-gold-400 font-serif text-lg">$60 USD</span>
                         </div>
                         <p class="text-neutral-400 text-sm font-light mb-6">
                             Smoked oak fibers infused with premium Islay Single Malt Scotch. Delivers a sophisticated scent and subtle warm undertones of peat and caramel oak wood. 
                         </p>
-                        <button onclick="openModal('Single Malt Collection Reserve')" class="w-full py-3 bg-neutral-900 border border-neutral-800 hover:border-white text-neutral-300 hover:text-black hover:bg-white text-xs tracking-widest uppercase font-semibold rounded transition-all duration-300">
+                        <button onclick="openModal('Single Malt Collection Reserve')" class="w-full py-3 bg-neutral-900 border border-neutral-800 hover:border-gold-500 text-neutral-300 hover:text-white text-xs tracking-widest uppercase font-semibold rounded transition-all duration-300 group-hover:bg-gold-500 group-hover:text-neutral-950">
                             Reserve Selection
                         </button>
                     </div>
@@ -259,143 +260,98 @@
         </div>
     </section>
 
-    <!-- Ritual & Standards Section (Ordered & Unordered Lists) -->
-    <section id="ritual" class="py-24 border-t border-neutral-900 bg-black">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Video Section (YouTube Embed inside luxury frame) -->
+    <section id="craft" class="py-24 bg-neutral-950 border-t border-neutral-900 relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-amber-950/20 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-2 font-semibold">The Method & Quality</p>
-                <h2 class="font-serif text-3xl sm:text-5xl font-bold">The Ritual & Standards</h2>
-                <div class="w-20 h-[1px] bg-neutral-800 mx-auto mt-4"></div>
+                <p class="text-xs tracking-[0.3em] uppercase text-gold-400 mb-2 font-semibold">Behind The Lathe</p>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold">The Art of Lathe Shaving</h2>
+                <p class="text-neutral-400 text-sm mt-4 max-w-md mx-auto font-light">
+                    Every toothpick is single-lathe carved to tolerances within fractions of a millimeter. Watch the master artisan at work.
+                </p>
+                <div class="w-20 h-[2px] bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-6"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                
-                <!-- Unordered List: Material Standards -->
-                <div class="bg-neutral-950/50 border border-neutral-900 rounded-2xl p-8 sm:p-10 mono-border-glow">
-                    <h3 class="font-serif text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                        <span class="text-neutral-500 text-lg">■</span> Materials & Assembly
-                    </h3>
-                    <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
-                        Every single implement that leaves our Swedish atelier conforms to five essential physical milestones:
-                    </p>
-                    <ul class="space-y-4 text-sm text-neutral-300 font-light list-none">
-                        <li class="flex items-start gap-3">
-                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
-                            <span>Selected exclusively from the lower meter of slow-grown Nordic White Birch trunks for maximum fiber density.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
-                            <span>Dried naturally in a humidity-controlled atmosphere for 180 days to eliminate trace structural moisture.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
-                            <span>Shaved to a microscopic taper ranging between 0.35mm at the tip and 2.1mm at the base.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
-                            <span>Soaked via direct infusion containing zero synthetic carrier liquids, alcohol, or stabilizing compounds.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-white mt-1.5 flex-shrink-0 text-xs">•</span>
-                            <span>Inspected by hand under magnifying optics before being sealed inside your protective metallic travel cylinder.</span>
-                        </li>
-                    </ul>
+            <!-- YouTube Video Wrapper with Premium Frame -->
+            <div class="relative rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900/40 p-3 sm:p-4 shadow-2xl gold-border-glow">
+                <div class="aspect-video w-full rounded-xl overflow-hidden bg-black relative">
+                    <!-- YouTube Iframe Embed -->
+                    <!-- We use an elegant high quality wood craftmanship search video for high fidelity -->
+                    <iframe 
+                        class="absolute inset-0 w-full h-full"
+                        src="https://www.youtube.com/embed/S7fA8i46Wv8?si=Z6M6z-s-v6n_36rV&autoplay=0&mute=1" 
+                        title="Aureum Toothpicks Craftmanship" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
-
-                <!-- Ordered List: Post-Dining Ritual -->
-                <div class="bg-neutral-950/50 border border-neutral-900 rounded-2xl p-8 sm:p-10 mono-border-glow">
-                    <h3 class="font-serif text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                        <span class="text-neutral-500 text-lg">Ⅰ</span> The Post-Dining Ritual
-                    </h3>
-                    <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
-                        To extract the sensory value of our steeped botanical finishes, follow this four-stage sensory experience:
-                    </p>
-                    <ol class="space-y-4 text-sm text-neutral-300 font-light list-none">
-                        <li class="flex items-start gap-4">
-                            <span class="text-black bg-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
-                            <span>Gently slide open the anodized seal of your travel case and withdraw a single grain-aligned toothpick.</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-black bg-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
-                            <span>Hold the tip near the olfactory area for five seconds to release the cold-pressed peppermint or barrel peat notes.</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-black bg-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
-                            <span>Gently apply across the palate. The organic infusion is heat-activated by contact to refresh oral tissue.</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-black bg-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</span>
-                            <span>Secure the threaded metallic cap onto your cylinder immediately to maintain ambient flavor integrity for remaining picks.</span>
-                        </li>
-                    </ol>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Specifications Section -->
-    <section id="specs" class="py-24 border-t border-neutral-900 bg-neutral-950/20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-2 font-semibold">Comparative Metrics</p>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold">The Specifications</h2>
-                <div class="w-20 h-[1px] bg-neutral-800 mx-auto mt-4"></div>
+    <!-- Call To Action & Guild Membership -->
+    <section id="membership" class="py-24 bg-gradient-to-t from-neutral-950 via-neutral-900 to-neutral-950 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-block px-3 py-1 border border-gold-500/20 rounded-full bg-gold-950/20 text-gold-400 text-xs tracking-widest uppercase mb-6 font-semibold">
+                Exclusive Allocation
             </div>
-
-            <!-- Highly legible monochrome table comparison -->
-            <div class="overflow-x-auto border border-neutral-900 rounded-2xl bg-neutral-950/40 p-1">
-                <table class="w-full text-left border-collapse text-sm text-neutral-400">
-                    <thead>
-                        <tr class="border-b border-neutral-900 text-[11px] uppercase tracking-widest text-neutral-300">
-                            <th class="py-5 px-6 font-semibold">Attribute</th>
-                            <th class="py-5 px-6 font-semibold">The Nordic Mint</th>
-                            <th class="py-5 px-6 font-semibold">The Single Malt Reserve</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-neutral-900/60">
-                        <tr>
-                            <td class="py-4 px-6 font-medium text-white">Base Timber</td>
-                            <td class="py-4 px-6">Selected Nordic White Birch</td>
-                            <td class="py-4 px-6">Slow-Grown Nordic White Birch</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 px-6 font-medium text-white">Infusion Technique</td>
-                            <td class="py-4 px-6">14-day essential oil saturation</td>
-                            <td class="py-4 px-6">21-day pressure-barrel steeping</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 px-6 font-medium text-white">Flavor Profile</td>
-                            <td class="py-4 px-6">Crisp peppermint, cooling eucalyptus</td>
-                            <td class="py-4 px-6">Peated oak wood, sweet caramel peat</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 px-6 font-medium text-white">Pocket Case</td>
-                            <td class="py-4 px-6">Anodized Silver Cylinder</td>
-                            <td class="py-4 px-6">Brushed Charcoal Titanium</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 px-6 font-medium text-white">Weekly Yield</td>
-                            <td class="py-4 px-6">250 units worldwide</td>
-                            <td class="py-4 px-6">100 units worldwide</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold tracking-tight mb-6">
+                Join The Aureum Guild
+            </h2>
+            <p class="text-neutral-400 text-base max-w-xl mx-auto mb-10 font-light leading-relaxed">
+                Members receive automatic quarterly allocations of limited batch botanicals, first-look options at reserve hardware releases, and personalized wooden cases.
+            </p>
+            
+            <form onsubmit="handleFormSubmit(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input 
+                    type="email" 
+                    id="guild-email"
+                    required
+                    placeholder="Enter your email" 
+                    class="flex-1 px-5 py-4 rounded bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-gold-500 transition-colors"
+                />
+                <button 
+                    type="submit" 
+                    class="px-8 py-4 bg-gradient-to-r from-gold-600 to-gold-400 text-neutral-950 text-xs tracking-widest uppercase font-bold rounded hover:from-gold-500 hover:to-gold-300 transition-all duration-300 shadow-lg hover:shadow-gold-500/20"
+                >
+                    Apply For Entry
+                </button>
+            </form>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-950 border-t border-neutral-900 py-12 text-sm text-neutral-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <span class="font-serif text-lg tracking-[0.2em] font-semibold text-white">AUREUM</span>
+                <span class="text-[10px] text-neutral-600">© 2026 Aureum Reserve Inc.</span>
+            </div>
+            <div class="flex gap-6 text-neutral-400">
+                <a href="#" class="hover:text-gold-400 transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                <a href="#" class="hover:text-gold-400 transition-colors"><i class="fa-brands fa-pinterest-p text-lg"></i></a>
+                <a href="#" class="hover:text-gold-400 transition-colors"><i class="fa-brands fa-youtube text-lg"></i></a>
+            </div>
+            <p class="text-xs text-neutral-600">
+                Excellence is in the detail. Handcrafted for refined palates.
+            </p>
+        </div>
+    </footer>
 
     <!-- Interactive Custom Premium Modal (Replaces unsafe window.alert) -->
-    <div id="reserve-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-neutral-950 border border-neutral-900 rounded-2xl max-w-md w-full p-8 relative transform scale-95 transition-all duration-300">
+    <div id="reserve-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-neutral-900 border border-neutral-800 rounded-2xl max-w-md w-full p-8 relative transform scale-95 transition-all duration-300">
             <!-- Close Button -->
             <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-white transition-colors">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             
             <div class="text-center">
-                <div class="w-16 h-16 bg-neutral-900 border border-neutral-800 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl">
-                    <i class="fa-solid fa-signature"></i>
+                <div class="w-16 h-16 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-6 text-gold-400 text-2xl">
+                    <i class="fa-solid fa-crown"></i>
                 </div>
                 <h3 id="modal-title" class="font-serif text-2xl font-bold text-white mb-2">Request Exclusive Allocation</h3>
                 <p class="text-neutral-400 text-sm mb-6 font-light">Our bespoke toothpicks are carved in limited weekly numbers. Submit your details to claim the next available slot.</p>
@@ -403,13 +359,13 @@
                 <form id="modal-form" onsubmit="handleModalSubmit(event)" class="space-y-4 text-left">
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-neutral-400 mb-1.5 font-semibold">Your Name</label>
-                        <input type="text" required class="w-full px-4 py-3 bg-black border border-neutral-800 rounded text-white text-sm focus:outline-none focus:border-white transition-colors">
+                        <input type="text" required class="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded text-white text-sm focus:outline-none focus:border-gold-500 transition-colors">
                     </div>
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-neutral-400 mb-1.5 font-semibold">Email Address</label>
-                        <input type="email" required class="w-full px-4 py-3 bg-black border border-neutral-800 rounded text-white text-sm focus:outline-none focus:border-white transition-colors">
+                        <input type="email" required class="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded text-white text-sm focus:outline-none focus:border-gold-500 transition-colors">
                     </div>
-                    <button type="submit" class="w-full py-4 bg-white text-black text-xs tracking-widest uppercase font-bold rounded hover:bg-neutral-200 transition-all duration-300 shadow-lg">
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-gold-600 to-gold-400 text-neutral-950 text-xs tracking-widest uppercase font-bold rounded hover:from-gold-500 hover:to-gold-300 transition-all duration-300 shadow-lg">
                         Confirm Allocation Request
                     </button>
                 </form>
@@ -418,14 +374,14 @@
     </div>
 
     <!-- Success Modal -->
-    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-neutral-950 border border-neutral-900 rounded-2xl max-w-sm w-full p-8 text-center relative">
-            <div class="w-16 h-16 bg-neutral-900 border border-neutral-800 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl">
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-neutral-900 border border-neutral-800 rounded-2xl max-w-sm w-full p-8 text-center relative">
+            <div class="w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-400 text-2xl">
                 <i class="fa-solid fa-circle-check"></i>
             </div>
             <h3 class="font-serif text-2xl font-bold text-white mb-2">Registry Complete</h3>
             <p class="text-neutral-400 text-sm mb-6 font-light">An Aureum Concierge representative will contact you shortly with your exclusive allocation options.</p>
-            <button onclick="closeSuccessModal()" class="w-full py-3 bg-white text-black text-xs tracking-widest uppercase font-semibold rounded transition-colors hover:bg-neutral-200">
+            <button onclick="closeSuccessModal()" class="w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white text-xs tracking-widest uppercase font-semibold rounded transition-colors">
                 Return To Gallery
             </button>
         </div>
@@ -473,6 +429,13 @@
             setTimeout(() => {
                 successModal.classList.remove('opacity-0', 'pointer-events-none');
             }, 300);
+            event.target.reset();
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            // Show Success Dialog
+            successModal.classList.remove('opacity-0', 'pointer-events-none');
             event.target.reset();
         }
 

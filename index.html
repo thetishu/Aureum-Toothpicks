@@ -38,7 +38,7 @@
 </head>
 <body class="bg-black text-neutral-100 font-sans min-h-screen selection:bg-white selection:text-black overflow-x-hidden">
 
-    <!-- Sticky Navigation Bar (With Guild section removed) -->
+    <!-- Sticky Navigation Bar -->
     <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-black/90 border-b border-neutral-900 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -48,11 +48,11 @@
                     <span class="text-xs tracking-widest text-neutral-400 border border-neutral-700 px-1.5 py-0.5 rounded font-light">TOOTHPICKS</span>
                 </div>
 
-                <!-- Desktop Nav Links (The Guild link removed) -->
+                <!-- Desktop Nav Links -->
                 <nav class="hidden md:flex space-x-8 text-sm tracking-widest uppercase font-medium">
                     <a href="#heritage" class="text-neutral-400 hover:text-white transition-colors duration-200">Heritage</a>
                     <a href="#collection" class="text-neutral-400 hover:text-white transition-colors duration-200">The Collection</a>
-                    <a href="#craft" class="text-neutral-400 hover:text-white transition-colors duration-200">The Craft</a>
+                    <a href="#specs" class="text-neutral-400 hover:text-white transition-colors duration-200">Specifications</a>
                 </nav>
 
                 <!-- Action Button -->
@@ -71,11 +71,11 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (Guild Link & Gold styles removed) -->
+        <!-- Mobile Menu (Removed Craft link) -->
         <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-neutral-900 px-4 pt-2 pb-6 space-y-3 transition-all duration-300">
             <a href="#heritage" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Heritage</a>
             <a href="#collection" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">The Collection</a>
-            <a href="#craft" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">The Craft</a>
+            <a href="#specs" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Specifications</a>
             <button onclick="toggleMobileMenu(); openModal('Reserve Exclusive Kit')" class="w-full text-center px-4 py-3 bg-white text-black text-xs tracking-widest uppercase font-semibold rounded mt-2">
                 Reserve Now
             </button>
@@ -257,51 +257,56 @@
         </div>
     </section>
 
-    <!-- Video Section (YouTube Embed inside minimalist luxury frame) -->
-    <section id="craft" class="py-24 bg-black border-t border-neutral-900 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Specifications Section -->
+    <section id="specs" class="py-24 border-t border-neutral-900 bg-neutral-950/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-2 font-semibold">Behind The Lathe</p>
-                <h2 class="font-serif text-3xl sm:text-5xl font-bold">The Art of Lathe Shaving</h2>
-                <p class="text-neutral-400 text-sm mt-4 max-w-md mx-auto font-light">
-                    Every toothpick is single-lathe carved to tolerances within fractions of a millimeter. Watch the master artisan at work.
-                </p>
-                <div class="w-20 h-[1px] bg-neutral-800 mx-auto mt-6"></div>
+                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-2 font-semibold">Comparative Metrics</p>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold">The Specifications</h2>
+                <div class="w-20 h-[1px] bg-neutral-800 mx-auto mt-4"></div>
             </div>
 
-            <!-- YouTube Video Wrapper with Minimalist Frame -->
-            <div class="relative rounded-2xl overflow-hidden border border-neutral-900 bg-neutral-950 p-3 sm:p-4 shadow-2xl mono-border-glow">
-                <div class="aspect-video w-full rounded-xl overflow-hidden bg-black relative">
-                    <iframe 
-                        class="absolute inset-0 w-full h-full grayscale contrast-115"
-                        src="https://www.youtube.com/embed/S7fA8i46Wv8?si=Z6M6z-s-v6n_36rV&autoplay=0&mute=1" 
-                        title="Aureum Toothpicks Craftmanship" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+            <!-- Highly legible monochrome table comparison -->
+            <div class="overflow-x-auto border border-neutral-900 rounded-2xl bg-neutral-950/40 p-1">
+                <table class="w-full text-left border-collapse text-sm text-neutral-400">
+                    <thead>
+                        <tr class="border-b border-neutral-900 text-[11px] uppercase tracking-widest text-neutral-300">
+                            <th class="py-5 px-6 font-semibold">Attribute</th>
+                            <th class="py-5 px-6 font-semibold">The Nordic Mint</th>
+                            <th class="py-5 px-6 font-semibold">The Single Malt Reserve</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-900/60">
+                        <tr>
+                            <td class="py-4 px-6 font-medium text-white">Base Timber</td>
+                            <td class="py-4 px-6">Selected Nordic White Birch</td>
+                            <td class="py-4 px-6">Slow-Grown Nordic White Birch</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium text-white">Infusion Technique</td>
+                            <td class="py-4 px-6">14-day essential oil saturation</td>
+                            <td class="py-4 px-6">21-day pressure-barrel steeping</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium text-white">Flavor Profile</td>
+                            <td class="py-4 px-6">Crisp peppermint, cooling eucalyptus</td>
+                            <td class="py-4 px-6">Peated oak wood, sweet caramel peat</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium text-white">Pocket Case</td>
+                            <td class="py-4 px-6">Anodized Silver Cylinder</td>
+                            <td class="py-4 px-6">Brushed Charcoal Titanium</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium text-white">Weekly Yield</td>
+                            <td class="py-4 px-6">250 units worldwide</td>
+                            <td class="py-4 px-6">100 units worldwide</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-black border-t border-neutral-900 py-12 text-sm text-neutral-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <span class="font-serif text-lg tracking-[0.2em] font-semibold text-white">AUREUM</span>
-                <span class="text-[10px] text-neutral-600">© 2026 Aureum Reserve Inc.</span>
-            </div>
-            <div class="flex gap-6 text-neutral-400">
-                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-pinterest-p text-lg"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube text-lg"></i></a>
-            </div>
-            <p class="text-xs text-neutral-600">
-                Excellence is in the detail. Handcrafted for refined palates.
-            </p>
-        </div>
-    </footer>
 
     <!-- Interactive Custom Premium Modal (Replaces unsafe window.alert) -->
     <div id="reserve-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">

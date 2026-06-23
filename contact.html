@@ -1,82 +1,289 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <title>Contact - AUREUM TOOTHPICKS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Aureum Toothpicks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #f4e3af;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(212,175,55,0.12), transparent 16%),
+                radial-gradient(circle at 95% 12%, rgba(255,244,191,0.05), transparent 18%),
+                linear-gradient(180deg, #050505 0%, #090909 100%);
+            color: #f4e3af;
+        }
+        .page-shell {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        .glow-spot {
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(100px);
+            opacity: 0.32;
+            pointer-events: none;
+        }
+        .glow-spot.one { width: 28rem; height: 28rem; top: -6rem; left: -10rem; background: rgba(212,175,55,0.14); }
+        .glow-spot.two { width: 22rem; height: 22rem; top: 8rem; right: -8rem; background: rgba(255,244,191,0.08); }
+        .terminal-grid {
+            background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 64px 64px;
+            opacity: 0.08;
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(3, 3, 3, 0.72);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .container { max-width: 1180px; margin: 0 auto; padding: 1.5rem 1.25rem; }
+        .brand-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            font-size: 1rem;
+            color: #f4e3af;
+        }
+        .nav-link {
+            color: #ccc8a1;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            font-size: 0.72rem;
+            text-decoration: none;
+        }
+        .nav-link:hover {
+            color: #f4d078;
+        }
+        .panel {
+            background: rgba(15, 15, 15, 0.78);
+            border: 1px solid rgba(212,175,55,0.12);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+            backdrop-filter: blur(16px);
+            border-radius: 1.5rem;
+        }
+        .accent-panel {
+            background: linear-gradient(180deg, rgba(255,244,191,0.03), rgba(0,0,0,0.58));
+            border: 1px solid rgba(212,175,55,0.14);
+        }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 3vw, 3.4rem);
+            line-height: 1.02;
+            margin: 0;
+            color: #fff;
+        }
+        .section-subtitle {
+            color: #c9b47b;
+            margin-top: 1rem;
+            max-width: 42rem;
+            line-height: 1.75;
+            font-size: 1rem;
+        }
+        .feature-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,244,191,0.08);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 999px;
+            padding: 0.75rem 1rem;
+            color: #f4e3af;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+        }
+        .label-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 4rem;
+            padding: 0.65rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(212,175,55,0.1);
+            color: #f9e8b8;
+            border: 1px solid rgba(212,175,55,0.18);
+            font-size: 0.69rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+        .text-muted {
+            color: #b9ab7a;
+        }
+        .map-panel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.75rem;
+            background: rgba(10,10,10,0.85);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 20px 80px rgba(0,0,0,0.32);
+        }
+        .map-frame {
+            width: 100%;
+            min-height: 380px;
+            border: none;
+            border-radius: 1.5rem;
+            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.25));
+        }
+        .map-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at top left, rgba(255,244,191,0.12), transparent 35%),
+                        radial-gradient(circle at bottom right, rgba(212,175,55,0.12), transparent 30%);
+        }
+        .map-caption {
+            margin-top: 1rem;
+            color: #cbb57c;
+            line-height: 1.75;
+        }
+        .contact-card {
+            display: grid;
+            gap: 1.1rem;
+        }
+        .contact-card .card-item {
+            padding: 1.3rem 1.35rem;
+            border-radius: 1.3rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .contact-card .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            margin-bottom: 0.85rem;
+            color: #fff;
+        }
+        .contact-card .card-copy {
+            color: #bfaa78;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0 1rem;
+            text-align: center;
+            color: #7c7255;
+            font-size: 0.82rem;
+        }
+        @media (max-width: 900px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="page-shell">
+        <div class="glow-spot one"></div>
+        <div class="glow-spot two"></div>
+        <div class="terminal-grid"></div>
 
-<div class="container">
+        <header>
+            <div class="container flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-[linear-gradient(145deg,#fff4bf,#e7b025,#2f1f04)] shadow-[0_0_30px_rgba(231,176,37,0.18)]"></div>
+                    <div>
+                        <div class="brand-title">Aureum</div>
+                        <div class="text-[10px] tracking-[0.35em] uppercase text-neutral-400">Reserve Protocol</div>
+                    </div>
+                </a>
+                <nav class="flex flex-wrap gap-6 text-xs tracking-[0.35em] uppercase text-neutral-300">
+                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </header>
 
-    <h1>Get in Touch</h1>
+        <main class="container py-16">
+            <section class="grid hero-grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+                <div class="panel p-10 accent-panel">
+                    <div class="label-pill mb-6">Contact</div>
+                    <h1 class="section-title">Reach the Aureum Concierge</h1>
+                    <p class="section-subtitle">Whether you are reserving a limited edition set, requesting bespoke packaging, or seeking priority support, our contact experience is crafted to feel as refined as the product itself.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
+                        <div class="feature-chip"><i class="fa-solid fa-shield-halved"></i> Secure inquiry</div>
+                        <div class="feature-chip"><i class="fa-solid fa-clock"></i> Fast response</div>
+                        <div class="feature-chip"><i class="fa-solid fa-star"></i> Premium service</div>
+                        <div class="feature-chip"><i class="fa-solid fa-truck"></i> Worldwide shipping</div>
+                    </div>
+                </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+                <aside class="panel p-10">
+                    <div class="label-pill mb-5">Concierge Desk</div>
+                    <div class="contact-card">
+                        <div class="card-item">
+                            <div class="card-title">Address</div>
+                            <p class="card-copy">Nairobi Showroom, Kenya<br>By private appointment only.</p>
+                        </div>
+                        <div class="card-item">
+                            <div class="card-title">Email</div>
+                            <p class="card-copy">luxury@aureumtoothpicks.com</p>
+                        </div>
+                        <div class="card-item">
+                            <div class="card-title">Phone</div>
+                            <p class="card-copy">+254 700 000 000 (Mon - Fri, 9AM - 5PM EAT)</p>
+                        </div>
+                    </div>
+                </aside>
+            </section>
 
-    <h2>Inquiry Form</h2>
+            <section class="grid grid-2 lg:grid-cols-[1.15fr_0.85fr] gap-8 mt-14">
+                <div class="panel p-10 map-panel">
+                    <div class="label-pill mb-6">Location</div>
+                    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0398579189516!2d36.81482857513531!3d-1.2863891364751062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10c8dbdbab53%3A0x8f6870d9b8613304!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-overlay"></div>
+                    <p class="map-caption">Find our private showroom in Nairobi, where the Aureum concierge awaits your appointment. Use the map to locate the premium destination and plan your visit with quiet confidence.</p>
+                </div>
 
-    <form>
-        <p>
-            <label for="name">Your Name:</label><br>
-            <input type="text" id="name" name="name" required>
-        </p>
-        
-        <p>
-            <label for="email">Your Email:</label><br>
-            <input type="email" id="email" name="email" required>
-        </p>
+                <div class="panel p-10">
+                    <div class="label-pill mb-6">What to Expect</div>
+                    <div class="space-y-6 text-neutral-300">
+                        <div>
+                            <h3 class="font-semibold text-white">Private Showroom</h3>
+                            <p>Aureum is designed for reserved clientele. Our Nairobi location is by private appointment only, with service matched to the brand's premium tone.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-white">Concierge Access</h3>
+                            <p>Use the map to find our lounge and coordinate a private visit. The experience is intentionally quiet, ceremonial, and luxurious.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-white">Secure Delivery</h3>
+                            <p>Even our location display feels intentional: subtle, dark, gold-accented, and built to match the full Aureum aesthetic.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <p>
-            <label for="tier">Select Premium Tier:</label><br>
-            <select id="tier" name="tier">
-                <option value="basic">Basic Case (1,500 KES)</option>
-                <option value="standard">Standard Box (3,500 KES)</option>
-                <option value="premium">Premium Vault (7,000 KES)</option>
-                <option value="collector">Collector's Trunk (10,000 KES)</option>
-            </select>
-        </p>
-        
-        <p>
-            <label for="message">Message/Custom Specifications:</label><br>
-            <textarea id="message" name="message" rows="6" cols="40" required></textarea>
-        </p>
-        
-        <p>
-            <input type="submit" value="Submit Inquiry">
-        </p>
-    </form>
+        </main>
 
-    <h2>Headquarters Info</h2>
+        <footer>
+            © 2026 Aureum Premium Toothpicks. All Rights Reserved.
+        </footer>
+    </div>
 
-    <table border="1">
-        <tr>
-            <th>Department</th>
-            <th>Contact Details</th>
-            <th>Availability</th>
-        </tr>
-        <tr>
-            <td>Client Concierge</td>
-            <td>luxury@aureumtoothpicks.com</td>
-            <td>9:00 AM - 5:00 PM EAT</td>
-        </tr>
-        <tr>
-            <td>Bespoke Orders</td>
-            <td>+254 700 000 000</td>
-            <td>Mon - Fri</td>
-        </tr>
-    </table>
-
-    <h2>Our Location</h2>
-    <p><strong>Showroom Address:</strong> Nairobi, Kenya</p>
-
-    <footer>
-        <p>© 2026 Aureum Premium Toothpicks. All Rights Reserved.</p>
-    </footer>
-
-</div>
-
+    </div>
 </body>
 </html>

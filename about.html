@@ -1,77 +1,318 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <title>About - AUREUM TOOTHPICKS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Aureum Toothpicks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #f4e3af;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 12% 12%, rgba(212,175,55,0.12), transparent 16%),
+                radial-gradient(circle at 88% 18%, rgba(255,244,191,0.05), transparent 18%),
+                linear-gradient(180deg, #050505 0%, #090909 100%);
+            color: #f4e3af;
+        }
+        .page-shell {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        .glow-spot {
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(100px);
+            opacity: 0.32;
+            pointer-events: none;
+        }
+        .glow-spot.one { width: 28rem; height: 28rem; top: -6rem; left: -10rem; background: rgba(212,175,55,0.14); }
+        .glow-spot.two { width: 22rem; height: 22rem; top: 8rem; right: -8rem; background: rgba(255,244,191,0.08); }
+        .terminal-grid {
+            background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 64px 64px;
+            opacity: 0.08;
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(3, 3, 3, 0.72);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .container { max-width: 1180px; margin: 0 auto; padding: 1.5rem 1.25rem; }
+        .brand-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            font-size: 1rem;
+            color: #f4e3af;
+        }
+        .nav-link {
+            color: #ccc8a1;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            font-size: 0.72rem;
+            text-decoration: none;
+        }
+        .nav-link:hover {
+            color: #f4d078;
+        }
+        .panel {
+            background: rgba(15, 15, 15, 0.78);
+            border: 1px solid rgba(212,175,55,0.12);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+            backdrop-filter: blur(16px);
+            border-radius: 1.5rem;
+        }
+        .accent-panel {
+            background: linear-gradient(180deg, rgba(255,244,191,0.03), rgba(0,0,0,0.58));
+            border: 1px solid rgba(212,175,55,0.14);
+        }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 3vw, 3.4rem);
+            line-height: 1.02;
+            margin: 0;
+            color: #fff;
+        }
+        .section-subtitle {
+            color: #c9b47b;
+            margin-top: 1rem;
+            max-width: 42rem;
+            line-height: 1.75;
+            font-size: 1rem;
+        }
+        .label-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 4rem;
+            padding: 0.65rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(212,175,55,0.1);
+            color: #f9e8b8;
+            border: 1px solid rgba(212,175,55,0.18);
+            font-size: 0.69rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+        .feature-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,244,191,0.08);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 999px;
+            padding: 0.75rem 1rem;
+            color: #f4e3af;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+        }
+        .section-block {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .section-block .block-card {
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .block-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.9rem;
+            color: #fff;
+        }
+        .block-copy {
+            color: #b9ab7a;
+            line-height: 1.8;
+        }
+        .timeline {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .timeline-item {
+            display: grid;
+            gap: 0.85rem;
+            padding: 1.25rem 1.35rem;
+            border-radius: 1.5rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .timeline-label {
+            display: inline-flex;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            color: #f4e3af;
+            background: rgba(212,175,55,0.12);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+        }
+        .timeline-header {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            margin: 0;
+            color: #fff;
+        }
+        .timeline-copy {
+            color: #b9ab7a;
+            line-height: 1.75;
+            margin: 0;
+        }
+        .glow-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.65), transparent);
+            margin: 2rem 0;
+        }
+        .text-muted {
+            color: #b9ab7a;
+        }
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0 1rem;
+            text-align: center;
+            color: #7c7255;
+            font-size: 0.82rem;
+        }
+        @media (max-width: 900px) {
+            .hero-grid, .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="page-shell">
+        <div class="glow-spot one"></div>
+        <div class="glow-spot two"></div>
+        <div class="terminal-grid"></div>
 
-<div class="container">
+        <header>
+            <div class="container flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="index.html" class="flex items-center gap-3 no-underline">
+                    <div class="w-10 h-10 rounded-2xl bg-[linear-gradient(145deg,#fff4bf,#e7b025,#2f1f04)] shadow-[0_0_30px_rgba(231,176,37,0.18)]"></div>
+                    <div>
+                        <div class="brand-title">Aureum</div>
+                        <div class="text-[10px] tracking-[0.35em] uppercase text-neutral-400">Reserve Protocol</div>
+                    </div>
+                </a>
+                <nav class="flex flex-wrap gap-6 text-xs tracking-[0.35em] uppercase text-neutral-300">
+                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </header>
 
-    <h1>About Aureum Premium Toothpicks</h1>
+        <main class="container py-16">
+            <section class="grid hero-grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+                <div class="panel p-10 accent-panel">
+                    <div class="label-pill mb-6">About</div>
+                    <h1 class="section-title">The Story of Aureum</h1>
+                    <p class="section-subtitle">Aureum Premium Toothpicks was born where craftsmanship, restraint, and luxury converge. Every detail is designed to feel deliberate, tactile, and unmistakably rare.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
+                        <div class="feature-chip"><i class="fa-solid fa-tree-city"></i> Sustainably sourced</div>
+                        <div class="feature-chip"><i class="fa-solid fa-hand-holding-droplet"></i> Hand-finished</div>
+                        <div class="feature-chip"><i class="fa-solid fa-shield-check"></i> Splinter-free</div>
+                        <div class="feature-chip"><i class="fa-solid fa-gem"></i> Reserve-grade</div>
+                    </div>
+                </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About
-        <a href="contact.html">Contact</a>
+                <aside class="panel p-10">
+                    <div class="label-pill mb-5">Core Beliefs</div>
+                    <div class="section-block">
+                        <div class="block-card">
+                            <h2 class="block-title">Minimal luxury</h2>
+                            <p class="block-copy">We believe premium design begins with restraint. The product is defined by its materials, finish, and precision rather than unnecessary embellishment.</p>
+                        </div>
+                        <div class="block-card">
+                            <h2 class="block-title">Tactile ritual</h2>
+                            <p class="block-copy">A single toothpick becomes an object of ritual: beautiful to hold, precise in function, and perfect for discerning environments.</p>
+                        </div>
+                    </div>
+                </aside>
+            </section>
 
-    <h2>Our Story</h2>
+            <section class="panel p-10 mt-14">
+                <div class="label-pill mb-6">Our Journey</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-label">2024</span>
+                        <h3 class="timeline-header">Workshop launched</h3>
+                        <p class="timeline-copy">Aureum opened its Nairobi workshop to bring premium timber, precision finishing, and sustainably sourced design to the region.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-label">2025</span>
+                        <h3 class="timeline-header">The Ebony Reserve</h3>
+                        <p class="timeline-copy">Introduced the polished Ebony custom vault edition for collectors who expect both ceremony and utility.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-label">2026</span>
+                        <h3 class="timeline-header">Expanded sourcing</h3>
+                        <p class="timeline-copy">Extended direct material sourcing across East Africa to reinforce quality, traceability, and authenticity.</p>
+                    </div>
+                </div>
+            </section>
 
-    <p>
-        Founded with a commitment to pure minimalism, Aureum redefines ordinary functional design. 
-        We don't believe in mass production. We believe in creating elegant, premium, and durable 
-        wooden toothpick collections for individuals who value detail.
-    </p>
+            <div class="glow-line"></div>
 
-    <h2>Why Choose Aureum?</h2>
+            <section class="grid grid-2 lg:grid-cols-[1fr_0.95fr] gap-8 mt-10">
+                <div class="panel p-10">
+                    <div class="label-pill mb-6">Craft Story</div>
+                    <div class="section-block">
+                        <div class="block-card">
+                            <h2 class="block-title">Materials</h2>
+                            <p class="block-copy">Each toothpick is produced from carefully selected Nordic birch and naturally darkened alloys, balanced for weight and finish.</p>
+                        </div>
+                        <div class="block-card">
+                            <h2 class="block-title">Finish</h2>
+                            <p class="block-copy">Hand-polished edges and layered matte coatings create a discreet glow that appears under light without ever feeling ostentatious.</p>
+                        </div>
+                    </div>
+                </div>
 
-    <ul>
-        <li>100% sustainably sourced Nordic timber</li>
-        <li>Splinter-free, hand-polished finishes</li>
-        <li>Completely organic with zero chemical coatings</li>
-        <li>Sleek, pocket-sized protective cases</li>
-    </ul>
+                <div class="panel p-10">
+                    <div class="label-pill mb-6">Company Values</div>
+                    <div class="section-block">
+                        <div class="block-card">
+                            <h2 class="block-title">Precision</h2>
+                            <p class="block-copy">We measure everything in micro-steps: fit, finish, and feel are all refined until the experience is seamless.</p>
+                        </div>
+                        <div class="block-card">
+                            <h2 class="block-title">Integrity</h2>
+                            <p class="block-copy">Authenticity matters. We source honestly, build responsibly, and share the story behind every premium choice.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-    <h2>Company Milestones</h2>
-
-    <table border="1">
-        <tr>
-            <th>Year</th>
-            <th>Milestone Achievement</th>
-            <th>Location</th>
-        </tr>
-        <tr>
-            <td>2024</td>
-            <td>Aureum workshop established</td>
-            <td>Nairobi, Kenya</td>
-        </tr>
-        <tr>
-            <td>2025</td>
-            <td>Launched the polished Ebony custom vault series</td>
-            <td>Mombasa, Kenya</td>
-        </tr>
-        <tr>
-            <td>2026</td>
-            <td>Expanded direct sourcing tracks across East Africa</td>
-            <td>Nairobi, Kenya</td>
-        </tr>
-    </table>
-
-    <h2>The Workshop</h2>
-
-
-
-    <h2>Contact Information</h2>
-
-    <p><strong>Email:</strong> luxury@aureumtoothpicks.com</p>
-    <p><strong>Phone:</strong> +254 700 000 000</p>
-    <p><strong>Location:</strong> Nairobi, Kenya</p>
-
-    <footer>
-        <p>© 2026 Aureum Premium Toothpicks. All Rights Reserved.</p>
-    </footer>
-
-</div>
-
+        <footer>
+            © 2026 Aureum Premium Toothpicks. All Rights Reserved.
+        </footer>
+    </div>
 </body>
 </html>

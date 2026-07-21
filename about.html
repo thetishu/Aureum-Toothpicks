@@ -7,24 +7,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Cinzel:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            color-scheme: dark;
+            color-scheme: light;
             font-family: 'Inter', sans-serif;
-            background-color: #050505;
-            color: #f4e3af;
+            background: #ffffff;
+            color: #111111;
         }
         * { box-sizing: border-box; }
         body {
             margin: 0;
             min-height: 100vh;
             background:
-                radial-gradient(circle at 12% 12%, rgba(212,175,55,0.12), transparent 16%),
-                radial-gradient(circle at 88% 18%, rgba(255,244,191,0.05), transparent 18%),
-                linear-gradient(180deg, #050505 0%, #090909 100%);
-            color: #f4e3af;
+                radial-gradient(circle at 12% 12%, rgba(255, 244, 191, 0.94), transparent 24%),
+                radial-gradient(circle at 88% 18%, rgba(231, 176, 37, 0.32), transparent 18%),
+                radial-gradient(circle at 50% 100%, rgba(6, 6, 6, 0.1), transparent 34%),
+                linear-gradient(135deg, #fffdf8 0%, #fffaf0 38%, #f4ebdc 100%);
+            color: #111111;
         }
         .page-shell {
             position: relative;
@@ -34,174 +35,362 @@
         .glow-spot {
             position: absolute;
             border-radius: 999px;
-            filter: blur(100px);
-            opacity: 0.32;
+            filter: blur(110px);
+            opacity: 0.36;
             pointer-events: none;
         }
-        .glow-spot.one { width: 28rem; height: 28rem; top: -6rem; left: -10rem; background: rgba(212,175,55,0.14); }
-        .glow-spot.two { width: 22rem; height: 22rem; top: 8rem; right: -8rem; background: rgba(255,244,191,0.08); }
-        .terminal-grid {
-            background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-            background-size: 64px 64px;
-            opacity: 0.08;
+        .glow-spot.one { width: 30rem; height: 30rem; top: -6rem; left: -8rem; background: rgba(231,176,37,0.16); }
+        .glow-spot.two { width: 24rem; height: 24rem; top: 10rem; right: -7rem; background: rgba(231,176,37,0.1); }
+        .grid-overlay {
             position: absolute;
             inset: 0;
             pointer-events: none;
+            opacity: 0.08;
+            background-image:
+                linear-gradient(rgba(19,19,19,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(19,19,19,0.06) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 92%);
         }
         header {
             position: sticky;
             top: 0;
-            z-index: 20;
+            z-index: 30;
             backdrop-filter: blur(18px);
-            background: rgba(3, 3, 3, 0.72);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.94);
+            border-bottom: 1px solid rgba(231,176,37,0.45);
         }
-        .container { max-width: 1180px; margin: 0 auto; padding: 1.5rem 1.25rem; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 1.25rem; }
         .brand-title {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             letter-spacing: 0.35em;
             text-transform: uppercase;
             font-size: 1rem;
-            color: #f4e3af;
+            background: linear-gradient(90deg, #6d4700 0%, #c78f12 48%, #7e560b 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
         .nav-link {
-            color: #ccc8a1;
+            color: #111111;
             text-transform: uppercase;
             letter-spacing: 0.35em;
             font-size: 0.72rem;
             text-decoration: none;
         }
-        .nav-link:hover {
-            color: #f4d078;
+        .nav-link:hover { color: #5a3b00; }
+        .editorial-shell {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
         }
-        .panel {
-            background: rgba(15, 15, 15, 0.78);
-            border: 1px solid rgba(212,175,55,0.12);
-            box-shadow: 0 24px 80px rgba(0,0,0,0.35);
-            backdrop-filter: blur(16px);
-            border-radius: 1.5rem;
+        .editorial-shell::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(231,176,37,0.08), transparent 32%);
         }
-        .accent-panel {
-            background: linear-gradient(180deg, rgba(255,244,191,0.03), rgba(0,0,0,0.58));
-            border: 1px solid rgba(212,175,55,0.14);
+        .editorial-shell.luxury-light {
+            background:
+                radial-gradient(circle at top left, rgba(231,176,37,0.08), transparent 22%),
+                linear-gradient(145deg, #ffffff, #fffdf8);
+            border: 1px solid rgba(231,176,37,0.42);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.9);
+        }
+        .editorial-shell.luxury-dark {
+            background:
+                radial-gradient(circle at top left, rgba(231,176,37,0.12), transparent 24%),
+                linear-gradient(145deg, #ffffff, #fffdf8);
+            border: 1px solid rgba(231,176,37,0.42);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.9);
+            color: #111111;
+        }
+        .hero-panel {
+            padding: 1.5rem;
+        }
+        .luxury-pill {
+            position: relative;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(231,176,37,0.5);
+            background: linear-gradient(145deg, rgba(255,255,255,0.86), rgba(252,244,217,0.95));
+            padding: 0.6rem 0.9rem;
+            color: #3e2702;
+            text-transform: uppercase;
+            letter-spacing: 0.32em;
+            font-size: 0.65rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(231,176,37,0.08);
+            backdrop-filter: blur(10px);
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+        }
+        .luxury-pill::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background: radial-gradient(circle at top left, rgba(255,244,191,0.76), transparent 48%);
+            opacity: 0.8;
+            transition: opacity 220ms ease, transform 220ms ease;
+            z-index: -1;
+        }
+        .luxury-pill:hover {
+            transform: translateY(-2px);
+            border-color: rgba(231,176,37,0.6);
+            box-shadow: 0 14px 38px rgba(231,176,37,0.16);
+        }
+        .luxury-pill:hover::before {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+        .editorial-shell.luxury-dark .luxury-pill {
+            background: linear-gradient(145deg, rgba(255,255,255,0.86), rgba(252,244,217,0.95));
+            color: #5a3b00;
+            border-color: rgba(231,176,37,0.46);
+            box-shadow: 0 12px 34px rgba(0,0,0,0.10);
+            backdrop-filter: blur(14px);
+        }
+        .editorial-shell.luxury-dark .luxury-pill::before {
+            background: radial-gradient(circle at top left, rgba(255,244,191,0.48), transparent 60%);
+            opacity: 0.9;
         }
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 3vw, 3.4rem);
-            line-height: 1.02;
+            font-size: clamp(2.8rem, 5vw, 5.2rem);
+            line-height: 0.96;
             margin: 0;
-            color: #fff;
+            color: #111111;
+        }
+        .editorial-shell.luxury-dark .section-title,
+        .editorial-shell.luxury-dark .feature-title,
+        .editorial-shell.luxury-dark .timeline-title,
+        .editorial-shell.luxury-dark .metric-value {
+            color: #111111;
         }
         .section-subtitle {
-            color: #c9b47b;
-            margin-top: 1rem;
-            max-width: 42rem;
-            line-height: 1.75;
+            color: #121212;
+            max-width: 46rem;
+            line-height: 1.85;
             font-size: 1rem;
+            margin-top: 1rem;
         }
-        .label-pill {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 4rem;
-            padding: 0.65rem 0.95rem;
-            border-radius: 999px;
-            background: rgba(212,175,55,0.1);
-            color: #f9e8b8;
-            border: 1px solid rgba(212,175,55,0.18);
-            font-size: 0.69rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
+        .editorial-shell.luxury-dark .section-subtitle,
+        .editorial-shell.luxury-dark .feature-copy,
+        .editorial-shell.luxury-dark .timeline-copy {
+            color: #2d220b;
         }
-        .feature-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(255,244,191,0.08);
-            border: 1px solid rgba(212,175,55,0.12);
-            border-radius: 999px;
-            padding: 0.75rem 1rem;
-            color: #f4e3af;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
+        .gold-gradient {
+            background: linear-gradient(90deg, #6d4700 0%, #c78f12 48%, #7e560b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .section-block {
+        .ambient-word {
+            color: transparent;
+            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body .text-gold-100,
+        body .text-gold-200,
+        body .text-gold-300,
+        body .text-gold-400,
+        body .text-gold-500,
+        body .text-gold-600,
+        body .text-gold-700,
+        body .text-gold-800,
+        body .text-gold-900 {
+            color: transparent !important;
+            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .metrics-grid {
             display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.9rem;
         }
-        .section-block .block-card {
-            padding: 1.5rem;
-            border-radius: 1.5rem;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+        .metric-card {
+            position: relative;
+            isolation: isolate;
+            padding: 1rem;
+            border-radius: 1.2rem;
+            background:
+                radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%),
+                linear-gradient(145deg, #ffffff, #fffdf8);
+            border: 1px solid rgba(231,176,37,0.42);
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
         }
-        .block-title {
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background: radial-gradient(circle at top left, rgba(255,244,191,0.78), transparent 44%);
+            opacity: 0.84;
+            transition: opacity 220ms ease, transform 220ms ease;
+            z-index: -1;
+        }
+        .metric-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(231,176,37,0.5);
+            box-shadow: 0 22px 64px rgba(184,133,19,0.14);
+        }
+        .metric-card:hover::before {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+        .editorial-shell.luxury-dark .metric-card,
+        .editorial-shell.luxury-dark .feature-card,
+        .editorial-shell.luxury-dark .timeline-item {
+            background:
+                radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%),
+                linear-gradient(145deg, #ffffff, #fffdf8);
+            border: 1px solid rgba(231,176,37,0.32);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+        }
+        .metric-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: #4d3200;
+        }
+        .editorial-shell.luxury-dark .metric-label,
+        .editorial-shell.luxury-dark .year-pill {
+            color: #5a3b00;
+        }
+        .metric-value {
+            margin-top: 0.7rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.7rem;
+            color: #111111;
+        }
+        .feature-card {
+            position: relative;
+            isolation: isolate;
+            padding: 1.4rem;
+            border-radius: 1.35rem;
+            background:
+                radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%),
+                linear-gradient(145deg, #ffffff, #fffdf8);
+            border: 1px solid rgba(231,176,37,0.3);
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background: radial-gradient(circle at top left, rgba(255,244,191,0.76), transparent 44%);
+            opacity: 0.82;
+            transition: opacity 220ms ease, transform 220ms ease;
+            z-index: -1;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(231,176,37,0.48);
+            box-shadow: 0 24px 72px rgba(184,133,19,0.15);
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+        .feature-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.1rem;
-            margin-bottom: 0.9rem;
-            color: #fff;
+            margin-bottom: 0.85rem;
+            color: #111111;
         }
-        .block-copy {
-            color: #b9ab7a;
+        .feature-copy {
+            margin: 0;
             line-height: 1.8;
+            color: #111111;
         }
-        .timeline {
+        .timeline-rail {
             display: grid;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 0.95rem;
         }
         .timeline-item {
+            position: relative;
+            isolation: isolate;
+            padding: 1.25rem;
+            border-radius: 1.45rem;
+            background:
+                radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%),
+                linear-gradient(145deg, #ffffff, #fffdf8);
+            border: 1px solid rgba(231,176,37,0.3);
             display: grid;
-            gap: 0.85rem;
-            padding: 1.25rem 1.35rem;
-            border-radius: 1.5rem;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            gap: 0.7rem;
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
         }
-        .timeline-label {
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background: radial-gradient(circle at top left, rgba(255,244,191,0.76), transparent 44%);
+            opacity: 0.82;
+            transition: opacity 220ms ease, transform 220ms ease;
+            z-index: -1;
+        }
+        .timeline-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(231,176,37,0.48);
+            box-shadow: 0 24px 72px rgba(184,133,19,0.15);
+        }
+        .timeline-item:hover::before {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+        .year-pill {
             display: inline-flex;
-            padding: 0.45rem 0.8rem;
+            padding: 0.42rem 0.85rem;
             border-radius: 999px;
-            color: #f4e3af;
-            background: rgba(212,175,55,0.12);
+            background: rgba(231,176,37,0.14);
+            color: #3e2702;
             font-size: 0.72rem;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
-            letter-spacing: 0.18em;
+            width: max-content;
         }
-        .timeline-header {
+        .timeline-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             margin: 0;
-            color: #fff;
+            color: #111111;
         }
         .timeline-copy {
-            color: #b9ab7a;
-            line-height: 1.75;
             margin: 0;
+            color: #111111;
+            line-height: 1.8;
         }
-        .glow-line {
+        .line-divider {
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.65), transparent);
-            margin: 2rem 0;
-        }
-        .text-muted {
-            color: #b9ab7a;
+            background: linear-gradient(90deg, transparent, rgba(231,176,37,0.75), transparent);
+            margin: 0.9rem 0 1.8rem;
         }
         footer {
-            margin-top: 4rem;
+            margin-top: 3rem;
             padding: 2rem 0 1rem;
             text-align: center;
-            color: #7c7255;
-            font-size: 0.82rem;
+            color: #4b3a12;
+            font-size: 0.8rem;
         }
         @media (max-width: 900px) {
-            .hero-grid, .grid-2 {
-                grid-template-columns: 1fr;
-            }
+            .metrics-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -209,7 +398,7 @@
     <div class="page-shell">
         <div class="glow-spot one"></div>
         <div class="glow-spot two"></div>
-        <div class="terminal-grid"></div>
+        <div class="grid-overlay"></div>
 
         <header>
             <div class="container flex flex-col md:flex-row items-center justify-between gap-4">
@@ -227,84 +416,87 @@
             </div>
         </header>
 
-        <main class="container py-16">
-            <section class="grid hero-grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-                <div class="panel p-10 accent-panel">
-                    <div class="label-pill mb-6">About</div>
-                    <h1 class="section-title">The Story of Aureum</h1>
-                    <p class="section-subtitle">Aureum Premium Toothpicks was born where craftsmanship, restraint, and luxury converge. Every detail is designed to feel deliberate, tactile, and unmistakably rare.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
-                        <div class="feature-chip"><i class="fa-solid fa-tree-city"></i> Sustainably sourced</div>
-                        <div class="feature-chip"><i class="fa-solid fa-hand-holding-droplet"></i> Hand-finished</div>
-                        <div class="feature-chip"><i class="fa-solid fa-shield-check"></i> Splinter-free</div>
-                        <div class="feature-chip"><i class="fa-solid fa-gem"></i> Reserve-grade</div>
-                    </div>
-                </div>
-
-                <aside class="panel p-10">
-                    <div class="label-pill mb-5">Core Beliefs</div>
-                    <div class="section-block">
-                        <div class="block-card">
-                            <h2 class="block-title">Minimal luxury</h2>
-                            <p class="block-copy">We believe premium design begins with restraint. The product is defined by its materials, finish, and precision rather than unnecessary embellishment.</p>
+        <main class="container py-14">
+            <section class="editorial-shell luxury-light hero-panel">
+                <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 items-start">
+                    <div class="space-y-6">
+                        <div class="luxury-pill">
+                            <span class="w-2 h-2 rounded-full bg-[#e7b025] shadow-[0_0_12px_rgba(231,176,37,0.8)]"></span>
+                            About the house
                         </div>
-                        <div class="block-card">
-                            <h2 class="block-title">Tactile ritual</h2>
-                            <p class="block-copy">A single toothpick becomes an object of ritual: beautiful to hold, precise in function, and perfect for discerning environments.</p>
+                        <h1 class="section-title">
+                            The story of <span class="gold-gradient">Aureum</span>
+                        </h1>
+                        <p class="section-subtitle">
+                            Aureum was built around a simple idea: a daily object can feel ceremonial when every finish, surface, and gesture is treated like a piece of luxury equipment. The result is calm, deliberate, and unmistakably premium.
+                        </p>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Material</div>
+                                <div class="metric-value">Nordic Birch</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Finish</div>
+                                <div class="metric-value">Gold Alloy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Mood</div>
+                                <div class="metric-value">Reserve Quiet</div>
+                            </div>
                         </div>
                     </div>
-                </aside>
-            </section>
 
-            <section class="panel p-10 mt-14">
-                <div class="label-pill mb-6">Our Journey</div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <span class="timeline-label">2024</span>
-                        <h3 class="timeline-header">Workshop launched</h3>
-                        <p class="timeline-copy">Aureum opened its Nairobi workshop to bring premium timber, precision finishing, and sustainably sourced design to the region.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-label">2025</span>
-                        <h3 class="timeline-header">The Ebony Reserve</h3>
-                        <p class="timeline-copy">Introduced the polished Ebony custom vault edition for collectors who expect both ceremony and utility.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-label">2026</span>
-                        <h3 class="timeline-header">Expanded sourcing</h3>
-                        <p class="timeline-copy">Extended direct material sourcing across East Africa to reinforce quality, traceability, and authenticity.</p>
+                    <div class="space-y-4">
+                        <div class="feature-card">
+                            <div class="feature-title">Minimal luxury</div>
+                            <p class="feature-copy">We start with the essential form, then refine it with material precision. Less noise, stronger presence, and a cleaner sense of confidence.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">Tactile ritual</div>
+                            <p class="feature-copy">Every piece is designed to feel as intentional in the hand as it is on display: smooth, weighted, and quietly expressive.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">Sourced with integrity</div>
+                            <p class="feature-copy">The brand prioritizes traceable wood, measured finish, and clear manufacturing intention so the luxury is real and enduring.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <div class="glow-line"></div>
+            <section class="editorial-shell luxury-dark hero-panel mt-6">
+                <div class="line-divider"></div>
+                <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-6">
+                    <div class="feature-card">
+                        <div class="luxury-pill mb-4">Craft story</div>
+                        <div class="feature-title">Materials that speak softly</div>
+                        <p class="feature-copy">Each object is created from carefully chosen birch and soft metallic accents. The resulting finish feels grounded, understated, and unmistakably higher-end.</p>
+                    </div>
 
-            <section class="grid grid-2 lg:grid-cols-[1fr_0.95fr] gap-8 mt-10">
-                <div class="panel p-10">
-                    <div class="label-pill mb-6">Craft Story</div>
-                    <div class="section-block">
-                        <div class="block-card">
-                            <h2 class="block-title">Materials</h2>
-                            <p class="block-copy">Each toothpick is produced from carefully selected Nordic birch and naturally darkened alloys, balanced for weight and finish.</p>
-                        </div>
-                        <div class="block-card">
-                            <h2 class="block-title">Finish</h2>
-                            <p class="block-copy">Hand-polished edges and layered matte coatings create a discreet glow that appears under light without ever feeling ostentatious.</p>
-                        </div>
+                    <div class="feature-card">
+                        <div class="luxury-pill mb-4">Design principles</div>
+                        <div class="feature-title">Precision over noise</div>
+                        <p class="feature-copy">Instead of filling the space with embellishment, Aureum leans into balance, clarity, and elegant contrast so the product stays refined and memorable.</p>
                     </div>
                 </div>
+            </section>
 
-                <div class="panel p-10">
-                    <div class="label-pill mb-6">Company Values</div>
-                    <div class="section-block">
-                        <div class="block-card">
-                            <h2 class="block-title">Precision</h2>
-                            <p class="block-copy">We measure everything in micro-steps: fit, finish, and feel are all refined until the experience is seamless.</p>
-                        </div>
-                        <div class="block-card">
-                            <h2 class="block-title">Integrity</h2>
-                            <p class="block-copy">Authenticity matters. We source honestly, build responsibly, and share the story behind every premium choice.</p>
-                        </div>
+            <section class="editorial-shell luxury-light hero-panel mt-6">
+                <div class="luxury-pill mb-5">Our journey</div>
+                <div class="timeline-rail">
+                    <div class="timeline-item">
+                        <span class="year-pill">2024</span>
+                        <h3 class="timeline-title">Workshop founded</h3>
+                        <p class="timeline-copy">The operation began with a clear aim: make luxury goods feel quiet, tactile, and beautifully engineered rather than exaggerated.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year-pill">2025</span>
+                        <h3 class="timeline-title">Reserve line expanded</h3>
+                        <p class="timeline-copy">A curated collection of premium embodiments followed, each with a distinctive finish and a more collector-led identity.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year-pill">2026</span>
+                        <h3 class="timeline-title">Global service standard</h3>
+                        <p class="timeline-copy">The house now pairs its material philosophy with a secure, elevated service model that matches the prestige of the object itself.</p>
                     </div>
                 </div>
             </section>

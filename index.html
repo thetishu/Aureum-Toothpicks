@@ -38,19 +38,20 @@
     </script>
     <style>
         :root {
-            color-scheme: dark;
+            color-scheme: light;
         }
         body {
             background:
-                radial-gradient(circle at 15% 10%, rgba(231, 176, 37, 0.18), transparent 24%),
-                radial-gradient(circle at 85% 20%, rgba(255, 244, 191, 0.05), transparent 20%),
-                radial-gradient(circle at 50% 100%, rgba(127, 29, 29, 0.24), transparent 28%),
-                linear-gradient(145deg, #020202 0%, #080808 36%, #0e0c09 68%, #040404 100%);
+                radial-gradient(circle at 12% 12%, rgba(255, 244, 191, 0.94), transparent 24%),
+                radial-gradient(circle at 88% 18%, rgba(231, 176, 37, 0.32), transparent 18%),
+                radial-gradient(circle at 50% 100%, rgba(6, 6, 6, 0.1), transparent 34%),
+                linear-gradient(135deg, #fffdf8 0%, #fffaf0 38%, #f4ebdc 100%);
+            color: #2b210d;
         }
         .grid-overlay {
             background-image:
-                linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+                linear-gradient(rgba(88, 62, 16, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(88, 62, 16, 0.08) 1px, transparent 1px);
             background-size: 72px 72px;
             mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 85%);
         }
@@ -60,17 +61,184 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .ambient-word {
+            color: transparent;
+            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body .text-gold-100,
+        body .text-gold-200,
+        body .text-gold-300,
+        body .text-gold-400,
+        body .text-gold-500,
+        body .text-gold-600,
+        body .text-gold-700,
+        body .text-gold-800,
+        body .text-gold-900 {
+            color: transparent !important;
+            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .brand-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            font-size: 1rem;
+            background: linear-gradient(90deg, #6d4700 0%, #c78f12 48%, #7e560b 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
         .panel {
-            background: linear-gradient(145deg, rgba(8,8,8,0.82), rgba(18,18,18,0.72));
-            border: 1px solid rgba(231, 176, 37, 0.16);
-            box-shadow: 0 20px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.03);
+            position: relative;
+            isolation: isolate;
+            background:
+                radial-gradient(circle at top left, rgba(255, 244, 191, 0.82), transparent 36%),
+                linear-gradient(145deg, rgba(255,255,255,0.98), rgba(252,247,238,0.97));
+            border: 1px solid rgba(231, 176, 37, 0.34);
+            box-shadow: 0 20px 60px rgba(184,133,19,0.12), inset 0 1px 0 rgba(255,255,255,0.96);
             backdrop-filter: blur(18px);
             transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
         }
-        .panel:hover {
+        .panel::before,
+        .metric-tile::before,
+        .luxury-pill::before,
+        .hero-shell::before,
+        .metric-card::before,
+        .feature-card::before,
+        .timeline-item::before,
+        .card-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background: radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%);
+            opacity: 0.82;
+            transition: opacity 220ms ease, transform 220ms ease;
+            z-index: -1;
+        }
+        .panel:hover,
+        .metric-tile:hover,
+        .luxury-pill:hover,
+        .hero-shell:hover,
+        .metric-card:hover,
+        .feature-card:hover,
+        .timeline-item:hover,
+        .card-item:hover {
             transform: translateY(-4px);
-            border-color: rgba(231, 176, 37, 0.32);
-            box-shadow: 0 28px 100px rgba(0,0,0,0.52), inset 0 1px 0 rgba(255,255,255,0.05);
+            border-color: rgba(231, 176, 37, 0.48);
+            box-shadow: 0 28px 80px rgba(184,133,19,0.18), inset 0 1px 0 rgba(255,255,255,0.98);
+        }
+        .panel:hover::before,
+        .metric-tile:hover::before,
+        .luxury-pill:hover::before,
+        .hero-shell:hover::before,
+        .metric-card:hover::before,
+        .feature-card:hover::before,
+        .timeline-item:hover::before,
+        .card-item:hover::before {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+        .hero-shell {
+            position: relative;
+            isolation: isolate;
+            background:
+                radial-gradient(circle at top left, rgba(255, 244, 191, 0.88), transparent 22%),
+                radial-gradient(circle at top right, rgba(231, 176, 37, 0.24), transparent 18%),
+                linear-gradient(145deg, rgba(255,255,255,0.9), rgba(248,239,221,0.95));
+            border: 1px solid rgba(231, 176, 37, 0.32);
+            box-shadow: 0 30px 90px rgba(184,133,19,0.14);
+        }
+        .luxury-pill {
+            position: relative;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(231, 176, 37, 0.4);
+            background: linear-gradient(145deg, rgba(255,255,255,0.86), rgba(252,244,217,0.95));
+            padding: 0.55rem 0.9rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: transparent;
+            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            box-shadow: 0 10px 30px rgba(231,176,37,0.06);
+        }
+        .metric-tile {
+            position: relative;
+            isolation: isolate;
+            border: 1px solid rgba(231, 176, 37, 0.28);
+            background:
+                radial-gradient(circle at top left, rgba(255,244,191,0.7), transparent 42%),
+                linear-gradient(180deg, rgba(255,255,255,0.92), rgba(252,245,228,0.92));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+        }
+        .modal-shell {
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(145deg, #fffdf8, #f7f0e0);
+            border: 1px solid rgba(231, 176, 37, 0.36);
+            box-shadow: 0 26px 80px rgba(184,133,19,0.14), 0 0 0 1px rgba(255,255,255,0.9) inset;
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 40;
+            width: 3.15rem;
+            height: 3.15rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff4bf, #e7b025);
+            color: #2c1602;
+            border: 1px solid rgba(255,244,191,0.9);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.48), 0 0 0 6px rgba(231,176,37,0.10);
+            transition: transform 180ms ease, filter 180ms ease;
+            padding: 0;
+            font-size: 1.65rem;
+            line-height: 1;
+            font-weight: 800;
+        }
+        .modal-close-button:hover {
+            transform: scale(1.04);
+            filter: brightness(1.05);
+        }
+        body .text-white,
+        body .text-neutral-100 {
+            color: #2a1e08 !important;
+        }
+        body .text-neutral-200 {
+            color: #6a5329 !important;
+        }
+        body .text-neutral-300,
+        body .text-neutral-400,
+        body .text-neutral-500,
+        body .text-neutral-600,
+        body .text-neutral-700 {
+            color: #64502d !important;
+        }
+        body .bg-black\/45,
+        body .bg-black\/35,
+        body .bg-black\/80,
+        body .bg-black\/85,
+        body .bg-black\/90,
+        body .bg-black\/70,
+        body .bg-black\/95 {
+            background: rgba(255,255,255,0.88) !important;
         }
         .neon-line {
             background: linear-gradient(90deg, transparent, rgba(231,176,37,0.92), rgba(255,244,191,0.85), rgba(231,176,37,0.92), transparent);
@@ -101,7 +269,7 @@
             box-shadow: 0 0 0 4px rgba(230,123,53,0.12) !important;
         }
         .error-message {
-            color: #f4b562;
+            color: #6d4700;
             font-size: 0.82rem;
             min-height: 1.2rem;
             margin-top: 0.4rem;
@@ -111,8 +279,8 @@
             padding: 1rem 1.2rem;
             border-radius: 1rem;
             border: 1px solid rgba(212,175,55,0.2);
-            background: rgba(255,244,191,0.08);
-            color: #f4e3af;
+            background: rgba(255,244,191,0.35);
+            color: #5a3b00;
             margin-bottom: 1.5rem;
         }
         .status-banner.visible {
@@ -120,8 +288,8 @@
         }
         .status-banner.success {
             border-color: rgba(111,195,0,0.2);
-            color: #dce7bb;
-            background: rgba(23,45,0,0.32);
+            color: #3f5700;
+            background: rgba(230,245,203,0.7);
         }
 
         /* Welcome modal flair */
@@ -143,24 +311,24 @@
         .welcome-shimmer{ background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0) 100%); background-size:200% 100%; animation: shimmerSlide 2.2s linear infinite; opacity:0.22; position:absolute; inset:0; pointer-events:none; border-radius:10px }
     </style>
 </head>
-<body class="text-neutral-100 font-sans min-h-screen overflow-x-hidden selection:bg-gold-400 selection:text-black">
-    <div class="fixed inset-0 pointer-events-none grid-overlay opacity-15"></div>
-    <div class="fixed inset-0 pointer-events-none scanline opacity-35"></div>
+<body class="text-stone-900 font-sans min-h-screen overflow-x-hidden selection:bg-gold-400 selection:text-black">
+    <div class="fixed inset-0 pointer-events-none grid-overlay opacity-20"></div>
+    <div class="fixed inset-0 pointer-events-none scanline opacity-25"></div>
 
-    <header class="sticky top-0 z-40 border-b border-white/8 bg-black/45 backdrop-blur-2xl">
+    <header class="sticky top-0 z-40 border-b border-amber-200/80 bg-white/80 backdrop-blur-2xl shadow-[0_10px_30px_rgba(231,176,37,0.07)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-2xl bg-[linear-gradient(145deg,#fff4bf,#e7b025,#2f1f04)] shadow-[0_0_30px_rgba(231,176,37,0.18)] transition-transform duration-300 hover:scale-105"></div>
                     <div>
-                        <div class="font-display text-xl tracking-[0.35em] uppercase gold-text-clip font-bold">Aureum</div>
+                        <div class="brand-title">Aureum</div>
                         <div class="text-[10px] tracking-[0.35em] uppercase text-neutral-400">Reserve Protocol</div>
                     </div>
                 </div>
 
-                <nav class="hidden md:flex items-center gap-8 text-xs tracking-[0.35em] uppercase text-neutral-300">
-                    <a href="contact.html" class="hover:text-gold-300 transition-colors">Contact</a>
-                    <a href="about.html" class="hover:text-gold-300 transition-colors">About</a>
+                <nav class="hidden md:flex items-center gap-8 text-xs tracking-[0.35em] uppercase text-stone-700">
+                    <a href="contact.html" class="hover:text-gold-500 transition-colors">Contact</a>
+                    <a href="about.html" class="hover:text-gold-500 transition-colors">About</a>
                 </nav>
 
                 <div class="hidden md:block">
@@ -169,14 +337,14 @@
                     </button>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden w-11 h-11 rounded-full border border-white/10 bg-white/5 text-gold-200 transition-transform duration-300 active:scale-95">
+                <button id="mobile-menu-btn" class="md:hidden w-11 h-11 rounded-full border border-amber-200 bg-white/90 text-gold-600 transition-transform duration-300 active:scale-95 shadow-sm">
                     <i class="fa-solid fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden border-t border-white/8 bg-black/90 backdrop-blur-2xl px-4 py-4 space-y-2">
-            <a href="contact.html" onclick="toggleMobileMenu()" class="block px-3 py-3 rounded-xl text-neutral-300 hover:text-white hover:bg-white/5">Contact</a>
-            <a href="about.html" onclick="toggleMobileMenu()" class="block px-3 py-3 rounded-xl text-neutral-300 hover:text-white hover:bg-white/5">About</a>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-amber-200 bg-white/95 backdrop-blur-2xl px-4 py-4 space-y-2">
+            <a href="contact.html" onclick="toggleMobileMenu()" class="block px-3 py-3 rounded-xl text-stone-700 hover:text-gold-600 hover:bg-amber-50">Contact</a>
+            <a href="about.html" onclick="toggleMobileMenu()" class="block px-3 py-3 rounded-xl text-stone-700 hover:text-gold-600 hover:bg-amber-50">About</a>
             <button onclick="toggleMobileMenu(); openModal('Contact Form')" class="w-full mt-2 px-4 py-3 rounded-xl bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 text-black text-[11px] tracking-[0.35em] uppercase font-extrabold transition-transform duration-300 active:scale-[0.98]">
                 Contact Form
             </button>
@@ -184,107 +352,109 @@
     </header>
 
     <main>
-        <section class="relative overflow-hidden pt-16 pb-24 lg:pt-24 lg:pb-32">
+        <section class="relative overflow-hidden pt-10 pb-24 lg:pt-12 lg:pb-28">
             <div class="absolute inset-0">
-                <div class="absolute top-12 left-10 w-80 h-80 rounded-full bg-gold-400/10 blur-[120px] float-slow"></div>
-                <div class="absolute top-32 right-8 w-72 h-72 rounded-full bg-gold-200/8 blur-[140px] float-slower"></div>
-                <div class="absolute bottom-0 left-1/3 w-[32rem] h-[32rem] rounded-full bg-amber-950/40 blur-[160px]"></div>
+                <div class="absolute top-12 left-10 w-80 h-80 rounded-full bg-gold-300/25 blur-[120px] float-slow"></div>
+                <div class="absolute top-32 right-8 w-72 h-72 rounded-full bg-gold-200/25 blur-[140px] float-slower"></div>
+                <div class="absolute bottom-0 left-1/3 w-[32rem] h-[32rem] rounded-full bg-amber-200/50 blur-[160px]"></div>
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-10 lg:gap-14 items-center">
-                    <div class="space-y-8 text-center lg:text-left">
-                        <div class="inline-flex items-center gap-3 rounded-full border border-gold-400/20 bg-white/5 px-4 py-2 text-[10px] tracking-[0.35em] uppercase text-gold-200 shadow-[0_0_18px_rgba(231,176,37,0.08)]">
-                            <span class="w-2 h-2 rounded-full bg-gold-300 shadow-[0_0_20px_rgba(231,176,37,0.9)]"></span>
-                            Next-Generation Table Ritual
-                        </div>
-
-                        <div class="space-y-6">
-                            <h1 class="font-display text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[0.95] text-white">
-                                Futuristic
-                                <span class="block gold-text-clip">Gold Standard</span>
-                                <span class="block text-neutral-200">for Everyday Craft</span>
-                            </h1>
-                            <p class="mx-auto lg:mx-0 max-w-2xl text-base sm:text-lg text-neutral-300 leading-relaxed">
-                                Aureum turns a simple object into a high-design artifact: a black-on-gold system with luminous depth, layered glass panels, and precision details that feel engineered rather than decorated.
-                            </p>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <button onclick="openModal('Inquire About Bespoke Sets')" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 text-black text-xs tracking-[0.35em] uppercase font-extrabold transition-all duration-300 shadow-[0_0_40px_rgba(231,176,37,0.18)] hover:scale-[1.02]">
-                                Explore The Reserve
-                            </button>
-                            <a href="#collection" class="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-xs tracking-[0.35em] uppercase font-extrabold text-neutral-200 hover:text-white hover:border-gold-300/40 hover:bg-white/8 hover:scale-[1.01] transition-all duration-300">
-                                View Collections
-                            </a>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-                            <div class="panel rounded-2xl p-5">
-                                <div class="text-[10px] tracking-[0.35em] uppercase text-neutral-500 mb-2">Material</div>
-                                <div class="text-2xl font-display text-white">Nordic Birch</div>
-                            </div>
-                            <div class="panel rounded-2xl p-5">
-                                <div class="text-[10px] tracking-[0.35em] uppercase text-neutral-500 mb-2">Finish</div>
-                                <div class="text-2xl font-display text-white">Gold Alloy</div>
-                            </div>
-                            <div class="panel rounded-2xl p-5">
-                                <div class="text-[10px] tracking-[0.35em] uppercase text-neutral-500 mb-2">Batch</div>
-                                <div class="text-2xl font-display text-white">30 Units</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel rounded-[2rem] p-5 sm:p-6 lg:p-8 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(231,176,37,0.15),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(0,255,209,0.08),transparent_28%)]"></div>
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between gap-4 mb-6">
-                                <div>
-                                    <div class="text-[10px] tracking-[0.35em] uppercase text-neutral-400 mb-1">System Console</div>
-                                    <div class="text-2xl font-display text-white">Aureum Core</div>
+                <div class="hero-shell rounded-[2.25rem] p-4 sm:p-5 lg:p-6">
+                    <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-5 items-stretch">
+                        <div class="rounded-[1.8rem] bg-white/72 p-6 sm:p-8 lg:p-10 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(231,176,37,0.08),transparent_38%,rgba(255,255,255,0.72))]"></div>
+                            <div class="relative z-10 space-y-7">
+                                <div class="luxury-pill">
+                                    <span class="w-2 h-2 rounded-full bg-gold-400 shadow-[0_0_18px_rgba(231,176,37,0.9)]"></span>
+                                    Collector-grade ritual
                                 </div>
-                                <div class="px-3 py-1 rounded-full border border-gold-300/20 bg-gold-400/10 text-[10px] tracking-[0.35em] uppercase text-gold-200">Live</div>
-                            </div>
 
-                            <div class="rounded-[1.75rem] border border-white/10 bg-black/35 p-5 sm:p-6 mb-5 relative overflow-hidden">
-                                <div class="absolute inset-0 bg-[linear-gradient(120deg,rgba(231,176,37,0.16),transparent_35%,rgba(0,255,209,0.08),transparent_70%)]"></div>
-                                <svg viewBox="0 0 420 320" class="relative z-10 w-full h-auto" aria-hidden="true">
-                                    <defs>
-                                        <linearGradient id="fgOld" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#fff4bf"></stop>
-                                            <stop offset="50%" stop-color="#e7b025"></stop>
-                                            <stop offset="100%" stop-color="#553909"></stop>
-                                        </linearGradient>
-                                        <linearGradient id="fgWood" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" stop-color="#f1eadb"></stop>
-                                            <stop offset="100%" stop-color="#bba88d"></stop>
-                                        </linearGradient>
-                                    </defs>
-                                    <ellipse cx="210" cy="270" rx="110" ry="14" fill="rgba(0,0,0,0.75)"></ellipse>
-                                    <rect x="184" y="82" width="52" height="170" rx="26" fill="url(#fgOld)" stroke="#7e560b" stroke-width="1.5"></rect>
-                                    <rect x="193" y="114" width="34" height="10" rx="5" fill="#553909" opacity="0.85"></rect>
-                                    <path d="M 150 92 Q 147 105 149 246 Q 149 252 145 258 L 151 246 Z" fill="url(#fgWood)"></path>
-                                    <path d="M 275 102 Q 270 112 268 246 Q 268 250 263 258 L 270 246 Z" fill="url(#fgWood)" opacity="0.95"></path>
-                                    <circle cx="298" cy="210" r="4" fill="#e7b025" opacity="0.7"></circle>
-                                    <circle cx="306" cy="192" r="2.5" fill="#f4ca52" opacity="0.7"></circle>
-                                    <polygon points="210,101 218,112 210,123 202,112" fill="rgba(255,255,255,0.45)"></polygon>
-                                    <path d="M 160 175 C 140 165 140 142 160 147 C 167 151 165 173 160 175 Z" fill="#063b33" opacity="0.85"></path>
-                                    <path d="M 312 175 C 292 165 292 142 312 147 C 319 151 317 173 312 175 Z" fill="#1f7d6b" opacity="0.55"></path>
-                                </svg>
-                            </div>
+                                <div class="space-y-5">
+                                    <h1 class="font-display text-5xl sm:text-6xl lg:text-[5.7rem] font-bold tracking-tight leading-[0.95] text-stone-950">
+                                        Futuristic
+                                        <span class="block gold-text-clip">Gold Standard</span>
+                                        <span class="block text-stone-700">for Everyday Craft</span>
+                                    </h1>
+                                    <p class="max-w-2xl text-base sm:text-lg text-stone-600 leading-relaxed">
+                                        Aureum now feels like a premium collector capsule: brighter, cleaner, and more precise, with a stronger sense of modern luxury from the first glance.
+                                    </p>
+                                </div>
 
-                            <div class="grid sm:grid-cols-3 gap-3">
-                                <div class="rounded-2xl border border-white/8 bg-white/5 p-4">
-                                    <div class="text-[10px] tracking-[0.3em] uppercase text-neutral-500 mb-2">Signal</div>
-                                    <div class="text-lg font-display text-gold-200">Premium</div>
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <button onclick="openModal('Inquire About Bespoke Sets')" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 text-black text-xs tracking-[0.35em] uppercase font-extrabold transition-all duration-300 shadow-[0_0_40px_rgba(231,176,37,0.22)] hover:scale-[1.02]">
+                                        Explore The Reserve
+                                    </button>
+                                    <a href="#collection" class="px-8 py-4 rounded-2xl border border-amber-200 bg-white/85 text-xs tracking-[0.35em] uppercase font-extrabold text-stone-800 hover:text-gold-700 hover:border-gold-300/60 hover:bg-amber-50 hover:scale-[1.01] transition-all duration-300">
+                                        View Collections
+                                    </a>
                                 </div>
-                                <div class="rounded-2xl border border-white/8 bg-white/5 p-4">
-                                    <div class="text-[10px] tracking-[0.3em] uppercase text-neutral-500 mb-2">Latency</div>
-                                    <div class="text-lg font-display text-white">Instant</div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                                    <div class="metric-tile rounded-2xl p-4">
+                                        <div class="text-[10px] tracking-[0.35em] uppercase text-amber-700 mb-2">Material</div>
+                                        <div class="text-2xl font-display text-stone-900">Nordic Birch</div>
+                                    </div>
+                                    <div class="metric-tile rounded-2xl p-4">
+                                        <div class="text-[10px] tracking-[0.35em] uppercase text-amber-700 mb-2">Finish</div>
+                                        <div class="text-2xl font-display text-stone-900">Gold Alloy</div>
+                                    </div>
+                                    <div class="metric-tile rounded-2xl p-4">
+                                        <div class="text-[10px] tracking-[0.35em] uppercase text-amber-700 mb-2">Batch</div>
+                                        <div class="text-2xl font-display text-stone-900">30 Units</div>
+                                    </div>
                                 </div>
-                                <div class="rounded-2xl border border-white/8 bg-white/5 p-4">
-                                    <div class="text-[10px] tracking-[0.3em] uppercase text-neutral-500 mb-2">Status</div>
-                                    <div class="text-lg font-display text-emerald-300">Ready</div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-[1.8rem] border border-amber-200/80 bg-[linear-gradient(180deg,#fffefb,#f7f0e0)] p-5 sm:p-6 relative overflow-hidden">
+                            <div class="absolute top-4 right-4 rounded-full border border-gold-300/50 bg-white/80 px-3 py-1 text-[10px] tracking-[0.35em] uppercase text-gold-700">Aureum Capsule 01</div>
+                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(231,176,37,0.18),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,244,191,0.40),transparent_24%)]"></div>
+                            <div class="relative z-10 h-full flex flex-col">
+                                <div class="flex items-center justify-between gap-4 mb-4">
+                                    <div>
+                                        <div class="text-[10px] tracking-[0.35em] uppercase text-amber-700 mb-1">System Console</div>
+                                        <div class="text-2xl font-display text-stone-900">Aureum Core</div>
+                                    </div>
+                                    <div class="px-3 py-1 rounded-full border border-gold-300/40 bg-gold-100 text-[10px] tracking-[0.35em] uppercase text-gold-700">Live</div>
+                                </div>
+
+                                <div class="rounded-[1.5rem] border border-amber-200 bg-[linear-gradient(180deg,#fffefb,#f8f1df)] p-4 sm:p-5 mb-4 relative overflow-hidden shadow-[0_12px_40px_rgba(231,176,37,0.08)]">
+                                    <div class="absolute inset-0 bg-[linear-gradient(120deg,rgba(231,176,37,0.12),transparent_38%,rgba(255,244,191,0.45),transparent_72%)]"></div>
+                                    <svg viewBox="0 0 420 320" class="relative z-10 w-full h-auto" aria-hidden="true">
+                                        <defs>
+                                            <linearGradient id="fgOld" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#fff4bf"></stop>
+                                                <stop offset="50%" stop-color="#e7b025"></stop>
+                                                <stop offset="100%" stop-color="#553909"></stop>
+                                            </linearGradient>
+                                            <linearGradient id="fgWood" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" stop-color="#f1eadb"></stop>
+                                                <stop offset="100%" stop-color="#bba88d"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <ellipse cx="210" cy="270" rx="110" ry="14" fill="rgba(0,0,0,0.12)"></ellipse>
+                                        <rect x="184" y="82" width="52" height="170" rx="26" fill="url(#fgOld)" stroke="#7e560b" stroke-width="1.5"></rect>
+                                        <rect x="193" y="114" width="34" height="10" rx="5" fill="#553909" opacity="0.85"></rect>
+                                        <path d="M 150 92 Q 147 105 149 246 Q 149 252 145 258 L 151 246 Z" fill="url(#fgWood)"></path>
+                                        <path d="M 275 102 Q 270 112 268 246 Q 268 250 263 258 L 270 246 Z" fill="url(#fgWood)" opacity="0.95"></path>
+                                        <circle cx="298" cy="210" r="4" fill="#e7b025" opacity="0.7"></circle>
+                                        <circle cx="306" cy="192" r="2.5" fill="#f4ca52" opacity="0.7"></circle>
+                                        <polygon points="210,101 218,112 210,123 202,112" fill="rgba(255,255,255,0.45)"></polygon>
+                                        <path d="M 160 175 C 140 165 140 142 160 147 C 167 151 165 173 160 175 Z" fill="#063b33" opacity="0.85"></path>
+                                        <path d="M 312 175 C 292 165 292 142 312 147 C 319 151 317 173 312 175 Z" fill="#1f7d6b" opacity="0.55"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-3 mt-auto">
+                                    <div class="rounded-2xl border border-amber-200 bg-amber-50/80 p-4">
+                                        <div class="text-[10px] tracking-[0.3em] uppercase text-amber-700 mb-2">Signal</div>
+                                        <div class="text-lg font-display text-gold-700">Premium</div>
+                                    </div>
+                                    <div class="rounded-2xl border border-amber-200 bg-amber-50/80 p-4">
+                                        <div class="text-[10px] tracking-[0.3em] uppercase text-amber-700 mb-2">Latency</div>
+                                        <div class="text-lg font-display text-stone-900">Instant</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -365,7 +535,7 @@
                                 <path d="M 140 180 C 129 175 129 160 142 164 C 147 168 145 180 140 180 Z" fill="#0f5c4f" opacity="0.85"></path>
                                 <path d="M 145 164 C 153 160 158 170 150 174 C 145 174 142 169 145 164 Z" fill="#1d947f" opacity="0.65"></path>
                             </svg>
-                            <div class="absolute top-4 right-4 rounded-full border border-gold-300/20 bg-gold-400/10 px-3 py-1 text-[10px] tracking-[0.35em] uppercase text-gold-200">Mint Protocol</div>
+                            <div class="absolute top-4 right-4 rounded-full border border-gold-300/50 bg-white/80 px-3 py-1 text-[10px] tracking-[0.35em] uppercase text-gold-700">Mint Protocol</div>
                         </div>
                         <div class="p-7">
                             <div class="flex items-start justify-between gap-4 mb-3">
@@ -405,7 +575,7 @@
                                 <circle cx="297" cy="211" r="2.4" fill="#f4ca52" opacity="0.5"></circle>
                                 <circle cx="278" cy="178" r="1.8" fill="#f4ca52" opacity="0.4"></circle>
                             </svg>
-                            <div class="absolute top-4 right-4 rounded-full border border-gold-300/20 bg-gold-400/10 px-3 py-1 text-[10px] tracking-[0.35em] uppercase text-gold-200">Barrel Signal</div>
+                            <div class="absolute top-4 right-4 rounded-full border border-gold-300/50 bg-white/80 px-3 py-1 text-[10px] tracking-[0.35em] uppercase text-gold-700">Barrel Signal</div>
                         </div>
                         <div class="p-7">
                             <div class="flex items-start justify-between gap-4 mb-3">
@@ -518,63 +688,67 @@
         </div>
     </div>
 
-    <div id="reserve-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
-        <div class="panel rounded-[2rem] max-w-xl w-full p-8 relative transform scale-95 transition-all duration-300">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-12 h-12 rounded-full bg-black/85 border border-gold-300/40 text-gold-100 shadow-[0_18px_50px_rgba(231,176,37,0.22)] flex items-center justify-center hover:bg-gold-300/15 hover:scale-105 transition-all duration-300" aria-label="Close reservation modal">
-                <span class="sr-only">Close</span>
-                <svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true">
-                    <path d="M6.343 6.343a1 1 0 0 1 1.414 0L12 10.586l4.243-4.243a1 1 0 1 1 1.414 1.414L13.414 12l4.243 4.243a1 1 0 0 1-1.414 1.414L12 13.414l-4.243 4.243a1 1 0 1 1-1.414-1.414L10.586 12 6.343 7.757a1 1 0 0 1 0-1.414z" fill="currentColor" />
-                </svg>
+    <div id="reserve-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="modal-shell rounded-[2rem] max-w-5xl w-full p-0 transform scale-95 transition-all duration-300">
+            <button onclick="closeModal()" class="modal-close-button" aria-label="Close reservation modal">
+                <span aria-hidden="true">×</span>
             </button>
 
-            <div class="text-left">
-                <div class="flex items-center justify-between gap-4 mb-6">
-                    <div>
-                        <div class="text-[10px] tracking-[0.35em] uppercase text-gold-200 mb-2">Contact Form</div>
-                        <h3 id="modal-title" class="font-display text-3xl text-white">Contact the Aureum Concierge</h3>
+            <div class="grid lg:grid-cols-[0.85fr_1.15fr]">
+                <div class="p-8 sm:p-10 bg-[linear-gradient(180deg,#fffdf8,#f7f0e0)] border-r border-gold-300/20">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-gold-300/35 bg-white/80 px-3 py-2 text-[10px] tracking-[0.35em] uppercase text-gold-700 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-gold-300"></span>
+                        Contact Form
                     </div>
-                    <div class="w-16 h-16 rounded-2xl bg-gold-300/10 border border-gold-300/20 flex items-center justify-center text-gold-200 text-2xl">
-                        <i class="fa-solid fa-pen-nib"></i>
+                    <h3 id="modal-title" class="font-display text-3xl sm:text-4xl text-stone-900 leading-tight">Contact the Aureum Concierge</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-stone-700">Reserve a private consultation, request a tailored set, or ask for next-drop access with a cleaner and more direct experience.</p>
+                    <div class="mt-8 space-y-3">
+                        <div class="rounded-2xl border border-gold-300/20 bg-white/80 p-4">
+                            <div class="text-[10px] tracking-[0.35em] uppercase text-gold-700 mb-2">Priority</div>
+                            <div class="font-display text-2xl text-stone-900">24 hour reply</div>
+                        </div>
+                        <div class="rounded-2xl border border-gold-300/20 bg-white/80 p-4">
+                            <div class="text-[10px] tracking-[0.35em] uppercase text-gold-700 mb-2">Channel</div>
+                            <div class="font-display text-2xl text-stone-900">Private concierge</div>
+                        </div>
                     </div>
                 </div>
-                <div id="reserve-form-status" class="status-banner"></div>
-                <form id="reserve-form" class="space-y-5 text-left" novalidate>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-[0.35em] text-neutral-500 mb-2">Full Name</label>
-                        <input type="text" id="reserve-name" name="reserve-name" placeholder="E.g. Adrian Gold" class="w-full px-4 py-3 rounded-2xl bg-black/45 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-300/60 transition-colors" required>
-                        <div class="error-message" id="reserve-name-error"></div>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-[0.35em] text-neutral-500 mb-2">Email Address</label>
-                        <input type="email" id="reserve-email" name="reserve-email" placeholder="E.g. hello@aureumlux.com" class="w-full px-4 py-3 rounded-2xl bg-black/45 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-300/60 transition-colors" required>
-                        <div class="error-message" id="reserve-email-error"></div>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-[0.35em] text-neutral-500 mb-2">Phone Number</label>
-                        <input type="tel" id="reserve-phone" name="reserve-phone" placeholder="E.g. +254700000000" class="w-full px-4 py-3 rounded-2xl bg-black/45 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-300/60 transition-colors" required>
-                        <div class="error-message" id="reserve-phone-error"></div>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[10px] uppercase tracking-[0.35em] text-neutral-500 mb-2">Password</label>
-                            <input type="password" id="reserve-password" name="reserve-password" placeholder="Enter a secure passphrase" class="w-full px-4 py-3 rounded-2xl bg-black/45 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-300/60 transition-colors" required>
-                            <div class="error-message" id="reserve-password-error"></div>
+
+                <div class="p-8 sm:p-10 text-left bg-[linear-gradient(180deg,#fffdfb,#f8f2e7)]">
+                    <div id="reserve-form-status" class="status-banner"></div>
+                    <form id="reserve-form" class="space-y-5 text-left" novalidate>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Full Name</label>
+                                <input type="text" id="reserve-name" name="reserve-name" placeholder="E.g. Adrian Gold" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
+                                <div class="error-message" id="reserve-name-error"></div>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Email Address</label>
+                                <input type="email" id="reserve-email" name="reserve-email" placeholder="E.g. hello@aureumlux.com" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
+                                <div class="error-message" id="reserve-email-error"></div>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Phone Number</label>
+                                <input type="tel" id="reserve-phone" name="reserve-phone" placeholder="E.g. +254700000000" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
+                                <div class="error-message" id="reserve-phone-error"></div>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Password</label>
+                                <input type="password" id="reserve-password" name="reserve-password" placeholder="Enter a secure passphrase" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
+                                <div class="error-message" id="reserve-password-error"></div>
+                            </div>
                         </div>
                         <div>
-                            <label class="block text-[10px] uppercase tracking-[0.35em] text-neutral-500 mb-2">Confirm Password</label>
-                            <input type="password" id="reserve-confirm" name="reserve-confirm" placeholder="Repeat your passphrase" class="w-full px-4 py-3 rounded-2xl bg-black/45 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-300/60 transition-colors" required>
+                            <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Confirm Password</label>
+                            <input type="password" id="reserve-confirm" name="reserve-confirm" placeholder="Repeat your passphrase" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
                             <div class="error-message" id="reserve-confirm-error"></div>
                         </div>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-[0.35em] text-neutral-500 mb-2">Message</label>
-                        <textarea id="reserve-message" name="reserve-message" rows="4" placeholder="Tell us about your preferred set, finish, or timing." class="w-full px-4 py-3 rounded-2xl bg-black/45 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-300/60 transition-colors"></textarea>
-                        <div class="error-message"></div>
-                    </div>
-                    <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 text-black text-xs tracking-[0.35em] uppercase font-extrabold transition-all duration-300 hover:scale-[1.01]">
-                        Send Inquiry
-                    </button>
-                </form>
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Message</label>
+                            <textarea id="reserve-message" name="reserve-message" rows="4" placeholder="Tell us about your preferred set, finish, or timing." class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors"></textarea>
             </div>
         </div>
     </div>
@@ -635,6 +809,19 @@
             reserveModal.children[0].classList.add('scale-95');
             reserveModal.children[0].classList.remove('scale-100');
         }
+
+        reserveModal.addEventListener('click', (event) => {
+            if (event.target === reserveModal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal();
+                closeSuccessModal();
+            }
+        });
 
         function setInputError(field, message) {
             field.classList.add('input-error');
@@ -728,6 +915,12 @@
         function closeSuccessModal() {
             successModal.classList.add('opacity-0', 'pointer-events-none');
         }
+
+        successModal.addEventListener('click', (event) => {
+            if (event.target === successModal) {
+                closeSuccessModal();
+            }
+        });
 
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');

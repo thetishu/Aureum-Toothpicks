@@ -38,25 +38,28 @@
   </script>
   <style>
     :root {
-      --bg: #fffdfb;
-      --surface: #ffffff;
-      --ink: #1a0909;
-      --accent: #b20e13;
-      --accent-soft: #f5dfdd;
-      --accent-dark: #2a0808;
-      --line: rgba(178, 14, 19, 0.16);
+      --bg: #050202;
+      --surface: rgba(16, 9, 8, 0.92);
+      --surface-soft: rgba(18, 10, 8, 0.75);
+      --ink: #f8efe7;
+      --muted: #c9b5a2;
+      --accent: #d49c3a;
+      --accent-strong: #f1d48c;
+      --border: rgba(255,255,255,0.12);
+      --line: rgba(212,175,55,0.16);
+      --shadow: 0 32px 120px rgba(0,0,0,0.45);
     }
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       min-height: 100vh;
       color: var(--ink);
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(178, 14, 19, 0.72), transparent 24%),
-        radial-gradient(circle at 82% 10%, rgba(255, 99, 90, 0.24), transparent 18%),
-        radial-gradient(circle at 50% 100%, rgba(24, 4, 5, 0.94), transparent 34%),
-        linear-gradient(135deg, #080404 0%, #1b0507 42%, #050303 100%);
+        radial-gradient(circle at top left, rgba(212,175,55,0.16), transparent 18%),
+        radial-gradient(circle at 88% 14%, rgba(255,255,255,0.08), transparent 12%),
+        linear-gradient(135deg, #050202 0%, #120506 45%, #090205 100%);
     }
     body::before {
       content: '';
@@ -64,9 +67,9 @@
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(178, 14, 19, 0.06), transparent 18%, transparent 84%, rgba(178, 14, 19, 0.06)),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 20%, transparent 80%, rgba(255, 255, 255, 0.02));
-      opacity: 0.82;
+        linear-gradient(90deg, rgba(255,255,255,0.04), transparent 24%, transparent 76%, rgba(255,255,255,0.04)),
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 20%, transparent 80%, rgba(255,255,255,0.02));
+      opacity: 0.9;
       z-index: 0;
     }
     body::after {
@@ -74,68 +77,292 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.36) 100%);
+      background: radial-gradient(circle at center, rgba(212,175,55,0.06), transparent 32%);
       z-index: 0;
     }
-    @keyframes revealUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+    .page-shell {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      min-height: 100vh;
     }
-    @keyframes pillEnter {
-      from { opacity: 0; transform: translateY(16px) scale(0.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 rgba(212,175,55,0); }
-      50% { box-shadow: 0 0 18px rgba(212,175,55,0.14); }
-    }
-    .reveal {
-      animation: revealUp 700ms ease forwards;
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 92%);
     }
     header {
-      background: rgba(8, 4, 5, 0.9) !important;
+      background: rgba(6, 3, 2, 0.78) !important;
       border-bottom: 1px solid rgba(212,175,55,0.12) !important;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4) !important;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.22) !important;
+      backdrop-filter: blur(18px);
     }
     header a {
-      color: #fff2f0 !important;
+      color: var(--ink) !important;
     }
     header a:hover {
-      color: #ff8c84 !important;
+      color: var(--accent-strong) !important;
     }
     .panel,
     .lead-card,
     .card-item {
-      background:
-        radial-gradient(circle at top left, rgba(178, 14, 19, 0.38), transparent 32%),
-        linear-gradient(145deg, rgba(18, 6, 7, 0.94), rgba(28, 8, 9, 0.98)) !important;
-      color: #fff6f5 !important;
-      border-color: rgba(255, 255, 255, 0.08) !important;
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
-      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2rem;
+      background: linear-gradient(180deg, rgba(18,10,8,0.96), rgba(12,5,4,0.98));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background 240ms ease;
+    }
+    .panel::before,
+    .lead-card::before,
+    .card-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(212,175,55,0.18), transparent 36%);
+      opacity: 0.92;
     }
     .panel:hover,
     .lead-card:hover,
     .card-item:hover {
       transform: translateY(-6px);
-      border-color: rgba(255, 152, 142, 0.4) !important;
-      box-shadow: 0 40px 110px rgba(0, 0, 0, 0.44), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(212,175,55,0.25);
+      box-shadow: 0 42px 110px rgba(0,0,0,0.48);
     }
-    .panel::before,
-    .lead-card::before,
-    .card-item::before {
-      background: radial-gradient(circle at top left, rgba(255, 110, 102, 0.28), transparent 38%) !important;
+    .panel > *:not(.pill),
+    .lead-card > *:not(.pill),
+    .card-item > *:not(.pill) {
+      position: relative;
+      z-index: 1;
     }
-    .bg-white\/90,
-    .bg-white\/80,
-    .bg-white,
-    .bg-white\/95 {
-      background: rgba(15, 5, 6, 0.72) !important;
+    .section-highlight {
+      width: 5rem;
+      height: 2px;
+      margin-top: 1rem;
+      background: linear-gradient(90deg, rgba(212,175,55,0.96), rgba(255,255,255,0.14));
+      border-radius: 999px;
     }
-    .border-brand-100,
-    .border-brand-200,
-    .border-brand-300 {
-      border-color: rgba(178, 14, 19, 0.32) !important;
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.78rem 1.1rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.32em;
+      font-size: 0.62rem;
+      font-weight: 800;
+      border: 1px solid rgba(212,175,55,0.22);
+      background: rgba(255,255,255,0.07);
+      color: var(--ink);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background 240ms ease;
+      animation: pillEnter 420ms ease;
+    }
+    .pill::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 46%);
+      opacity: 0.95;
+      z-index: -1;
+    }
+    .pill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      box-shadow: inset 0 0 0 1px rgba(212,175,55,0.45), 0 0 24px rgba(212,175,55,0.22);
+      filter: blur(6px);
+      transition: opacity 220ms ease, transform 220ms ease;
+      transform: scale(0.96);
+      z-index: -1;
+    }
+    .pill:hover,
+    .pill:focus-visible {
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(212,175,55,0.8);
+      box-shadow: 0 26px 84px rgba(212,175,55,0.16);
+      background: rgba(255,255,255,0.12);
+    }
+    .pill:hover::after,
+    .pill:focus-visible::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .pill.dark,
+    .pill.red,
+    .pill.black {
+      background: rgba(255,255,255,0.07);
+      color: var(--ink);
+      border-color: rgba(212,175,55,0.22);
+    }
+    .pill.dark::before,
+    .pill.red::before,
+    .pill.black::before {
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 46%);
+    }
+    .button-cta,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.95rem 1.6rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+    .button-cta {
+      border: 1px solid rgba(212,175,55,0.28);
+      background: rgba(212,175,55,0.16);
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.16);
+    }
+    .button-cta:hover {
+      transform: translateY(-2px);
+      background: rgba(212,175,55,0.22);
+      box-shadow: 0 22px 46px rgba(0,0,0,0.22);
+    }
+    .button-secondary {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.05);
+      color: var(--ink);
+    }
+    .button-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+    }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(7, 2, 2, 0.72);
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      transition: opacity 360ms cubic-bezier(.2,.9,.2,1);
+    }
+    .modal-backdrop.active {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-card {
+      position: relative;
+      width: min(100%, 760px);
+      border-radius: 2rem;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(16, 9, 7, 0.98);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.55);
+      transform: translateY(18px) scale(0.996);
+      opacity: 0;
+      transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+    }
+    .modal-card.open {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    .modal-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(130deg, rgba(255,255,255,0.08), transparent 34%);
+    }
+    .modal-content {
+      position: relative;
+      z-index: 1;
+    }
+    .modal-panel {
+      padding: 2rem;
+    }
+    .modal-panel h2 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.05;
+      color: #fff;
+    }
+    .modal-panel p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 3rem;
+      height: 3rem;
+      border: none;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+    .modal-close:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.16);
+    }
+    .form-field {
+      display: grid;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+    .form-field label {
+      color: var(--muted);
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      min-height: 3rem;
+      border-radius: 1.35rem;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+      padding: 1rem 1.1rem;
+      outline: none;
+      transition: border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+    }
+    .form-field textarea { min-height: 10rem; resize: vertical; }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: rgba(212,175,55,0.7);
+      box-shadow: 0 0 0 4px rgba(212,175,55,0.12);
+      background: rgba(255,255,255,0.12);
     }
     .text-stone-900,
     .text-stone-800,
@@ -143,110 +370,22 @@
     .text-stone-600,
     .text-stone-500,
     .text-stone-400 {
-      color: #fff0ee !important;
+      color: #f8efe7 !important;
     }
     .text-brand-700 {
-      color: #ff8c84 !important;
+      color: #f1d48c !important;
     }
-    .page-shell { position: relative; overflow: hidden; }
-    .grid-overlay {
-      position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
-      background-image: linear-gradient(rgba(42,8,8,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(42,8,8,0.12) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent 92%);
-    }
-    .panel {
-      position: relative; overflow: hidden; border-radius: 2rem;
-      background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(252,246,245,0.96));
-      border: 1px solid var(--line);
-      box-shadow: 0 24px 70px rgba(52, 9, 9, 0.08);
-    }
-    .panel::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(circle at top left, rgba(255, 163, 154, 0.58), transparent 36%);
-      opacity: 0.85;
-    }
-    .section-highlight {
-      width: 5rem; height: 2px; margin-top: 1rem; background: linear-gradient(90deg, rgba(212,175,55,0.92), rgba(255,255,255,0.12));
-      border-radius: 999px;
-    }
-    .reveal-on-scroll {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 700ms ease, transform 700ms ease;
-    }
-    .reveal-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .pill.pill-near {
-      border-color: rgba(212,175,55,0.82);
-      box-shadow: 0 30px 72px rgba(212,175,55,0.16);
-    }
-    .pill.pill-near::after {
-      opacity: 1;
-      transform: scale(1);
-      animation: pulseGlow 1.8s ease infinite;
-    }
-    .hero-accent {
-      display: inline-flex; align-items: center; gap: 0.75rem; margin-top: 1rem;
-    }
-    .hero-accent span {
-      width: 0.65rem; height: 0.65rem; border-radius: 999px; background: linear-gradient(135deg, rgba(212,175,55,1), rgba(255,255,255,0.7));
-      box-shadow: 0 0 16px rgba(212,175,55,0.24);
-    }
-    .pill {
-      display: inline-flex; align-items: center; gap: 0.65rem; padding: 0.75rem 1rem;
-      border-radius: 999px; text-transform: uppercase; letter-spacing: 0.32em; font-size: 0.63rem;
-      font-weight: 800; border: 1px solid rgba(178,14,19,0.32);
-      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(248,232,230,0.98));
-      color: #5b0a0c; box-shadow: 0 18px 50px rgba(178,14,19,0.12);
-      position: relative; isolation: isolate; overflow: hidden;
-      transition: transform 280ms ease, border-color 280ms ease, box-shadow 280ms ease;
-      animation: pillEnter 520ms ease;
-    }
-    .pill::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(circle at top left, rgba(255,224,220,0.95), transparent 38%);
-      opacity: 0.85;
-      z-index: -1;
-    }
-    .pill::after {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: inherit;
-      pointer-events: none;
-      opacity: 0;
-      background: linear-gradient(135deg, rgba(212,175,55,0.55), rgba(255,255,255,0.35));
-      filter: blur(10px);
-      transition: opacity 220ms ease, transform 220ms ease;
-      transform: scale(0.96);
-      z-index: -2;
-    }
-    .pill:hover,
-    .pill:focus-visible {
-      transform: translateY(-2px) scale(1.02);
-      border-color: rgba(212,175,55,0.7);
-      box-shadow: 0 22px 60px rgba(178,14,19,0.16);
-    }
-    .pill:hover::after,
-    .pill:focus-visible::after {
-      opacity: 1;
-      transform: scale(1);
-      animation: pulseGlow 1.8s ease infinite;
-    }
-    .pill.red { background: linear-gradient(145deg, #5c0b0f, #160204); color: #fff7f6; border-color: rgba(255,255,255,0.16); }
-    .pill.red::before { background: radial-gradient(circle at top left, rgba(255,128,122,0.6), transparent 34%); }
-    .pill.black { background: linear-gradient(145deg, #1b0a0a, #050404); color: #fff8f7; border-color: rgba(255,255,255,0.16); }
-    .pill.black::before { background: radial-gradient(circle at top left, rgba(255,90,90,0.5), transparent 26%); }
     .table-card table { border-collapse: collapse; width: 100%; }
-    .table-card th, .table-card td { padding: 0.95rem 1rem; border-bottom: 1px solid rgba(178,14,19,0.12); text-align: left; }
-    .table-card th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.24em; color: #7f1918; }
+    .table-card th, .table-card td { padding: 1rem 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; }
+    .table-card th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.24em; color: #c9b5a2; }
+    .table-card td { color: #d9c2a7; }
     .glow-ring {
       position: absolute; width: 14rem; height: 14rem; border-radius: 999px; filter: blur(14px);
       background: rgba(178, 14, 19, 0.14); z-index: 0; pointer-events: none;
     }
-    @media (max-width: 900px) { .table-card th, .table-card td { padding: 0.8rem 0.75rem; } }
+    @media (max-width: 900px) {
+      .table-card th, .table-card td { padding: 0.8rem 0.85rem; }
+    }
   </style>
 </head>
 <body>
@@ -291,8 +430,8 @@
               </div>
               <p class="max-w-2xl text-base leading-8 text-stone-700">Aureum pairs architecturally clean forms, crafted spice blends, and a house-made finish philosophy that turns a minimal ritual into a statement piece.</p>
               <div class="flex flex-wrap gap-3">
-                <a href="#collection" class="rounded-full bg-brand-700 px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-white shadow-lg shadow-brand-200">See collection</a>
-                <button onclick="openReserveModal('Reserve a set')" class="rounded-full border border-brand-300 bg-white px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-brand-700">Reserve now</button>
+                <a href="#collection" class="button-secondary">See collection</a>
+                <button onclick="openReserveModal('Reserve a set')" class="button-cta">Reserve now</button>
               </div>
               <div class="grid sm:grid-cols-3 gap-3 mt-2">
                 <div class="rounded-2xl border border-brand-100 bg-white/80 p-4">
@@ -414,7 +553,7 @@
             <div class="pill red">Reserve CTA</div>
             <h2 class="mt-4 font-display text-4xl sm:text-5xl leading-none text-stone-900">Reserve a statement set for your next host ritual.</h2>
             <p class="mt-4 text-stone-700 leading-8">Choose a signature profile, request a tasting set, or schedule a private consultation with the Aureum concierge.</p>
-            <button onclick="openReserveModal('Request a tasting set')" class="mt-5 rounded-full bg-brand-700 px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-white">Book a reserve request</button>
+            <button onclick="openReserveModal('Request a tasting set')" class="button-cta mt-5">Book a reserve request</button>
           </div>
           <div class="panel p-4 sm:p-5">
             <div class="grid sm:grid-cols-2 gap-4">
@@ -444,39 +583,39 @@
       </div>
     </footer>
 
-    <div id="welcome-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/55 backdrop-blur-sm">
-      <div class="relative w-full max-w-3xl rounded-[2rem] border border-brand-200 bg-white shadow-[0_24px_90px_rgba(82,11,13,0.35)] overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(178,14,19,0.16),transparent_45%)]"></div>
-        <div class="relative grid lg:grid-cols-[0.98fr_1.02fr]">
-          <div class="p-8 bg-brand-900 text-white">
+    <div id="welcome-modal" class="modal-backdrop active" aria-hidden="false">
+      <div class="modal-card">
+        <button id="welcome-close" class="modal-close" aria-label="Close welcome modal">✕</button>
+        <div class="grid lg:grid-cols-[0.98fr_1.02fr] modal-content">
+          <div class="modal-panel bg-brand-900 text-white">
             <div class="pill red">Welcome</div>
-            <h2 class="mt-4 font-display text-4xl leading-none">Enter the reserve room.</h2>
-            <p class="mt-4 text-sm leading-7 text-white/75">Aureum is built for table rituals that feel elevated, sensory, and quietly dramatic.</p>
+            <h2 class="mt-6 font-display text-4xl leading-none">Enter the reserve room.</h2>
+            <p class="mt-5 text-sm leading-7 text-white/75">Aureum is built for table rituals that feel elevated, sensory, and quietly dramatic.</p>
           </div>
-          <div class="p-8">
+          <div class="modal-panel">
             <p class="text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">House note</p>
-            <p class="mt-3 text-base leading-8 text-stone-700">Preview the new collection, compare the house signatures, and save your preferred taste profile for a bespoke consult.</p>
-            <button id="welcome-close" class="mt-6 rounded-full bg-brand-700 px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-white">Enter the collection</button>
+            <p class="mt-4 text-base leading-8 text-stone-300">Preview the new collection, compare the house signatures, and save your preferred taste profile for a bespoke consult.</p>
+            <button onclick="closeWelcomeModal()" class="button-cta mt-8">Enter the collection</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div id="reserve-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-md">
-      <div class="relative w-full max-w-4xl rounded-[2rem] border border-brand-200 bg-white shadow-[0_30px_120px_rgba(73,10,12,0.4)] overflow-hidden">
-        <button onclick="closeReserveModal()" class="absolute right-4 top-4 rounded-full bg-brand-700 text-white px-3 py-2 text-sm">✕</button>
-        <div class="grid lg:grid-cols-[0.88fr_1.12fr]">
-          <div class="p-8 bg-brand-950 text-white">
+    <div id="reserve-modal" class="modal-backdrop" aria-hidden="true">
+      <div class="modal-card">
+        <button onclick="closeReserveModal()" class="modal-close" aria-label="Close reserve modal">✕</button>
+        <div class="grid lg:grid-cols-[0.9fr_1.1fr] modal-content">
+          <div class="modal-panel bg-brand-950 text-white">
             <div class="pill red">Reserve</div>
-            <h3 id="reserve-title" class="mt-4 font-display text-4xl leading-none">Reserve a set</h3>
-            <p class="mt-4 text-sm leading-7 text-white/75">Complete your selection and the Aureum concierge will share your dossier with the next available appointment.</p>
+            <h2 id="reserve-title" class="mt-6 font-display text-4xl leading-none">Reserve a set</h2>
+            <p class="mt-5 text-sm leading-7 text-white/75">Complete your selection and the Aureum concierge will share your dossier with the next available appointment.</p>
           </div>
-          <form class="p-6 sm:p-8 grid gap-4">
-            <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Name</span><input type="text" required class="rounded-2xl border border-brand-200 bg-white px-4 py-3 outline-none focus:border-brand-500" /></label>
-            <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Email</span><input type="email" required class="rounded-2xl border border-brand-200 bg-white px-4 py-3 outline-none focus:border-brand-500" /></label>
-            <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Preferred profile</span><select class="rounded-2xl border border-brand-200 bg-white px-4 py-3 outline-none focus:border-brand-500"><option>Ember Ash</option><option>Saffron Bloom</option><option>Velvet Smoke</option><option>Reserve sampler</option></select></label>
-            <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Message</span><textarea rows="4" class="rounded-2xl border border-brand-200 bg-white px-4 py-3 outline-none focus:border-brand-500"></textarea></label>
-            <button type="button" onclick="closeReserveModal()" class="rounded-full bg-brand-700 px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-white">Send request</button>
+          <form class="modal-panel grid gap-4">
+            <div class="form-field"><label>Name</label><input type="text" required placeholder="Adrian Gold" /></div>
+            <div class="form-field"><label>Email</label><input type="email" required placeholder="hello@aureumlux.com" /></div>
+            <div class="form-field"><label>Preferred profile</label><select><option>Ember Ash</option><option>Saffron Bloom</option><option>Velvet Smoke</option><option>Reserve sampler</option></select></div>
+            <div class="form-field"><label>Message</label><textarea rows="4" placeholder="Share your ideal event details."></textarea></div>
+            <button type="button" onclick="closeReserveModal()" class="button-cta">Send request</button>
           </form>
         </div>
       </div>
@@ -492,50 +631,64 @@
     const welcomeClose = document.getElementById('welcome-close');
     const reserveModal = document.getElementById('reserve-modal');
     const reserveTitle = document.getElementById('reserve-title');
+    welcomeClose.addEventListener('click', () => hideModal(welcomeModal));
 
-    window.addEventListener('load', () => {
-      welcomeModal.classList.remove('hidden');
-      welcomeModal.classList.add('flex');
+    function showModal(modal) {
+      if (!modal) return;
+      modal.classList.add('active');
+      requestAnimationFrame(() => {
+        const card = modal.querySelector('.modal-card');
+        if (card) card.classList.add('open');
+      });
+    }
+
+    function hideModal(modal) {
+      if (!modal) return;
+      const card = modal.querySelector('.modal-card');
+      if (!card) {
+        modal.classList.remove('active');
+        return;
+      }
+      let finished = false;
+      const onEnd = (e) => {
+        if (e.target !== card) return;
+        // accept either opacity or transform finishing
+        if (e.propertyName === 'opacity' || e.propertyName === 'transform') {
+          finished = true;
+          modal.classList.remove('active');
+          card.removeEventListener('transitionend', onEnd);
+        }
+      };
+      card.addEventListener('transitionend', onEnd);
+      // kick off close animation
+      card.classList.remove('open');
+      // fallback: ensure we remove active after max duration
       setTimeout(() => {
-        welcomeModal.style.opacity = '1';
-      }, 50);
-    });
+        if (!finished) {
+          modal.classList.remove('active');
+          card.removeEventListener('transitionend', onEnd);
+        }
+      }, 620);
+    }
 
-    welcomeClose.addEventListener('click', () => {
-      welcomeModal.classList.add('hidden');
-      welcomeModal.classList.remove('flex');
-    });
+    function closeWelcomeModal() { hideModal(welcomeModal); }
 
     function openReserveModal(label) {
       reserveTitle.textContent = label;
-      reserveModal.classList.remove('hidden');
-      reserveModal.classList.add('flex');
+      showModal(reserveModal);
     }
 
-    function closeReserveModal() {
-      reserveModal.classList.add('hidden');
-      reserveModal.classList.remove('flex');
-    }
+    function closeReserveModal() { hideModal(reserveModal); }
 
-    const pillElements = Array.from(document.querySelectorAll('.pill'));
-    const revealItems = Array.from(document.querySelectorAll('.reveal-on-scroll'));
-
-    window.addEventListener('mousemove', (event) => {
-      pillElements.forEach((pill) => {
-        const rect = pill.getBoundingClientRect();
-        const dx = event.clientX - (rect.left + rect.width / 2);
-        const dy = event.clientY - (rect.top + rect.height / 2);
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const threshold = Math.max(rect.width, rect.height) * 1.4;
-
-        if (distance < threshold) {
-          pill.classList.add('pill-near');
-        } else {
-          pill.classList.remove('pill-near');
-        }
+    // If welcome modal is initially active, animate it open
+    if (welcomeModal && welcomeModal.classList.contains('active')) {
+      requestAnimationFrame(() => {
+        const card = welcomeModal.querySelector('.modal-card');
+        if (card) card.classList.add('open');
       });
-    });
+    }
 
+    const revealItems = Array.from(document.querySelectorAll('.reveal-on-scroll'));
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {

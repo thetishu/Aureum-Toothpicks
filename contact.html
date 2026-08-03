@@ -1,528 +1,316 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Aureum Toothpicks</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Cinzel:wght@500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            color-scheme: light;
-            font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            color: #111111;
-        }
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background:
-                radial-gradient(circle at 12% 12%, rgba(255, 244, 191, 0.94), transparent 24%),
-                radial-gradient(circle at 88% 18%, rgba(231, 176, 37, 0.32), transparent 18%),
-                radial-gradient(circle at 50% 100%, rgba(6, 6, 6, 0.1), transparent 34%),
-                linear-gradient(135deg, #fffdf8 0%, #fffaf0 38%, #f4ebdc 100%);
-            color: #111111;
-        }
-        .page-shell {
-            position: relative;
-            overflow: hidden;
-            min-height: 100vh;
-        }
-        .glow-spot {
-            position: absolute;
-            border-radius: 999px;
-            filter: blur(110px);
-            opacity: 0.36;
-            pointer-events: none;
-        }
-        .glow-spot.one { width: 30rem; height: 30rem; top: -6rem; left: -8rem; background: rgba(231,176,37,0.16); }
-        .glow-spot.two { width: 24rem; height: 24rem; top: 10rem; right: -7rem; background: rgba(231,176,37,0.1); }
-        .grid-overlay {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            opacity: 0.08;
-            background-image:
-                linear-gradient(rgba(19,19,19,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(19,19,19,0.06) 1px, transparent 1px);
-            background-size: 72px 72px;
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 92%);
-        }
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 30;
-            backdrop-filter: blur(18px);
-            background: rgba(255, 255, 255, 0.94);
-            border-bottom: 1px solid rgba(231,176,37,0.45);
-        }
-        .container { max-width: 1240px; margin: 0 auto; padding: 1.25rem; }
-        .brand-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            font-size: 1rem;
-            background: linear-gradient(90deg, #6d4700 0%, #c78f12 48%, #7e560b 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .nav-link {
-            color: #111111;
-            text-transform: uppercase;
-            letter-spacing: 0.35em;
-            font-size: 0.72rem;
-            text-decoration: none;
-        }
-        .nav-link:hover { color: #5a3b00; }
-        .editorial-shell {
-            position: relative;
-            overflow: hidden;
-            border-radius: 2rem;
-        }
-        .editorial-shell::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: linear-gradient(135deg, rgba(231,176,37,0.08), transparent 32%);
-        }
-        .editorial-shell.luxury-light {
-            background:
-                radial-gradient(circle at top left, rgba(231,176,37,0.08), transparent 22%),
-                linear-gradient(145deg, #ffffff, #fffdf8);
-            border: 1px solid rgba(231,176,37,0.42);
-            box-shadow: 0 24px 80px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.9);
-        }
-        .editorial-shell.luxury-dark {
-            background:
-                radial-gradient(circle at top left, rgba(231,176,37,0.12), transparent 24%),
-                linear-gradient(145deg, #ffffff, #fffdf8);
-            border: 1px solid rgba(231,176,37,0.42);
-            box-shadow: 0 24px 80px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.9);
-            color: #111111;
-        }
-        .hero-panel {
-            padding: 1.5rem;
-        }
-        .luxury-pill {
-            position: relative;
-            isolation: isolate;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            border-radius: 999px;
-            border: 1px solid rgba(231,176,37,0.5);
-            background: linear-gradient(145deg, rgba(255,255,255,0.86), rgba(252,244,217,0.95));
-            padding: 0.6rem 0.9rem;
-            color: #3e2702;
-            text-transform: uppercase;
-            letter-spacing: 0.32em;
-            font-size: 0.65rem;
-            font-weight: 700;
-            box-shadow: 0 10px 30px rgba(231,176,37,0.08);
-            backdrop-filter: blur(10px);
-            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-        }
-        .luxury-pill::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            pointer-events: none;
-            background: radial-gradient(circle at top left, rgba(255,244,191,0.76), transparent 48%);
-            opacity: 0.8;
-            transition: opacity 220ms ease, transform 220ms ease;
-            z-index: -1;
-        }
-        .luxury-pill:hover {
-            transform: translateY(-2px);
-            border-color: rgba(231,176,37,0.6);
-            box-shadow: 0 14px 38px rgba(231,176,37,0.16);
-        }
-        .luxury-pill:hover::before {
-            opacity: 1;
-            transform: scale(1.03);
-        }
-        .editorial-shell.luxury-dark .luxury-pill {
-            background: linear-gradient(145deg, rgba(255,255,255,0.86), rgba(252,244,217,0.95));
-            color: #5a3b00;
-            border-color: rgba(231,176,37,0.46);
-            box-shadow: 0 12px 34px rgba(0,0,0,0.10);
-            backdrop-filter: blur(14px);
-        }
-        .editorial-shell.luxury-dark .luxury-pill::before {
-            background: radial-gradient(circle at top left, rgba(255,244,191,0.48), transparent 60%);
-            opacity: 0.9;
-        }
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.8rem, 5vw, 5.2rem);
-            line-height: 0.96;
-            margin: 0;
-            color: #111111;
-        }
-        .editorial-shell.luxury-dark .section-title,
-        .editorial-shell.luxury-dark .feature-title,
-        .editorial-shell.luxury-dark .card-title {
-            color: #111111;
-        }
-        .section-subtitle {
-            color: #121212;
-            max-width: 46rem;
-            line-height: 1.85;
-            font-size: 1rem;
-            margin-top: 1rem;
-        }
-        .editorial-shell.luxury-dark .section-subtitle,
-        .editorial-shell.luxury-dark .feature-copy,
-        .editorial-shell.luxury-dark .card-copy {
-            color: #2d220b;
-        }
-        .gold-gradient {
-            background: linear-gradient(90deg, #6d4700 0%, #c78f12 48%, #7e560b 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .ambient-word {
-            color: transparent;
-            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        body .text-gold-100,
-        body .text-gold-200,
-        body .text-gold-300,
-        body .text-gold-400,
-        body .text-gold-500,
-        body .text-gold-600,
-        body .text-gold-700,
-        body .text-gold-800,
-        body .text-gold-900 {
-            color: transparent !important;
-            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .contact-card {
-            display: grid;
-            gap: 0.95rem;
-        }
-        .card-item {
-            position: relative;
-            isolation: isolate;
-            padding: 1.15rem 1.2rem;
-            border-radius: 1.25rem;
-            background:
-                radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%),
-                linear-gradient(145deg, #ffffff, #fffdf8);
-            border: 1px solid rgba(231,176,37,0.3);
-            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-        }
-        .card-item::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            pointer-events: none;
-            background: radial-gradient(circle at top left, rgba(255,244,191,0.74), transparent 44%);
-            opacity: 0.82;
-            transition: opacity 220ms ease, transform 220ms ease;
-            z-index: -1;
-        }
-        .card-item:hover {
-            transform: translateY(-4px);
-            border-color: rgba(231,176,37,0.48);
-            box-shadow: 0 22px 64px rgba(184,133,19,0.14);
-        }
-        .card-item:hover::before {
-            opacity: 1;
-            transform: scale(1.03);
-        }
-        .editorial-shell.luxury-dark .card-item,
-        .editorial-shell.luxury-dark .feature-card,
-        .form-shell {
-            background:
-                radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%),
-                linear-gradient(145deg, #ffffff, #fffdf8);
-            border: 1px solid rgba(231,176,37,0.32);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.92);
-            backdrop-filter: blur(10px);
-        }
-        .card-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            color: #111111;
-            margin-bottom: 0.5rem;
-        }
-        .card-copy {
-            margin: 0;
-            color: #111111;
-            line-height: 1.8;
-        }
-        .feature-card {
-            position: relative;
-            isolation: isolate;
-            padding: 1.35rem;
-            border-radius: 1.45rem;
-            background:
-                radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%),
-                linear-gradient(145deg, #ffffff, #fffdf8);
-            border: 1px solid rgba(231,176,37,0.3);
-            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-        }
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            pointer-events: none;
-            background: radial-gradient(circle at top left, rgba(255,244,191,0.76), transparent 44%);
-            opacity: 0.82;
-            transition: opacity 220ms ease, transform 220ms ease;
-            z-index: -1;
-        }
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(231,176,37,0.48);
-            box-shadow: 0 24px 72px rgba(184,133,19,0.15);
-        }
-        .feature-card:hover::before {
-            opacity: 1;
-            transform: scale(1.03);
-        }
-        .feature-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.85rem;
-            color: #111111;
-        }
-        .feature-copy {
-            margin: 0;
-            line-height: 1.8;
-            color: #111111;
-        }
-        .form-shell {
-            position: relative;
-            isolation: isolate;
-            background:
-                radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%),
-                linear-gradient(145deg, #ffffff, #fffdf8);
-            border: 1px solid rgba(231,176,37,0.4);
-            border-radius: 1.65rem;
-            box-shadow: 0 18px 70px rgba(0,0,0,0.08);
-            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-        }
-        .form-shell::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            pointer-events: none;
-            background: radial-gradient(circle at top left, rgba(255,244,191,0.76), transparent 44%);
-            opacity: 0.82;
-            transition: opacity 220ms ease, transform 220ms ease;
-            z-index: -1;
-        }
-        .form-shell:hover {
-            transform: translateY(-4px);
-            border-color: rgba(231,176,37,0.5);
-            box-shadow: 0 24px 74px rgba(184,133,19,0.16);
-        }
-        .form-shell:hover::before {
-            opacity: 1;
-            transform: scale(1.03);
-        }
-        .field-label {
-            font-size: 0.68rem;
-            letter-spacing: 0.34em;
-            text-transform: uppercase;
-            color: #3e2702;
-            margin-bottom: 0.55rem;
-            display: block;
-        }
-        input, textarea {
-            width: 100%;
-            border-radius: 1rem;
-            border: 1px solid rgba(231,176,37,0.4);
-            background: #ffffff;
-            color: #111111;
-            padding: 0.95rem 1rem;
-            font-size: 0.94rem;
-            outline: none;
-            transition: border-color 180ms ease, box-shadow 180ms ease;
-        }
-        input:focus, textarea:focus {
-            border-color: rgba(231,176,37,0.9);
-            box-shadow: 0 0 0 4px rgba(231,176,37,0.12);
-        }
-        textarea { min-height: 140px; resize: vertical; }
-        .cta-button {
-            width: 100%;
-            border: none;
-            border-radius: 1rem;
-            padding: 1rem 1.2rem;
-            background: linear-gradient(90deg, #fff4bf 0%, #e7b025 45%, #7e560b 100%);
-            color: #2f1f04;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-size: 0.72rem;
-            font-weight: 800;
-            cursor: pointer;
-        }
-        .line-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(231,176,37,0.75), transparent);
-            margin: 1rem 0 1.6rem;
-        }
-        .map-shell {
-            border-radius: 1.65rem;
-            overflow: hidden;
-            border: 1px solid rgba(231,176,37,0.4);
-            box-shadow: 0 18px 70px rgba(0,0,0,0.08);
-            background: #ffffff;
-        }
-        .map-frame {
-            width: 100%;
-            min-height: 420px;
-            border: none;
-            display:block;
-        }
-        footer {
-            margin-top: 3rem;
-            padding: 2rem 0 1rem;
-            text-align: center;
-            color: #4b3a12;
-            font-size: 0.8rem;
-        }
-        @media (max-width: 900px) {
-            .grid-2 { grid-template-columns: 1fr; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Contact Aureum | Concierge Reservations</title>
+  <meta name="description" content="Contact the Aureum concierge to reserve a signature toothpick set or request a hosted tasting consultation." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #fffdfb;
+      --surface: #ffffff;
+      --ink: #1a0909;
+      --accent: #b20e13;
+      --accent-soft: #f8e6e4;
+      --accent-dark: #2a0808;
+      --line: rgba(178,14,19,0.16);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(178, 14, 19, 0.72), transparent 24%),
+        radial-gradient(circle at 82% 10%, rgba(255, 99, 90, 0.24), transparent 18%),
+        radial-gradient(circle at 50% 100%, rgba(24, 4, 5, 0.94), transparent 34%),
+        linear-gradient(135deg, #080404 0%, #1b0507 42%, #050303 100%);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(178, 14, 19, 0.06), transparent 18%, transparent 84%, rgba(178, 14, 19, 0.06)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 20%, transparent 80%, rgba(255, 255, 255, 0.02));
+      opacity: 0.82;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.36) 100%);
+      z-index: 0;
+    }
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pillEnter {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 rgba(212,175,55,0); }
+      50% { box-shadow: 0 0 18px rgba(212,175,55,0.14); }
+    }
+    .reveal {
+      animation: revealUp 700ms ease forwards;
+    }
+    header {
+      background: rgba(8, 4, 5, 0.9) !important;
+      border-bottom: 1px solid rgba(212,175,55,0.12) !important;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.42) !important;
+    }
+    header a {
+      color: #fff2f0 !important;
+    }
+    header a:hover {
+      color: #ff8c84 !important;
+    }
+    .panel,
+    .lead-card,
+    .card-item {
+      background:
+        radial-gradient(circle at top left, rgba(178, 14, 19, 0.38), transparent 32%),
+        linear-gradient(145deg, rgba(18, 6, 7, 0.94), rgba(28, 8, 9, 0.98)) !important;
+      color: #fff6f5 !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+    .panel:hover,
+    .lead-card:hover,
+    .card-item:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 152, 142, 0.4) !important;
+      box-shadow: 0 40px 110px rgba(0, 0, 0, 0.44), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+    .panel::before,
+    .lead-card::before,
+    .card-item::before {
+      background: radial-gradient(circle at top left, rgba(255, 110, 102, 0.28), transparent 38%) !important;
+    }
+    .bg-white\/90,
+    .bg-white\/80,
+    .bg-white,
+    .bg-white\/95 {
+      background: rgba(15, 5, 6, 0.72) !important;
+    }
+    .border-brand-100,
+    .border-brand-200,
+    .border-brand-300 {
+      border-color: rgba(178, 14, 19, 0.32) !important;
+    }
+    .text-stone-900,
+    .text-stone-800,
+    .text-stone-700,
+    .text-stone-600,
+    .text-stone-500,
+    .text-stone-400 {
+      color: #fff0ee !important;
+    }
+    .text-brand-700 {
+      color: #ff8c84 !important;
+    }
+    .panel {
+      position: relative; overflow: hidden; border-radius: 2rem;
+      background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(252,246,245,0.96));
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 70px rgba(52,9,9,0.08);
+    }
+    .panel::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(255,165,156,0.54), transparent 36%);
+      opacity: 0.84;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1rem;
+      border-radius: 999px; text-transform: uppercase; letter-spacing: 0.32em; font-size: 0.63rem;
+      font-weight: 800; border: 1px solid rgba(178,14,19,0.32);
+      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(248,232,230,0.98));
+      color: #5b0a0c; box-shadow: 0 18px 50px rgba(178,14,19,0.12);
+      position: relative; isolation: isolate; overflow: hidden;
+      transition: transform 280ms ease, border-color 280ms ease, box-shadow 280ms ease;
+      animation: pillEnter 520ms ease;
+    }
+    .pill::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(255,224,220,0.95), transparent 38%);
+      opacity: 0.88; z-index: -1;
+    }
+    .pill::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      background: linear-gradient(135deg, rgba(212,175,55,0.55), rgba(255,255,255,0.35));
+      filter: blur(10px);
+      transition: opacity 220ms ease, transform 220ms ease;
+      transform: scale(0.96);
+      z-index: -2;
+    }
+    .pill:hover,
+    .pill:focus-visible {
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(212,175,55,0.7);
+      box-shadow: 0 22px 60px rgba(178,14,19,0.16);
+    }
+    .pill:hover::after,
+    .pill:focus-visible::after {
+      opacity: 1;
+      transform: scale(1);
+      animation: pulseGlow 1.8s ease infinite;
+    }
+    .pill.dark { background: linear-gradient(145deg, #1e0808, #070404); color: #fff7f5; border-color: rgba(255,255,255,0.1); }
+    .pill.dark::before { background: radial-gradient(circle at top left, rgba(255,128,122,0.6), transparent 34%); }
+    .card-item { position: relative; overflow: hidden; border-radius: 1.4rem; border: 1px solid var(--line); background: rgba(255,255,255,0.95); }
+    .section-highlight {
+      width: 5rem; height: 2px; margin-top: 1rem; background: linear-gradient(90deg, rgba(212,175,55,0.92), rgba(255,255,255,0.12));
+      border-radius: 999px;
+    }
+    .reveal-on-scroll {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card-item::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(255,188,180,0.45), transparent 40%); opacity: 0.85; }
+  </style>
 </head>
 <body>
-    <div class="page-shell">
-        <div class="glow-spot one"></div>
-        <div class="glow-spot two"></div>
-        <div class="grid-overlay"></div>
-
-        <header>
-            <div class="container flex flex-col md:flex-row items-center justify-between gap-4">
-                <a href="index.html" class="flex items-center gap-3 no-underline">
-                    <div class="w-10 h-10 rounded-2xl bg-[linear-gradient(145deg,#fff4bf,#e7b025,#2f1f04)] shadow-[0_0_30px_rgba(231,176,37,0.18)]"></div>
-                    <div>
-                        <div class="brand-title">Aureum</div>
-                        <div class="text-[10px] tracking-[0.35em] uppercase text-neutral-400">Reserve Protocol</div>
-                    </div>
-                </a>
-                <nav class="flex flex-wrap gap-6 text-xs tracking-[0.35em] uppercase text-neutral-300">
-                    <a class="nav-link" href="about.html">About</a>
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </nav>
-            </div>
-        </header>
-
-        <main class="container py-14">
-            <section class="editorial-shell luxury-light hero-panel">
-                <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-6 items-start">
-                    <div class="space-y-5">
-                        <div class="luxury-pill">
-                            <span class="w-2 h-2 rounded-full bg-[#e7b025] shadow-[0_0_12px_rgba(231,176,37,0.8)]"></span>
-                            Concierge access
-                        </div>
-                        <h1 class="section-title">
-                            Reach the <span class="gold-gradient">Aureum Concierge</span>
-                        </h1>
-                        <p class="section-subtitle">
-                            Whether you are reserving a private set, exploring custom finishing, or simply seeking access to upcoming releases, this channel is designed to feel direct, premium, and intentionally calm.
-                        </p>
-                    </div>
-
-                    <div class="contact-card">
-                        <div class="card-item">
-                            <div class="card-title">Studio address</div>
-                            <p class="card-copy">Nairobi Showroom, Kenya<br>Private appointment only.</p>
-                        </div>
-                        <div class="card-item">
-                            <div class="card-title">Email</div>
-                            <p class="card-copy">luxury@aureumtoothpicks.com</p>
-                        </div>
-                        <div class="card-item">
-                            <div class="card-title">Response window</div>
-                            <p class="card-copy">Mon – Fri, 9AM – 5PM EAT<br>Priority inquiries answered within 24 hours.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 mt-6">
-                <div class="map-shell">
-                    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.0398579189516!2d36.81482857513531!3d-1.2863891364751062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10c8dbdbab53%3A0x8f6870d9b8613304!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-
-                <div class="form-shell p-5 sm:p-6">
-                    <div class="luxury-pill mb-4">Reserve inquiry</div>
-                    <form class="space-y-4">
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="field-label">Full name</label>
-                                <input type="text" placeholder="Adrian Gold">
-                            </div>
-                            <div>
-                                <label class="field-label">Email</label>
-                                <input type="email" placeholder="hello@aureumlux.com">
-                            </div>
-                        </div>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="field-label">Phone</label>
-                                <input type="tel" placeholder="+254700000000">
-                            </div>
-                            <div>
-                                <label class="field-label">Purpose</label>
-                                <input type="text" placeholder="Bespoke set / visit / support">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="field-label">Message</label>
-                            <textarea placeholder="Tell us what you are looking for, your timing, or any preferred finishing notes."></textarea>
-                        </div>
-                        <button type="button" class="cta-button">Send inquiry</button>
-                    </form>
-                </div>
-            </section>
-
-            <section class="editorial-shell luxury-dark hero-panel mt-6">
-                <div class="line-divider"></div>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div class="feature-card">
-                        <div class="feature-title">Private showroom</div>
-                        <p class="feature-copy">By appointment only, so each visit feels calm, tailored, and properly elevated.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-title">Fast concierge routing</div>
-                        <p class="feature-copy">Requests are pulled into a clearer support path so the interaction feels immediate without feeling crowded.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-title">Signature service standard</div>
-                        <p class="feature-copy">Every message is handled like a luxury inquiry—from tone, pacing, to the level of detail delivered back.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            © 2026 Aureum Premium Toothpicks. All Rights Reserved.
-        </footer>
+  <header class="sticky top-0 z-40 border-b border-brand-200/80 bg-white/90 backdrop-blur-2xl">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 no-underline">
+        <span class="flex h-11 w-11 items-center justify-center rounded-full border border-brand-500/30 bg-white text-lg text-brand-700 shadow-sm"><i class="fa-solid fa-crown"></i></span>
+        <div>
+          <div class="font-display text-[0.7rem] tracking-[0.42em] text-brand-700 uppercase">Aureum</div>
+          <div class="font-display text-[0.72rem] tracking-[0.36em] text-stone-900 uppercase">Toothpicks</div>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-stone-700 hover:text-brand-700">Home</a>
+        <a href="about.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-stone-700 hover:text-brand-700">About</a>
+        <a href="contact.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-brand-700 font-bold">Contact</a>
+      </nav>
+      <button id="menu-toggle" class="md:hidden rounded-full border border-brand-200 px-4 py-2 text-sm font-bold text-brand-700">Menu</button>
     </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-brand-100 bg-white/95 px-4 pb-4 pt-3">
+      <a href="index.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-stone-700">Home</a>
+      <a href="about.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-stone-700">About</a>
+      <a href="contact.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-brand-700">Contact</a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <section class="panel p-6 lg:p-8 reveal-on-scroll">
+      <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-6 items-center">
+        <div>
+          <div class="pill dark">Contact concierge</div>
+          <h1 class="mt-4 font-display text-5xl sm:text-6xl leading-none text-stone-900">Let the house shape your next table moment.</h1>
+          <p class="mt-4 text-base leading-8 text-stone-700">Use the contact form for reserve requests, private host consultations, hospitality partnerships, or a tasting set inquiry. The house responds with curated options and a tailored service path.</p>
+          <div class="mt-6 grid gap-3">
+            <div class="card-item p-4">
+              <div class="relative z-10 text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">Email</div>
+              <div class="relative z-10 mt-2 text-base text-stone-800">hello@aureumlux.com</div>
+            </div>
+            <div class="card-item p-4">
+              <div class="relative z-10 text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">Private line</div>
+              <div class="relative z-10 mt-2 text-base text-stone-800">+254 700 000 000</div>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-[1.75rem] overflow-hidden border border-brand-100 bg-white shadow-lg shadow-brand-100/30">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80" alt="Luxury table and service lighting" class="h-full min-h-[360px] w-full object-cover" />
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 grid lg:grid-cols-[1fr_1fr] gap-6 reveal-on-scroll">
+      <div class="panel p-6 lg:p-8">
+        <div class="pill">Request a reserve</div>
+        <form class="mt-5 grid gap-4">
+          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Full name</span><input type="text" placeholder="Adrian Gold" class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500" /></label>
+          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Email address</span><input type="email" placeholder="hello@aureumlux.com" class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500" /></label>
+          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Phone</span><input type="tel" placeholder="+254 700 000 000" class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500" /></label>
+          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Service type</span><select class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500"><option>Collector reserve</option><option>Private tasting</option><option>Hospitality partnership</option><option>Gifting inquiry</option></select></label>
+          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Details</span><textarea rows="5" placeholder="Tell us your preferred set, timeline, or hosting notes." class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500"></textarea></label>
+          <button type="button" class="rounded-full bg-brand-700 px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-white">Send inquiry</button>
+        </form>
+      </div>
+
+      <div class="grid gap-6">
+        <div class="panel p-6 lg:p-8">
+          <div class="pill dark">Why contact us</div>
+          <p class="mt-4 text-stone-700 leading-8">Whether you are preparing a signature dinner, refreshing a boutique hospitality menu, or arranging a luxury gift, the Aureum concierge helps you choose a finish and profile that fits the room.</p>
+          <div class="mt-5 space-y-3">
+            <div class="card-item p-4"><div class="relative z-10 text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">Collector reserve</div><div class="relative z-10 mt-2 text-sm text-stone-700">Access limited seasonal drops and tasting sets.</div></div>
+            <div class="card-item p-4"><div class="relative z-10 text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">Hospitality styling</div><div class="relative z-10 mt-2 text-sm text-stone-700">Pair flavour notes and finishing details to fit a luxury table service.</div></div>
+          </div>
+        </div>
+        <div class="rounded-[2rem] overflow-hidden border border-brand-100 shadow-lg shadow-brand-100/30">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Restaurant service styling" class="h-[290px] w-full object-cover" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-brand-100 mt-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div>
+        <div class="font-display text-[0.78rem] tracking-[0.38em] text-brand-700 uppercase">Aureum</div>
+        <div class="text-sm text-stone-600">The house concierge for tasteful, high-end service moments.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const pillElements = Array.from(document.querySelectorAll('.pill'));
+    const revealItems = Array.from(document.querySelectorAll('.reveal-on-scroll'));
+
+    window.addEventListener('mousemove', (event) => {
+      pillElements.forEach((pill) => {
+        const rect = pill.getBoundingClientRect();
+        const dx = event.clientX - (rect.left + rect.width / 2);
+        const dy = event.clientY - (rect.top + rect.height / 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const threshold = Math.max(rect.width, rect.height) * 1.4;
+
+        if (distance < threshold) {
+          pill.classList.add('pill-near');
+        } else {
+          pill.classList.remove('pill-near');
+        }
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+  </script>
 </body>
 </html>

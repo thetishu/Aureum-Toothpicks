@@ -1,968 +1,551 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aureum | Futuristic Reserve Toothpicks</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Cinzel:wght@500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        serif: ['Cinzel', 'serif']
-                    },
-                    colors: {
-                        gold: {
-                            50: '#fff9eb',
-                            100: '#fff0c6',
-                            200: '#f9dd8a',
-                            300: '#f4ca52',
-                            400: '#e7b025',
-                            500: '#c89210',
-                            600: '#a3730d',
-                            700: '#7e560b',
-                            800: '#553909',
-                            900: '#2f1f04'
-                        }
-                    }
-                }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Aureum Toothpicks | Refined Reserve Collection</title>
+  <meta name="description" content="Aureum Toothpicks crafts a dramatic reserve collection of refined toothpicks with elevated flavours and luxury finishing." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              50: '#fff6f5',
+              100: '#ffe4e1',
+              200: '#ffc4bf',
+              300: '#ff978f',
+              400: '#ff6e66',
+              500: '#b20e13',
+              600: '#8c0b10',
+              700: '#6d0a10',
+              800: '#380408',
+              900: '#160204'
             }
+          }
         }
-    </script>
-    <style>
-        :root {
-            color-scheme: light;
-        }
-        body {
-            background:
-                radial-gradient(circle at 12% 12%, rgba(255, 244, 191, 0.94), transparent 24%),
-                radial-gradient(circle at 88% 18%, rgba(231, 176, 37, 0.32), transparent 18%),
-                radial-gradient(circle at 50% 100%, rgba(6, 6, 6, 0.1), transparent 34%),
-                linear-gradient(135deg, #fffdf8 0%, #fffaf0 38%, #f4ebdc 100%);
-            color: #2b210d;
-        }
-        .grid-overlay {
-            background-image:
-                linear-gradient(rgba(88, 62, 16, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(88, 62, 16, 0.08) 1px, transparent 1px);
-            background-size: 72px 72px;
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 85%);
-        }
-        .gold-text-clip {
-            background: linear-gradient(90deg, #fff4bf 0%, #e7b025 40%, #c89210 70%, #7e560b 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .ambient-word {
-            color: transparent;
-            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        body .text-gold-100,
-        body .text-gold-200,
-        body .text-gold-300,
-        body .text-gold-400,
-        body .text-gold-500,
-        body .text-gold-600,
-        body .text-gold-700,
-        body .text-gold-800,
-        body .text-gold-900 {
-            color: transparent !important;
-            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .brand-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            font-size: 1rem;
-            background: linear-gradient(90deg, #6d4700 0%, #c78f12 48%, #7e560b 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .panel {
-            position: relative;
-            isolation: isolate;
-            background:
-                radial-gradient(circle at top left, rgba(255, 244, 191, 0.82), transparent 36%),
-                linear-gradient(145deg, rgba(255,255,255,0.98), rgba(252,247,238,0.97));
-            border: 1px solid rgba(231, 176, 37, 0.34);
-            box-shadow: 0 20px 60px rgba(184,133,19,0.12), inset 0 1px 0 rgba(255,255,255,0.96);
-            backdrop-filter: blur(18px);
-            transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
-        }
-        .panel::before,
-        .metric-tile::before,
-        .luxury-pill::before,
-        .hero-shell::before,
-        .metric-card::before,
-        .feature-card::before,
-        .timeline-item::before,
-        .card-item::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            pointer-events: none;
-            background: radial-gradient(circle at top left, rgba(255,244,191,0.72), transparent 42%);
-            opacity: 0.82;
-            transition: opacity 220ms ease, transform 220ms ease;
-            z-index: -1;
-        }
-        .panel:hover,
-        .metric-tile:hover,
-        .luxury-pill:hover,
-        .hero-shell:hover,
-        .metric-card:hover,
-        .feature-card:hover,
-        .timeline-item:hover,
-        .card-item:hover {
-            transform: translateY(-4px);
-            border-color: rgba(231, 176, 37, 0.48);
-            box-shadow: 0 28px 80px rgba(184,133,19,0.18), inset 0 1px 0 rgba(255,255,255,0.98);
-        }
-        .panel:hover::before,
-        .metric-tile:hover::before,
-        .luxury-pill:hover::before,
-        .hero-shell:hover::before,
-        .metric-card:hover::before,
-        .feature-card:hover::before,
-        .timeline-item:hover::before,
-        .card-item:hover::before {
-            opacity: 1;
-            transform: scale(1.03);
-        }
-        .hero-shell {
-            position: relative;
-            isolation: isolate;
-            background:
-                radial-gradient(circle at top left, rgba(255, 244, 191, 0.88), transparent 22%),
-                radial-gradient(circle at top right, rgba(231, 176, 37, 0.24), transparent 18%),
-                linear-gradient(145deg, rgba(255,255,255,0.9), rgba(248,239,221,0.95));
-            border: 1px solid rgba(231, 176, 37, 0.32);
-            box-shadow: 0 30px 90px rgba(184,133,19,0.14);
-        }
-        .luxury-pill {
-            position: relative;
-            isolation: isolate;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-            border-radius: 9999px;
-            border: 1px solid rgba(231, 176, 37, 0.4);
-            background: linear-gradient(145deg, rgba(255,255,255,0.86), rgba(252,244,217,0.95));
-            padding: 0.55rem 0.9rem;
-            font-size: 0.65rem;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: transparent;
-            background: linear-gradient(90deg, #090704 0%, #521a10 38%, #8b4d0a 70%, #d39a1d 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            box-shadow: 0 10px 30px rgba(231,176,37,0.06);
-        }
-        .metric-tile {
-            position: relative;
-            isolation: isolate;
-            border: 1px solid rgba(231, 176, 37, 0.28);
-            background:
-                radial-gradient(circle at top left, rgba(255,244,191,0.7), transparent 42%),
-                linear-gradient(180deg, rgba(255,255,255,0.92), rgba(252,245,228,0.92));
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
-        }
-        .modal-shell {
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(145deg, #fffdf8, #f7f0e0);
-            border: 1px solid rgba(231, 176, 37, 0.36);
-            box-shadow: 0 26px 80px rgba(184,133,19,0.14), 0 0 0 1px rgba(255,255,255,0.9) inset;
-        }
-        .modal-close-button {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            z-index: 40;
-            width: 3.15rem;
-            height: 3.15rem;
-            border-radius: 9999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #fff4bf, #e7b025);
-            color: #2c1602;
-            border: 1px solid rgba(255,244,191,0.9);
-            box-shadow: 0 12px 36px rgba(0,0,0,0.48), 0 0 0 6px rgba(231,176,37,0.10);
-            transition: transform 180ms ease, filter 180ms ease;
-            padding: 0;
-            font-size: 1.65rem;
-            line-height: 1;
-            font-weight: 800;
-        }
-        .modal-close-button:hover {
-            transform: scale(1.04);
-            filter: brightness(1.05);
-        }
-        body .text-white,
-        body .text-neutral-100 {
-            color: #2a1e08 !important;
-        }
-        body .text-neutral-200 {
-            color: #6a5329 !important;
-        }
-        body .text-neutral-300,
-        body .text-neutral-400,
-        body .text-neutral-500,
-        body .text-neutral-600,
-        body .text-neutral-700 {
-            color: #64502d !important;
-        }
-        body .bg-black\/45,
-        body .bg-black\/35,
-        body .bg-black\/80,
-        body .bg-black\/85,
-        body .bg-black\/90,
-        body .bg-black\/70,
-        body .bg-black\/95 {
-            background: rgba(255,255,255,0.88) !important;
-        }
-        .neon-line {
-            background: linear-gradient(90deg, transparent, rgba(231,176,37,0.92), rgba(255,244,191,0.85), rgba(231,176,37,0.92), transparent);
-        }
-        .float-slow {
-            animation: floatSlow 10s ease-in-out infinite;
-        }
-        .float-slower {
-            animation: floatSlow 14s ease-in-out infinite;
-        }
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-        }
-        .scanline::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent);
-            background-size: 100% 6px;
-            mix-blend-mode: screen;
-            pointer-events: none;
-            opacity: 0.18;
-        }
-
-        .input-error {
-            border-color: #e67b35 !important;
-            box-shadow: 0 0 0 4px rgba(230,123,53,0.12) !important;
-        }
-        .error-message {
-            color: #6d4700;
-            font-size: 0.82rem;
-            min-height: 1.2rem;
-            margin-top: 0.4rem;
-        }
-        .status-banner {
-            display: none;
-            padding: 1rem 1.2rem;
-            border-radius: 1rem;
-            border: 1px solid rgba(212,175,55,0.2);
-            background: rgba(255,244,191,0.35);
-            color: #5a3b00;
-            margin-bottom: 1.5rem;
-        }
-        .status-banner.visible {
-            display: block;
-        }
-        .status-banner.success {
-            border-color: rgba(111,195,0,0.2);
-            color: #3f5700;
-            background: rgba(230,245,203,0.7);
-        }
-
-        /* Welcome modal flair */
-        #welcome-backdrop{
-            background: linear-gradient(180deg, rgba(0,0,0,0.78), rgba(0,0,0,0.86));
-        }
-        #welcome-panel{ position:relative; overflow:visible; border:1px solid rgba(212,175,55,0.12); }
-        #welcome-panel::before{ content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(212,175,55,0.06), transparent 30%); pointer-events:none; mix-blend-mode:screen; border-radius:12px; }
-        .crown-blob{ width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,#fff4bf,#e7b025); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(212,175,55,0.12); }
-
-        @keyframes welcomePop {
-            0% { transform: translateY(12px) scale(.96); opacity:0 }
-            60% { transform: translateY(-6px) scale(1.02); opacity:1 }
-            100% { transform: translateY(0) scale(1); opacity:1 }
-        }
-        .welcome-enter{ animation: welcomePop 520ms cubic-bezier(.2,.9,.2,1) forwards; }
-
-        @keyframes shimmerSlide { 0%{background-position:-120% 0} 100%{background-position:120% 0} }
-        .welcome-shimmer{ background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0) 100%); background-size:200% 100%; animation: shimmerSlide 2.2s linear infinite; opacity:0.22; position:absolute; inset:0; pointer-events:none; border-radius:10px }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #fffdfb;
+      --surface: #ffffff;
+      --ink: #1a0909;
+      --accent: #b20e13;
+      --accent-soft: #f5dfdd;
+      --accent-dark: #2a0808;
+      --line: rgba(178, 14, 19, 0.16);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(178, 14, 19, 0.72), transparent 24%),
+        radial-gradient(circle at 82% 10%, rgba(255, 99, 90, 0.24), transparent 18%),
+        radial-gradient(circle at 50% 100%, rgba(24, 4, 5, 0.94), transparent 34%),
+        linear-gradient(135deg, #080404 0%, #1b0507 42%, #050303 100%);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(178, 14, 19, 0.06), transparent 18%, transparent 84%, rgba(178, 14, 19, 0.06)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 20%, transparent 80%, rgba(255, 255, 255, 0.02));
+      opacity: 0.82;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.36) 100%);
+      z-index: 0;
+    }
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pillEnter {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 rgba(212,175,55,0); }
+      50% { box-shadow: 0 0 18px rgba(212,175,55,0.14); }
+    }
+    .reveal {
+      animation: revealUp 700ms ease forwards;
+    }
+    header {
+      background: rgba(8, 4, 5, 0.9) !important;
+      border-bottom: 1px solid rgba(212,175,55,0.12) !important;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4) !important;
+    }
+    header a {
+      color: #fff2f0 !important;
+    }
+    header a:hover {
+      color: #ff8c84 !important;
+    }
+    .panel,
+    .lead-card,
+    .card-item {
+      background:
+        radial-gradient(circle at top left, rgba(178, 14, 19, 0.38), transparent 32%),
+        linear-gradient(145deg, rgba(18, 6, 7, 0.94), rgba(28, 8, 9, 0.98)) !important;
+      color: #fff6f5 !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+    .panel:hover,
+    .lead-card:hover,
+    .card-item:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 152, 142, 0.4) !important;
+      box-shadow: 0 40px 110px rgba(0, 0, 0, 0.44), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+    .panel::before,
+    .lead-card::before,
+    .card-item::before {
+      background: radial-gradient(circle at top left, rgba(255, 110, 102, 0.28), transparent 38%) !important;
+    }
+    .bg-white\/90,
+    .bg-white\/80,
+    .bg-white,
+    .bg-white\/95 {
+      background: rgba(15, 5, 6, 0.72) !important;
+    }
+    .border-brand-100,
+    .border-brand-200,
+    .border-brand-300 {
+      border-color: rgba(178, 14, 19, 0.32) !important;
+    }
+    .text-stone-900,
+    .text-stone-800,
+    .text-stone-700,
+    .text-stone-600,
+    .text-stone-500,
+    .text-stone-400 {
+      color: #fff0ee !important;
+    }
+    .text-brand-700 {
+      color: #ff8c84 !important;
+    }
+    .page-shell { position: relative; overflow: hidden; }
+    .grid-overlay {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+      background-image: linear-gradient(rgba(42,8,8,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(42,8,8,0.12) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent 92%);
+    }
+    .panel {
+      position: relative; overflow: hidden; border-radius: 2rem;
+      background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(252,246,245,0.96));
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 70px rgba(52, 9, 9, 0.08);
+    }
+    .panel::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(255, 163, 154, 0.58), transparent 36%);
+      opacity: 0.85;
+    }
+    .section-highlight {
+      width: 5rem; height: 2px; margin-top: 1rem; background: linear-gradient(90deg, rgba(212,175,55,0.92), rgba(255,255,255,0.12));
+      border-radius: 999px;
+    }
+    .reveal-on-scroll {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .pill.pill-near {
+      border-color: rgba(212,175,55,0.82);
+      box-shadow: 0 30px 72px rgba(212,175,55,0.16);
+    }
+    .pill.pill-near::after {
+      opacity: 1;
+      transform: scale(1);
+      animation: pulseGlow 1.8s ease infinite;
+    }
+    .hero-accent {
+      display: inline-flex; align-items: center; gap: 0.75rem; margin-top: 1rem;
+    }
+    .hero-accent span {
+      width: 0.65rem; height: 0.65rem; border-radius: 999px; background: linear-gradient(135deg, rgba(212,175,55,1), rgba(255,255,255,0.7));
+      box-shadow: 0 0 16px rgba(212,175,55,0.24);
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.65rem; padding: 0.75rem 1rem;
+      border-radius: 999px; text-transform: uppercase; letter-spacing: 0.32em; font-size: 0.63rem;
+      font-weight: 800; border: 1px solid rgba(178,14,19,0.32);
+      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(248,232,230,0.98));
+      color: #5b0a0c; box-shadow: 0 18px 50px rgba(178,14,19,0.12);
+      position: relative; isolation: isolate; overflow: hidden;
+      transition: transform 280ms ease, border-color 280ms ease, box-shadow 280ms ease;
+      animation: pillEnter 520ms ease;
+    }
+    .pill::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(255,224,220,0.95), transparent 38%);
+      opacity: 0.85;
+      z-index: -1;
+    }
+    .pill::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      background: linear-gradient(135deg, rgba(212,175,55,0.55), rgba(255,255,255,0.35));
+      filter: blur(10px);
+      transition: opacity 220ms ease, transform 220ms ease;
+      transform: scale(0.96);
+      z-index: -2;
+    }
+    .pill:hover,
+    .pill:focus-visible {
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(212,175,55,0.7);
+      box-shadow: 0 22px 60px rgba(178,14,19,0.16);
+    }
+    .pill:hover::after,
+    .pill:focus-visible::after {
+      opacity: 1;
+      transform: scale(1);
+      animation: pulseGlow 1.8s ease infinite;
+    }
+    .pill.red { background: linear-gradient(145deg, #5c0b0f, #160204); color: #fff7f6; border-color: rgba(255,255,255,0.16); }
+    .pill.red::before { background: radial-gradient(circle at top left, rgba(255,128,122,0.6), transparent 34%); }
+    .pill.black { background: linear-gradient(145deg, #1b0a0a, #050404); color: #fff8f7; border-color: rgba(255,255,255,0.16); }
+    .pill.black::before { background: radial-gradient(circle at top left, rgba(255,90,90,0.5), transparent 26%); }
+    .table-card table { border-collapse: collapse; width: 100%; }
+    .table-card th, .table-card td { padding: 0.95rem 1rem; border-bottom: 1px solid rgba(178,14,19,0.12); text-align: left; }
+    .table-card th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.24em; color: #7f1918; }
+    .glow-ring {
+      position: absolute; width: 14rem; height: 14rem; border-radius: 999px; filter: blur(14px);
+      background: rgba(178, 14, 19, 0.14); z-index: 0; pointer-events: none;
+    }
+    @media (max-width: 900px) { .table-card th, .table-card td { padding: 0.8rem 0.75rem; } }
+  </style>
 </head>
-<body class="text-stone-900 font-sans min-h-screen overflow-x-hidden selection:bg-gold-400 selection:text-black">
-    <div class="fixed inset-0 pointer-events-none grid-overlay opacity-20"></div>
-    <div class="fixed inset-0 pointer-events-none scanline opacity-25"></div>
-
-    <header class="sticky top-0 z-40 border-b border-amber-200/80 bg-white/80 backdrop-blur-2xl shadow-[0_10px_30px_rgba(231,176,37,0.07)]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-[linear-gradient(145deg,#fff4bf,#e7b025,#2f1f04)] shadow-[0_0_30px_rgba(231,176,37,0.18)] transition-transform duration-300 hover:scale-105"></div>
-                    <div>
-                        <div class="brand-title">Aureum</div>
-                        <div class="text-[10px] tracking-[0.35em] uppercase text-neutral-400">Reserve Protocol</div>
-                    </div>
-                </div>
-
-                <nav class="hidden md:flex items-center gap-8 text-xs tracking-[0.35em] uppercase text-stone-700">
-                    <a href="contact.html" class="hover:text-gold-500 transition-colors">Contact</a>
-                    <a href="about.html" class="hover:text-gold-500 transition-colors">About</a>
-                </nav>
-
-                <div class="hidden md:block">
-                    <button onclick="openModal('Contact Form')" class="px-5 py-3 rounded-full bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 text-black text-[11px] tracking-[0.35em] uppercase font-extrabold hover:shadow-[0_0_30px_rgba(231,176,37,0.22)] hover:scale-[1.02] transition-all duration-300">
-                        Contact Form
-                    </button>
-                </div>
-
-                <button id="mobile-menu-btn" class="md:hidden w-11 h-11 rounded-full border border-amber-200 bg-white/90 text-gold-600 transition-transform duration-300 active:scale-95 shadow-sm">
-                    <i class="fa-solid fa-bars text-lg"></i>
-                </button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden border-t border-amber-200 bg-white/95 backdrop-blur-2xl px-4 py-4 space-y-2">
-            <a href="contact.html" onclick="toggleMobileMenu()" class="block px-3 py-3 rounded-xl text-stone-700 hover:text-gold-600 hover:bg-amber-50">Contact</a>
-            <a href="about.html" onclick="toggleMobileMenu()" class="block px-3 py-3 rounded-xl text-stone-700 hover:text-gold-600 hover:bg-amber-50">About</a>
-            <button onclick="toggleMobileMenu(); openModal('Contact Form')" class="w-full mt-2 px-4 py-3 rounded-xl bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 text-black text-[11px] tracking-[0.35em] uppercase font-extrabold transition-transform duration-300 active:scale-[0.98]">
-                Contact Form
-            </button>
-        </div>
+<body>
+  <div class="page-shell">
+    <div class="grid-overlay"></div>
+    <header class="sticky top-0 z-40 border-b border-brand-200/80 bg-white/90 backdrop-blur-2xl">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 no-underline">
+          <span class="flex h-11 w-11 items-center justify-center rounded-full border border-brand-500/30 bg-white text-lg text-brand-700 shadow-sm"><i class="fa-solid fa-crown"></i></span>
+          <div>
+            <div class="font-display text-[0.7rem] tracking-[0.42em] text-brand-700 uppercase">Aureum</div>
+            <div class="font-display text-[0.72rem] tracking-[0.36em] text-stone-900 uppercase">Toothpicks</div>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-brand-700 font-bold">Home</a>
+          <a href="about.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-stone-700 hover:text-brand-700">About</a>
+          <a href="contact.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-stone-700 hover:text-brand-700">Contact</a>
+        </nav>
+        <button id="menu-toggle" class="md:hidden rounded-full border border-brand-200 px-4 py-2 text-sm font-bold text-brand-700">Menu</button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden border-t border-brand-100 bg-white/95 px-4 pb-4 pt-3">
+        <a href="index.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-brand-700">Home</a>
+        <a href="about.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-stone-700">About</a>
+        <a href="contact.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-stone-700">Contact</a>
+      </div>
     </header>
 
     <main>
-        <section class="relative overflow-hidden pt-10 pb-24 lg:pt-12 lg:pb-28">
-            <div class="absolute inset-0">
-                <div class="absolute top-12 left-10 w-80 h-80 rounded-full bg-gold-300/25 blur-[120px] float-slow"></div>
-                <div class="absolute top-32 right-8 w-72 h-72 rounded-full bg-gold-200/25 blur-[140px] float-slower"></div>
-                <div class="absolute bottom-0 left-1/3 w-[32rem] h-[32rem] rounded-full bg-amber-200/50 blur-[160px]"></div>
+      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12 reveal-on-scroll">
+        <div class="panel p-4 sm:p-5 lg:p-7">
+          <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-stretch">
+            <div class="flex flex-col justify-between gap-6 p-3 sm:p-5">
+              <div class="pill red">Reserve edition</div>
+              <div>
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-none text-stone-900">The dramatic edge of <span class="text-brand-700">luxury toothpicks</span>.</h1>
+                <div class="section-highlight"></div>
+                <div class="hero-accent">
+                  <span></span>
+                  <div class="text-xs uppercase tracking-[0.28em] text-stone-600">Curated for the modern host</div>
+                </div>
+              </div>
+              <p class="max-w-2xl text-base leading-8 text-stone-700">Aureum pairs architecturally clean forms, crafted spice blends, and a house-made finish philosophy that turns a minimal ritual into a statement piece.</p>
+              <div class="flex flex-wrap gap-3">
+                <a href="#collection" class="rounded-full bg-brand-700 px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-white shadow-lg shadow-brand-200">See collection</a>
+                <button onclick="openReserveModal('Reserve a set')" class="rounded-full border border-brand-300 bg-white px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-brand-700">Reserve now</button>
+              </div>
+              <div class="grid sm:grid-cols-3 gap-3 mt-2">
+                <div class="rounded-2xl border border-brand-100 bg-white/80 p-4">
+                  <div class="text-2xl font-display text-brand-700">12</div>
+                  <div class="text-xs uppercase tracking-[0.28em] text-stone-600">signature profiles</div>
+                </div>
+                <div class="rounded-2xl border border-brand-100 bg-white/80 p-4">
+                  <div class="text-2xl font-display text-brand-700">4</div>
+                  <div class="text-xs uppercase tracking-[0.28em] text-stone-600">seasonal finishes</div>
+                </div>
+                <div class="rounded-2xl border border-brand-100 bg-white/80 p-4">
+                  <div class="text-2xl font-display text-brand-700">1</div>
+                  <div class="text-xs uppercase tracking-[0.28em] text-stone-600">collector's ritual</div>
+                </div>
+              </div>
             </div>
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="hero-shell rounded-[2.25rem] p-4 sm:p-5 lg:p-6">
-                    <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-5 items-stretch">
-                        <div class="rounded-[1.8rem] bg-white/72 p-6 sm:p-8 lg:p-10 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(231,176,37,0.08),transparent_38%,rgba(255,255,255,0.72))]"></div>
-                            <div class="relative z-10 space-y-7">
-                                <div class="luxury-pill">
-                                    <span class="w-2 h-2 rounded-full bg-gold-400 shadow-[0_0_18px_rgba(231,176,37,0.9)]"></span>
-                                    Collector-grade ritual
-                                </div>
-
-                                <div class="space-y-5">
-                                    <h1 class="font-display text-5xl sm:text-6xl lg:text-[5.7rem] font-bold tracking-tight leading-[0.95] text-stone-950">
-                                        Futuristic
-                                        <span class="block gold-text-clip">Gold Standard</span>
-                                        <span class="block text-stone-700">for Everyday Craft</span>
-                                    </h1>
-                                    <p class="max-w-2xl text-base sm:text-lg text-stone-600 leading-relaxed">
-                                        Aureum now feels like a premium collector capsule: brighter, cleaner, and more precise, with a stronger sense of modern luxury from the first glance.
-                                    </p>
-                                </div>
-
-                                <div class="flex flex-col sm:flex-row gap-4">
-                                    <button onclick="openModal('Inquire About Bespoke Sets')" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 text-black text-xs tracking-[0.35em] uppercase font-extrabold transition-all duration-300 shadow-[0_0_40px_rgba(231,176,37,0.22)] hover:scale-[1.02]">
-                                        Explore The Reserve
-                                    </button>
-                                    <a href="#collection" class="px-8 py-4 rounded-2xl border border-amber-200 bg-white/85 text-xs tracking-[0.35em] uppercase font-extrabold text-stone-800 hover:text-gold-700 hover:border-gold-300/60 hover:bg-amber-50 hover:scale-[1.01] transition-all duration-300">
-                                        View Collections
-                                    </a>
-                                </div>
-
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                                    <div class="metric-tile rounded-2xl p-4">
-                                        <div class="text-[10px] tracking-[0.35em] uppercase text-amber-700 mb-2">Material</div>
-                                        <div class="text-2xl font-display text-stone-900">Nordic Birch</div>
-                                    </div>
-                                    <div class="metric-tile rounded-2xl p-4">
-                                        <div class="text-[10px] tracking-[0.35em] uppercase text-amber-700 mb-2">Finish</div>
-                                        <div class="text-2xl font-display text-stone-900">Gold Alloy</div>
-                                    </div>
-                                    <div class="metric-tile rounded-2xl p-4">
-                                        <div class="text-[10px] tracking-[0.35em] uppercase text-amber-700 mb-2">Batch</div>
-                                        <div class="text-2xl font-display text-stone-900">30 Units</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="rounded-[1.8rem] border border-amber-200/80 bg-[linear-gradient(180deg,#fffefb,#f7f0e0)] p-5 sm:p-6 relative overflow-hidden">
-                            <div class="absolute top-4 right-4 rounded-full border border-gold-300/50 bg-white/80 px-3 py-1 text-[10px] tracking-[0.35em] uppercase text-gold-700">Aureum Capsule 01</div>
-                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(231,176,37,0.18),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,244,191,0.40),transparent_24%)]"></div>
-                            <div class="relative z-10 h-full flex flex-col">
-                                <div class="flex items-center justify-between gap-4 mb-4">
-                                    <div>
-                                        <div class="text-[10px] tracking-[0.35em] uppercase text-amber-700 mb-1">System Console</div>
-                                        <div class="text-2xl font-display text-stone-900">Aureum Core</div>
-                                    </div>
-                                    <div class="px-3 py-1 rounded-full border border-gold-300/40 bg-gold-100 text-[10px] tracking-[0.35em] uppercase text-gold-700">Live</div>
-                                </div>
-
-                                <div class="rounded-[1.5rem] border border-amber-200 bg-[linear-gradient(180deg,#fffefb,#f8f1df)] p-4 sm:p-5 mb-4 relative overflow-hidden shadow-[0_12px_40px_rgba(231,176,37,0.08)]">
-                                    <div class="absolute inset-0 bg-[linear-gradient(120deg,rgba(231,176,37,0.12),transparent_38%,rgba(255,244,191,0.45),transparent_72%)]"></div>
-                                    <svg viewBox="0 0 420 320" class="relative z-10 w-full h-auto" aria-hidden="true">
-                                        <defs>
-                                            <linearGradient id="fgOld" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" stop-color="#fff4bf"></stop>
-                                                <stop offset="50%" stop-color="#e7b025"></stop>
-                                                <stop offset="100%" stop-color="#553909"></stop>
-                                            </linearGradient>
-                                            <linearGradient id="fgWood" x1="0%" y1="0%" x2="0%" y2="100%">
-                                                <stop offset="0%" stop-color="#f1eadb"></stop>
-                                                <stop offset="100%" stop-color="#bba88d"></stop>
-                                            </linearGradient>
-                                        </defs>
-                                        <ellipse cx="210" cy="270" rx="110" ry="14" fill="rgba(0,0,0,0.12)"></ellipse>
-                                        <rect x="184" y="82" width="52" height="170" rx="26" fill="url(#fgOld)" stroke="#7e560b" stroke-width="1.5"></rect>
-                                        <rect x="193" y="114" width="34" height="10" rx="5" fill="#553909" opacity="0.85"></rect>
-                                        <path d="M 150 92 Q 147 105 149 246 Q 149 252 145 258 L 151 246 Z" fill="url(#fgWood)"></path>
-                                        <path d="M 275 102 Q 270 112 268 246 Q 268 250 263 258 L 270 246 Z" fill="url(#fgWood)" opacity="0.95"></path>
-                                        <circle cx="298" cy="210" r="4" fill="#e7b025" opacity="0.7"></circle>
-                                        <circle cx="306" cy="192" r="2.5" fill="#f4ca52" opacity="0.7"></circle>
-                                        <polygon points="210,101 218,112 210,123 202,112" fill="rgba(255,255,255,0.45)"></polygon>
-                                        <path d="M 160 175 C 140 165 140 142 160 147 C 167 151 165 173 160 175 Z" fill="#063b33" opacity="0.85"></path>
-                                        <path d="M 312 175 C 292 165 292 142 312 147 C 319 151 317 173 312 175 Z" fill="#1f7d6b" opacity="0.55"></path>
-                                    </svg>
-                                </div>
-
-                                <div class="grid grid-cols-2 gap-3 mt-auto">
-                                    <div class="rounded-2xl border border-amber-200 bg-amber-50/80 p-4">
-                                        <div class="text-[10px] tracking-[0.3em] uppercase text-amber-700 mb-2">Signal</div>
-                                        <div class="text-lg font-display text-gold-700">Premium</div>
-                                    </div>
-                                    <div class="rounded-2xl border border-amber-200 bg-amber-50/80 p-4">
-                                        <div class="text-[10px] tracking-[0.3em] uppercase text-amber-700 mb-2">Latency</div>
-                                        <div class="text-lg font-display text-stone-900">Instant</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              <div class="rounded-[1.75rem] overflow-hidden border border-brand-100 bg-white shadow-lg shadow-brand-100/40">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Luxury appetizer table styling" class="h-72 w-full object-cover" />
+              </div>
+              <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
+                <div class="rounded-[1.75rem] overflow-hidden border border-brand-100 bg-white shadow-lg shadow-brand-100/40">
+                  <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80" alt="Premium dining detail" class="h-40 w-full object-cover" />
                 </div>
+                <div class="rounded-[1.75rem] overflow-hidden border border-brand-100 bg-white shadow-lg shadow-brand-100/40">
+                  <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80" alt="Restaurant service styling" class="h-40 w-full object-cover" />
+                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="heritage" class="relative py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-end justify-between gap-8 mb-10">
-                    <div>
-                        <div class="text-xs tracking-[0.35em] uppercase text-gold-200 mb-3">Why It Works</div>
-                        <h2 class="font-display text-3xl sm:text-5xl text-white">Designed Like Hardware, Not Packaging</h2>
-                    </div>
-                    <div class="hidden lg:block max-w-xl text-sm text-neutral-400 leading-relaxed">
-                        Every section is built to feel like a command interface: crisp, luminous, layered, and grounded in a black-and-gold system with more presence than a typical product site.
-                    </div>
-                </div>
-
-                <div class="grid lg:grid-cols-3 gap-5">
-                    <div class="panel rounded-[1.75rem] p-7">
-                        <div class="w-12 h-12 rounded-2xl bg-gold-400/10 border border-gold-300/20 flex items-center justify-center text-gold-200 mb-5 transition-transform duration-300 group-hover:scale-105">
-                            <i class="fa-solid fa-layer-group"></i>
-                        </div>
-                        <h3 class="font-display text-2xl text-white mb-3">Layered Materials</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed">Glass, glow, matte black, and gold accents combine into a high-contrast system that feels dense and premium.</p>
-                    </div>
-                    <div class="panel rounded-[1.75rem] p-7">
-                        <div class="w-12 h-12 rounded-2xl bg-gold-400/10 border border-gold-300/20 flex items-center justify-center text-gold-200 mb-5 transition-transform duration-300 group-hover:scale-105">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        </div>
-                        <h3 class="font-display text-2xl text-white mb-3">Precision Motion</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed">Floating light, subtle depth, and cleaner spacing make the page feel responsive and engineered instead of decorative.</p>
-                    </div>
-                    <div class="panel rounded-[1.75rem] p-7">
-                        <div class="w-12 h-12 rounded-2xl bg-gold-400/10 border border-gold-300/20 flex items-center justify-center text-gold-200 mb-5 transition-transform duration-300 group-hover:scale-105">
-                            <i class="fa-solid fa-gem"></i>
-                        </div>
-                        <h3 class="font-display text-2xl text-white mb-3">Gold-First Palette</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed">The interface keeps the rich gold and black foundation while adding just enough neon energy to feel futuristic.</p>
-                    </div>
-                </div>
+      <section id="collection" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-10 reveal-on-scroll">
+        <div class="grid lg:grid-cols-[0.88fr_1.12fr] gap-6 items-start">
+          <div class="panel p-6 lg:p-8">
+            <div class="pill red">Collection</div>
+            <h2 class="mt-4 font-display text-4xl sm:text-5xl leading-none text-stone-900">A modern table of three house signatures.</h2>
+            <p class="mt-4 text-stone-700 leading-8">Each profile is built around clean materiality and a distinct sensory cue, from smoky spice to bright citrus and velvet cocoa tones.</p>
+            <div class="mt-6 grid gap-3">
+              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
+                <div class="font-display text-xl text-brand-700">No. 01 | Ember Ash</div>
+                <p class="text-sm text-stone-600 mt-2">Smoked chili, black tea, and dark cedar for late-night dinners and dramatic pairings.</p>
+              </div>
+              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
+                <div class="font-display text-xl text-brand-700">No. 02 | Saffron Bloom</div>
+                <p class="text-sm text-stone-600 mt-2">Bright citrus, saffron warmth, and a subtly glossy finish for elevated hosting.</p>
+              </div>
+              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
+                <div class="font-display text-xl text-brand-700">No. 03 | Velvet Smoke</div>
+                <p class="text-sm text-stone-600 mt-2">Soft cocoa, bitter cherry, and black pepper for a polished and intimate finish.</p>
+              </div>
             </div>
-        </section>
-
-        <section id="collection" class="relative py-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_8%,rgba(255,255,255,0.02))]">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
-                    <div>
-                        <div class="text-xs tracking-[0.35em] uppercase text-gold-200 mb-3">Signature Editions</div>
-                        <h2 class="font-display text-3xl sm:text-5xl text-white">Collection as a Control Surface</h2>
-                    </div>
-                    <p class="max-w-2xl text-sm text-neutral-400 leading-relaxed">Two editions, two moods, same futuristic language: luminous gold, deep black framing, and product art that reads like an artifact display.</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-                    <article class="panel rounded-[2rem] overflow-hidden group">
-                        <div class="relative h-80 bg-[radial-gradient(circle_at_top,rgba(231,176,37,0.18),transparent_35%),linear-gradient(145deg,#050505,#101010)] flex items-center justify-center overflow-hidden">
-                            <div class="absolute inset-0 bg-[linear-gradient(135deg,transparent,rgba(255,255,255,0.04),transparent)]"></div>
-                            <svg viewBox="0 0 400 300" class="relative z-10 w-full h-full max-w-sm transition-transform duration-700 group-hover:scale-105" aria-hidden="true">
-                                <defs>
-                                    <linearGradient id="mintBody" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#fff4bf"></stop>
-                                        <stop offset="55%" stop-color="#e7b025"></stop>
-                                        <stop offset="100%" stop-color="#553909"></stop>
-                                    </linearGradient>
-                                    <linearGradient id="mintWood" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" stop-color="#f4efe3"></stop>
-                                        <stop offset="100%" stop-color="#c8b498"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <ellipse cx="200" cy="245" rx="110" ry="14" fill="rgba(0,0,0,0.8)"></ellipse>
-                                <rect x="183" y="72" width="54" height="174" rx="26" fill="url(#mintBody)" stroke="#7e560b" stroke-width="1.5"></rect>
-                                <rect x="192" y="112" width="36" height="10" rx="5" fill="#553909"></rect>
-                                <path d="M 154 88 Q 152 102 154 236 Q 154 242 150 248 L 156 236 Z" fill="url(#mintWood)"></path>
-                                <path d="M 248 92 Q 244 104 245 234 Q 245 240 241 248 L 247 236 Z" fill="url(#mintWood)"></path>
-                                <path d="M 140 180 C 129 175 129 160 142 164 C 147 168 145 180 140 180 Z" fill="#0f5c4f" opacity="0.85"></path>
-                                <path d="M 145 164 C 153 160 158 170 150 174 C 145 174 142 169 145 164 Z" fill="#1d947f" opacity="0.65"></path>
-                            </svg>
-                            <div class="absolute top-4 right-4 rounded-full border border-gold-300/50 bg-white/80 px-3 py-1 text-[10px] tracking-[0.35em] uppercase text-gold-700">Mint Protocol</div>
-                        </div>
-                        <div class="p-7">
-                            <div class="flex items-start justify-between gap-4 mb-3">
-                                <div>
-                                    <h3 class="font-display text-2xl text-white">The Nordic Mint</h3>
-                                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mt-2">Crisp / Bright / Clean</p>
-                                </div>
-                                <div class="font-display text-2xl text-gold-200">$45</div>
-                            </div>
-                            <p class="text-neutral-400 text-sm leading-relaxed mb-6">Nordic birch infused with peppermint oils and packaged in a gold vessel. Designed for a sharp, cool sensory profile.</p>
-                            <button onclick="openModal('Nordic Mint Collection Reserve')" class="w-full px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-[11px] tracking-[0.35em] uppercase font-extrabold text-neutral-100 hover:bg-gold-300 hover:text-black hover:border-gold-200 hover:scale-[1.01] transition-all duration-300">
-                                Reserve Selection
-                            </button>
-                        </div>
-                    </article>
-
-                    <article class="panel rounded-[2rem] overflow-hidden group">
-                        <div class="relative h-80 bg-[radial-gradient(circle_at_top,rgba(0,255,209,0.10),transparent_32%),linear-gradient(145deg,#050505,#111111)] flex items-center justify-center overflow-hidden">
-                            <div class="absolute inset-0 bg-[linear-gradient(135deg,transparent,rgba(255,255,255,0.04),transparent)]"></div>
-                            <svg viewBox="0 0 400 300" class="relative z-10 w-full h-full max-w-sm transition-transform duration-700 group-hover:scale-105" aria-hidden="true">
-                                <defs>
-                                    <linearGradient id="maltBody" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#ffe7a6"></stop>
-                                        <stop offset="50%" stop-color="#c89210"></stop>
-                                        <stop offset="100%" stop-color="#2f1f04"></stop>
-                                    </linearGradient>
-                                    <linearGradient id="maltWood" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" stop-color="#cdb08f"></stop>
-                                        <stop offset="100%" stop-color="#775734"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <ellipse cx="200" cy="245" rx="110" ry="14" fill="rgba(0,0,0,0.8)"></ellipse>
-                                <rect x="183" y="72" width="54" height="174" rx="26" fill="url(#maltBody)" stroke="#7e560b" stroke-width="1.5"></rect>
-                                <rect x="192" y="112" width="36" height="10" rx="5" fill="#553909"></rect>
-                                <path d="M 252 90 Q 248 103 249 236 Q 249 241 244 248 L 250 236 Z" fill="url(#maltWood)"></path>
-                                <circle cx="287" cy="196" r="3.4" fill="#f4ca52" opacity="0.7"></circle>
-                                <circle cx="297" cy="211" r="2.4" fill="#f4ca52" opacity="0.5"></circle>
-                                <circle cx="278" cy="178" r="1.8" fill="#f4ca52" opacity="0.4"></circle>
-                            </svg>
-                            <div class="absolute top-4 right-4 rounded-full border border-gold-300/50 bg-white/80 px-3 py-1 text-[10px] tracking-[0.35em] uppercase text-gold-700">Barrel Signal</div>
-                        </div>
-                        <div class="p-7">
-                            <div class="flex items-start justify-between gap-4 mb-3">
-                                <div>
-                                    <h3 class="font-display text-2xl text-white">The Single Malt Reserve</h3>
-                                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mt-2">Deep / Warm / Smoke</p>
-                                </div>
-                                <div class="font-display text-2xl text-gold-200">$60</div>
-                            </div>
-                            <p class="text-neutral-400 text-sm leading-relaxed mb-6">Smoke-kissed oak fibers with Islay Single Malt character. Richer tone, deeper finish, built for a more dramatic reserve profile.</p>
-                            <button onclick="openModal('Single Malt Collection Reserve')" class="w-full px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-[11px] tracking-[0.35em] uppercase font-extrabold text-neutral-100 hover:bg-gold-300 hover:text-black hover:border-gold-200 hover:scale-[1.01] transition-all duration-300">
-                                Reserve Selection
-                            </button>
-                        </div>
-                    </article>
-                </div>
+          </div>
+          <div class="panel table-card p-4 sm:p-5 lg:p-6">
+            <div class="pill black">Menu / Pricing</div>
+            <div class="overflow-x-auto mt-5">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Toothpick</th>
+                    <th>Flavour</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Ember Ash</td>
+                    <td>Smoked chili + black tea</td>
+                    <td>$18 / box</td>
+                  </tr>
+                  <tr>
+                    <td>Saffron Bloom</td>
+                    <td>Citrus + saffron</td>
+                    <td>$21 / box</td>
+                  </tr>
+                  <tr>
+                    <td>Velvet Smoke</td>
+                    <td>Cocoa + cherry + pepper</td>
+                    <td>$24 / box</td>
+                  </tr>
+                  <tr>
+                    <td>Reserve Tasting Set</td>
+                    <td>3 bottle-profile sampler</td>
+                    <td>$39 / set</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="craft" class="relative py-24">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <div class="text-xs tracking-[0.35em] uppercase text-gold-200 mb-3">Process</div>
-                    <h2 class="font-display text-3xl sm:text-5xl text-white">The Craft Behind the Interface</h2>
-                    <p class="max-w-2xl mx-auto mt-4 text-neutral-400 text-sm leading-relaxed">This section reads like a cinematic system panel: the product story sits inside a glowing frame, with enough negative space to feel deliberate and futuristic.</p>
-                </div>
-
-                <div class="panel rounded-[2rem] p-4 sm:p-5 lg:p-6 overflow-hidden">
-                    <div class="rounded-[1.5rem] overflow-hidden border border-white/10 bg-black relative aspect-video">
-                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(231,176,37,0.12),transparent_45%),linear-gradient(135deg,rgba(255,244,191,0.05),transparent_50%,rgba(231,176,37,0.06))]"></div>
-                        <iframe
-                            class="absolute inset-0 w-full h-full"
-                            src="https://www.youtube.com/embed/_QBWHqhtIyg?si=mE3u2e-icay7jcbZ"
-                            title="Aureum Craft Film"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
+      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+        <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6">
+          <div class="panel p-6 lg:p-8">
+            <div class="pill black">House philosophy</div>
+            <h2 class="mt-4 font-display text-4xl sm:text-5xl leading-none text-stone-900">Quiet luxury, but with an unmistakable edge.</h2>
+            <div class="grid md:grid-cols-2 gap-4 mt-6">
+              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
+                <div class="font-display text-xl text-brand-700">Materials</div>
+                <p class="mt-2 text-sm text-stone-600 leading-7">Every finish is selected for tactile clarity, from polished dark walnut to satin carbon black and deep oxblood tone.</p>
+              </div>
+              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
+                <div class="font-display text-xl text-brand-700">Atmosphere</div>
+                <p class="mt-2 text-sm text-stone-600 leading-7">The house creates the same high-end presence you expect from a wine list or a boutique fragrance shelf.</p>
+              </div>
             </div>
-        </section>
+          </div>
+          <div class="panel p-5 lg:p-7">
+            <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80" alt="High-end dining with elegant presentation" class="h-[360px] w-full rounded-[1.5rem] object-cover" />
+          </div>
+        </div>
+      </section>
 
-        <section id="membership" class="relative py-24">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="panel rounded-[2rem] p-8 sm:p-10 lg:p-14 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(231,176,37,0.16),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(0,255,209,0.08),transparent_28%)]"></div>
-                    <div class="relative z-10">
-                        <div class="inline-flex items-center gap-2 rounded-full border border-gold-300/20 bg-gold-400/10 px-4 py-2 text-[10px] tracking-[0.35em] uppercase text-gold-100 mb-6">
-                            Exclusive Access
-                        </div>
-                        <h2 class="font-display text-3xl sm:text-5xl text-white">Join The Aureum Guild</h2>
-                        <p class="mt-5 max-w-2xl mx-auto text-neutral-400 text-sm sm:text-base leading-relaxed">Receive reserve drops, limited hardware updates, and first access to new editions through a streamlined sign-up interface built to feel like a premium control panel.</p>
-
-                        <form onsubmit="handleFormSubmit(event)" class="mt-10 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
-                            <input
-                                type="email"
-                                id="guild-email"
-                                required
-                                placeholder="Enter your email"
-                                class="flex-1 px-5 py-4 rounded-2xl bg-black/45 border border-white/10 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-gold-300/60 transition-colors"
-                            />
-                            <button type="submit" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 text-black text-xs tracking-[0.35em] uppercase font-extrabold transition-all duration-300 hover:scale-[1.02]">
-                                Apply For Entry
-                            </button>
-                        </form>
-                    </div>
-                </div>
+      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+        <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-6">
+          <div class="panel p-6 lg:p-8">
+            <div class="pill red">Reserve CTA</div>
+            <h2 class="mt-4 font-display text-4xl sm:text-5xl leading-none text-stone-900">Reserve a statement set for your next host ritual.</h2>
+            <p class="mt-4 text-stone-700 leading-8">Choose a signature profile, request a tasting set, or schedule a private consultation with the Aureum concierge.</p>
+            <button onclick="openReserveModal('Request a tasting set')" class="mt-5 rounded-full bg-brand-700 px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-white">Book a reserve request</button>
+          </div>
+          <div class="panel p-4 sm:p-5">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="rounded-[1.5rem] overflow-hidden border border-brand-100 bg-white">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80" alt="Luxury tableware" class="h-52 w-full object-cover" />
+              </div>
+              <div class="rounded-[1.5rem] overflow-hidden border border-brand-100 bg-white">
+                <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80" alt="Fine dining atmosphere" class="h-52 w-full object-cover" />
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="border-t border-white/8 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-neutral-500">
-            <div class="flex items-center gap-3">
-                <span class="font-display text-lg tracking-[0.35em] uppercase gold-text-clip font-bold">Aureum</span>
-                <span class="text-[10px] tracking-[0.3em] uppercase">© 2026 Aureum Reserve Inc.</span>
-            </div>
-            <div class="flex items-center gap-5 text-neutral-400">
-                <a href="#" class="hover:text-gold-200 transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
-                <a href="#" class="hover:text-gold-200 transition-colors"><i class="fa-brands fa-pinterest-p text-lg"></i></a>
-                <a href="#" class="hover:text-gold-200 transition-colors"><i class="fa-brands fa-youtube text-lg"></i></a>
-            </div>
-            <p class="text-xs tracking-[0.25em] uppercase text-neutral-600">Precision. Signal. Ritual.</p>
+    <footer class="border-t border-brand-100 mt-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <div class="font-display text-[0.78rem] tracking-[0.38em] text-brand-700 uppercase">Aureum</div>
+          <div class="text-sm text-stone-600">Making the everyday dinner ritual feel rare again.</div>
         </div>
+        <div class="flex gap-4 text-brand-700">
+          <a href="https://instagram.com" aria-label="Instagram" class="hover:text-brand-800"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://pinterest.com" aria-label="Pinterest" class="hover:text-brand-800"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="https://youtube.com" aria-label="YouTube" class="hover:text-brand-800"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
     </footer>
 
-    <!-- Welcome Modal -->
-    <div id="welcome-modal" class="fixed inset-0 z-50 hidden items-center justify-center">
-        <div id="welcome-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-        <div id="welcome-panel" class="relative z-10 panel rounded-2xl max-w-lg w-[min(92%,600px)] mx-4 p-6 text-neutral-100">
-            <div class="welcome-shimmer" aria-hidden="true"></div>
-            <div class="flex items-start justify-between gap-4">
-                <div class="flex items-start gap-4">
-                    <div class="crown-blob">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M3 7l3 9h12l3-9-5 3-3-4-3 4-4-3z" fill="#6b3f02" opacity="0.22"/>
-                            <path d="M3 7l3 9h12l3-9-5 3-3-4-3 4-4-3z" fill="#fff4bf"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-display text-white">Welcome to Aureum Toothpicks</h3>
-                        <p class="mt-3 text-sm text-neutral-300">Home of the world's only premium toothpicks.</p>
-                    </div>
-                </div>
-                <button id="welcome-close" class="ml-4 rounded-full p-2 bg-gold-300 text-black hover:brightness-95 shadow-[0_6px_20px_rgba(212,175,55,0.14)]">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
+    <div id="welcome-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/55 backdrop-blur-sm">
+      <div class="relative w-full max-w-3xl rounded-[2rem] border border-brand-200 bg-white shadow-[0_24px_90px_rgba(82,11,13,0.35)] overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(178,14,19,0.16),transparent_45%)]"></div>
+        <div class="relative grid lg:grid-cols-[0.98fr_1.02fr]">
+          <div class="p-8 bg-brand-900 text-white">
+            <div class="pill red">Welcome</div>
+            <h2 class="mt-4 font-display text-4xl leading-none">Enter the reserve room.</h2>
+            <p class="mt-4 text-sm leading-7 text-white/75">Aureum is built for table rituals that feel elevated, sensory, and quietly dramatic.</p>
+          </div>
+          <div class="p-8">
+            <p class="text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">House note</p>
+            <p class="mt-3 text-base leading-8 text-stone-700">Preview the new collection, compare the house signatures, and save your preferred taste profile for a bespoke consult.</p>
+            <button id="welcome-close" class="mt-6 rounded-full bg-brand-700 px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-white">Enter the collection</button>
+          </div>
         </div>
+      </div>
     </div>
 
-    <div id="reserve-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
-        <div class="modal-shell rounded-[2rem] max-w-5xl w-full p-0 transform scale-95 transition-all duration-300">
-            <button onclick="closeModal()" class="modal-close-button" aria-label="Close reservation modal">
-                <span aria-hidden="true">×</span>
-            </button>
-
-            <div class="grid lg:grid-cols-[0.85fr_1.15fr]">
-                <div class="p-8 sm:p-10 bg-[linear-gradient(180deg,#fffdf8,#f7f0e0)] border-r border-gold-300/20">
-                    <div class="inline-flex items-center gap-2 rounded-full border border-gold-300/35 bg-white/80 px-3 py-2 text-[10px] tracking-[0.35em] uppercase text-gold-700 mb-6">
-                        <span class="w-2 h-2 rounded-full bg-gold-300"></span>
-                        Contact Form
-                    </div>
-                    <h3 id="modal-title" class="font-display text-3xl sm:text-4xl text-stone-900 leading-tight">Contact the Aureum Concierge</h3>
-                    <p class="mt-4 text-sm leading-relaxed text-stone-700">Reserve a private consultation, request a tailored set, or ask for next-drop access with a cleaner and more direct experience.</p>
-                    <div class="mt-8 space-y-3">
-                        <div class="rounded-2xl border border-gold-300/20 bg-white/80 p-4">
-                            <div class="text-[10px] tracking-[0.35em] uppercase text-gold-700 mb-2">Priority</div>
-                            <div class="font-display text-2xl text-stone-900">24 hour reply</div>
-                        </div>
-                        <div class="rounded-2xl border border-gold-300/20 bg-white/80 p-4">
-                            <div class="text-[10px] tracking-[0.35em] uppercase text-gold-700 mb-2">Channel</div>
-                            <div class="font-display text-2xl text-stone-900">Private concierge</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-8 sm:p-10 text-left bg-[linear-gradient(180deg,#fffdfb,#f8f2e7)]">
-                    <div id="reserve-form-status" class="status-banner"></div>
-                    <form id="reserve-form" class="space-y-5 text-left" novalidate>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Full Name</label>
-                                <input type="text" id="reserve-name" name="reserve-name" placeholder="E.g. Adrian Gold" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
-                                <div class="error-message" id="reserve-name-error"></div>
-                            </div>
-                            <div>
-                                <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Email Address</label>
-                                <input type="email" id="reserve-email" name="reserve-email" placeholder="E.g. hello@aureumlux.com" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
-                                <div class="error-message" id="reserve-email-error"></div>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Phone Number</label>
-                                <input type="tel" id="reserve-phone" name="reserve-phone" placeholder="E.g. +254700000000" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
-                                <div class="error-message" id="reserve-phone-error"></div>
-                            </div>
-                            <div>
-                                <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Password</label>
-                                <input type="password" id="reserve-password" name="reserve-password" placeholder="Enter a secure passphrase" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
-                                <div class="error-message" id="reserve-password-error"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Confirm Password</label>
-                            <input type="password" id="reserve-confirm" name="reserve-confirm" placeholder="Repeat your passphrase" class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors" required>
-                            <div class="error-message" id="reserve-confirm-error"></div>
-                        </div>
-                        <div>
-                            <label class="block text-[10px] uppercase tracking-[0.35em] text-stone-700 mb-2">Message</label>
-                            <textarea id="reserve-message" name="reserve-message" rows="4" placeholder="Tell us about your preferred set, finish, or timing." class="w-full px-4 py-3 rounded-2xl bg-white border border-gold-300/20 text-stone-900 text-sm placeholder-stone-400 focus:outline-none focus:border-gold-300/60 transition-colors"></textarea>
-            </div>
+    <div id="reserve-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-md">
+      <div class="relative w-full max-w-4xl rounded-[2rem] border border-brand-200 bg-white shadow-[0_30px_120px_rgba(73,10,12,0.4)] overflow-hidden">
+        <button onclick="closeReserveModal()" class="absolute right-4 top-4 rounded-full bg-brand-700 text-white px-3 py-2 text-sm">✕</button>
+        <div class="grid lg:grid-cols-[0.88fr_1.12fr]">
+          <div class="p-8 bg-brand-950 text-white">
+            <div class="pill red">Reserve</div>
+            <h3 id="reserve-title" class="mt-4 font-display text-4xl leading-none">Reserve a set</h3>
+            <p class="mt-4 text-sm leading-7 text-white/75">Complete your selection and the Aureum concierge will share your dossier with the next available appointment.</p>
+          </div>
+          <form class="p-6 sm:p-8 grid gap-4">
+            <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Name</span><input type="text" required class="rounded-2xl border border-brand-200 bg-white px-4 py-3 outline-none focus:border-brand-500" /></label>
+            <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Email</span><input type="email" required class="rounded-2xl border border-brand-200 bg-white px-4 py-3 outline-none focus:border-brand-500" /></label>
+            <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Preferred profile</span><select class="rounded-2xl border border-brand-200 bg-white px-4 py-3 outline-none focus:border-brand-500"><option>Ember Ash</option><option>Saffron Bloom</option><option>Velvet Smoke</option><option>Reserve sampler</option></select></label>
+            <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Message</span><textarea rows="4" class="rounded-2xl border border-brand-200 bg-white px-4 py-3 outline-none focus:border-brand-500"></textarea></label>
+            <button type="button" onclick="closeReserveModal()" class="rounded-full bg-brand-700 px-6 py-3 text-xs font-extrabold uppercase tracking-[0.32em] text-white">Send request</button>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
-        <div class="panel rounded-[2rem] max-w-sm w-full p-8 text-center relative">
-            <div class="w-16 h-16 rounded-2xl bg-gold-300/10 border border-gold-300/20 flex items-center justify-center mx-auto mb-6 text-gold-200 text-2xl">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <h3 class="font-display text-2xl text-white mb-2">Registry Complete</h3>
-            <p class="text-neutral-400 text-sm mb-6 font-light leading-relaxed">An Aureum representative will contact you shortly with your allocation options.</p>
-            <button onclick="closeSuccessModal()" class="w-full py-3 rounded-2xl bg-white/5 border border-white/10 text-white text-xs tracking-[0.35em] uppercase font-extrabold hover:bg-white/10 hover:scale-[1.01] transition-all duration-300">
-                Return To Gallery
-            </button>
-        </div>
-    </div>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-    <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const reserveModal = document.getElementById('reserve-modal');
-        const successModal = document.getElementById('success-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const reserveForm = document.getElementById('reserve-form');
-        const reserveStatus = document.getElementById('reserve-form-status');
-        const reserveFields = {
-            name: document.getElementById('reserve-name'),
-            email: document.getElementById('reserve-email'),
-            phone: document.getElementById('reserve-phone'),
-            password: document.getElementById('reserve-password'),
-            confirm: document.getElementById('reserve-confirm')
-        };
-        const reserveErrors = {
-            name: document.getElementById('reserve-name-error'),
-            email: document.getElementById('reserve-email-error'),
-            phone: document.getElementById('reserve-phone-error'),
-            password: document.getElementById('reserve-password-error'),
-            confirm: document.getElementById('reserve-confirm-error')
-        };
+    const welcomeModal = document.getElementById('welcome-modal');
+    const welcomeClose = document.getElementById('welcome-close');
+    const reserveModal = document.getElementById('reserve-modal');
+    const reserveTitle = document.getElementById('reserve-title');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    window.addEventListener('load', () => {
+      welcomeModal.classList.remove('hidden');
+      welcomeModal.classList.add('flex');
+      setTimeout(() => {
+        welcomeModal.style.opacity = '1';
+      }, 50);
+    });
 
-        function toggleMobileMenu() {
-            mobileMenu.classList.add('hidden');
+    welcomeClose.addEventListener('click', () => {
+      welcomeModal.classList.add('hidden');
+      welcomeModal.classList.remove('flex');
+    });
+
+    function openReserveModal(label) {
+      reserveTitle.textContent = label;
+      reserveModal.classList.remove('hidden');
+      reserveModal.classList.add('flex');
+    }
+
+    function closeReserveModal() {
+      reserveModal.classList.add('hidden');
+      reserveModal.classList.remove('flex');
+    }
+
+    const pillElements = Array.from(document.querySelectorAll('.pill'));
+    const revealItems = Array.from(document.querySelectorAll('.reveal-on-scroll'));
+
+    window.addEventListener('mousemove', (event) => {
+      pillElements.forEach((pill) => {
+        const rect = pill.getBoundingClientRect();
+        const dx = event.clientX - (rect.left + rect.width / 2);
+        const dy = event.clientY - (rect.top + rect.height / 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const threshold = Math.max(rect.width, rect.height) * 1.4;
+
+        if (distance < threshold) {
+          pill.classList.add('pill-near');
+        } else {
+          pill.classList.remove('pill-near');
         }
+      });
+    });
 
-        function openModal(actionName) {
-            modalTitle.textContent = actionName;
-            reserveModal.classList.remove('opacity-0', 'pointer-events-none');
-            reserveModal.children[0].classList.remove('scale-95');
-            reserveModal.children[0].classList.add('scale-100');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.2 });
 
-        function closeModal() {
-            reserveModal.classList.add('opacity-0', 'pointer-events-none');
-            reserveModal.children[0].classList.add('scale-95');
-            reserveModal.children[0].classList.remove('scale-100');
-        }
-
-        reserveModal.addEventListener('click', (event) => {
-            if (event.target === reserveModal) {
-                closeModal();
-            }
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                closeModal();
-                closeSuccessModal();
-            }
-        });
-
-        function setInputError(field, message) {
-            field.classList.add('input-error');
-            reserveErrors[field.id.replace('reserve-', '')].textContent = message;
-        }
-
-        function clearInputError(field) {
-            field.classList.remove('input-error');
-            reserveErrors[field.id.replace('reserve-', '')].textContent = '';
-        }
-
-        function isEmailValid(value) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-        }
-
-        function isPhoneValid(value) {
-            return /^\+?\d{8,15}$/.test(value);
-        }
-
-        function validateReserveField(field) {
-            const value = field.value.trim();
-            clearInputError(field);
-
-            if (field === reserveFields.name) {
-                if (value.length < 3) {
-                    setInputError(field, 'Enter your full name with at least 3 characters.');
-                    return false;
-                }
-            }
-            if (field === reserveFields.email) {
-                if (!isEmailValid(value)) {
-                    setInputError(field, 'Please use a valid email like hello@aureumlux.com.');
-                    return false;
-                }
-            }
-            if (field === reserveFields.phone) {
-                if (!isPhoneValid(value)) {
-                    setInputError(field, 'Provide a valid international phone number.');
-                    return false;
-                }
-            }
-            if (field === reserveFields.password) {
-                if (value.length < 8) {
-                    setInputError(field, 'Password must be at least 8 characters long.');
-                    return false;
-                }
-            }
-            if (field === reserveFields.confirm) {
-                if (value !== reserveFields.password.value.trim()) {
-                    setInputError(field, 'Passwords do not match.');
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        Object.values(reserveFields).forEach(field => {
-            field.addEventListener('input', () => {
-                validateReserveField(field);
-                reserveStatus.className = 'status-banner';
-            });
-        });
-
-        function handleModalSubmit(event) {
-            event.preventDefault();
-            let valid = true;
-            Object.values(reserveFields).forEach(field => {
-                if (!validateReserveField(field)) valid = false;
-            });
-
-            if (!valid) {
-                reserveStatus.textContent = 'There are errors in the form. Please fix each highlighted field.';
-                reserveStatus.className = 'status-banner visible';
-                return;
-            }
-
-            closeModal();
-            setTimeout(() => {
-                successModal.classList.remove('opacity-0', 'pointer-events-none');
-            }, 300);
-            reserveForm.reset();
-            Object.values(reserveFields).forEach(clearInputError);
-        }
-
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            successModal.classList.remove('opacity-0', 'pointer-events-none');
-            event.target.reset();
-        }
-
-        function closeSuccessModal() {
-            successModal.classList.add('opacity-0', 'pointer-events-none');
-        }
-
-        successModal.addEventListener('click', (event) => {
-            if (event.target === successModal) {
-                closeSuccessModal();
-            }
-        });
-
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 40) {
-                header.classList.add('shadow-2xl');
-            } else {
-                header.classList.remove('shadow-2xl');
-            }
-        });
-
-        // Welcome modal: themed popup on initial launch with animation
-        const welcomeModal = document.getElementById('welcome-modal');
-        const welcomeBackdrop = document.getElementById('welcome-backdrop');
-        const welcomeClose = document.getElementById('welcome-close');
-        const welcomePanel = document.getElementById('welcome-panel');
-
-        function showWelcome() {
-            if (!welcomeModal || !welcomePanel) return;
-            welcomeModal.classList.remove('hidden');
-            welcomeModal.classList.add('flex');
-            // trigger animated entrance
-            requestAnimationFrame(() => {
-                welcomePanel.classList.remove('welcome-enter');
-                void welcomePanel.offsetWidth;
-                welcomePanel.classList.add('welcome-enter');
-            });
-        }
-
-        function hideWelcome() {
-            if (!welcomeModal || !welcomePanel) return;
-            // quick fade/close without abrupt jump
-            welcomePanel.classList.remove('welcome-enter');
-            welcomeModal.classList.add('hidden');
-            welcomeModal.classList.remove('flex');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(showWelcome, 300);
-            if (welcomeClose) welcomeClose.addEventListener('click', hideWelcome);
-            if (welcomeBackdrop) welcomeBackdrop.addEventListener('click', hideWelcome);
-        });
-    </script>
+    revealItems.forEach((item) => revealObserver.observe(item));
+  </script>
 </body>
 </html>
-

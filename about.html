@@ -5,12 +5,37 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>About Aureum | Heritage, Craft, Ritual</title>
   <meta name="description" content="Learn about Aureum's house story, material philosophy, and the craft behind the new reserve toothpick collection." />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              50: '#fff6f5',
+              100: '#ffe4e1',
+              200: '#ffc4bf',
+              300: '#ff978f',
+              400: '#ff6e66',
+              500: '#b20e13',
+              600: '#8c0b10',
+              700: '#6d0a10',
+              800: '#380408',
+              900: '#160204'
+            }
+          }
+        }
+      }
+    }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    }
   <style>
     :root {
       --bg: #050202;
@@ -19,6 +44,7 @@
       --ink: #f8efe7;
       --muted: #c9b5a2;
       --accent: #d49c3a;
+      --accent-strong: #f1d48c;
       --border: rgba(255,255,255,0.12);
       --line: rgba(212,175,55,0.16);
       --shadow: 0 32px 110px rgba(0,0,0,0.45);
@@ -168,10 +194,12 @@
     .pill.dark,
     .pill.red,
     .pill.black {
-      background: rgba(255,255,255,0.08);
       color: var(--ink);
       border-color: rgba(212,175,55,0.22);
     }
+    .pill.red { background: rgba(178, 14, 19, 0.18); border-color: rgba(178, 14, 19, 0.36); }
+    .pill.black { background: rgba(12, 7, 6, 0.74); }
+    .pill.dark { background: rgba(255,255,255,0.08); }
     .pill.dark::before,
     .pill.red::before,
     .pill.black::before {
@@ -252,6 +280,35 @@
     .text-brand-700 {
       color: #f1d48c !important;
     }
+    /* Modal/backdrop styles (match index.html) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(7, 2, 2, 0.72);
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      transition: opacity 360ms cubic-bezier(.2,.9,.2,1);
+    }
+    .modal-backdrop.active { display: flex; opacity: 1; }
+    .modal-card {
+      position: relative;
+      width: min(100%, 760px);
+      border-radius: 2rem;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(16, 9, 7, 0.98);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.55);
+      transform: translateY(18px) scale(0.996);
+      opacity: 0;
+      transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+    }
+    .modal-card.open { transform: translateY(0) scale(1); opacity: 1; }
+    .modal-card::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(130deg, rgba(255,255,255,0.08), transparent 34%); }
   </style>
 </head>
 <body>

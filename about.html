@@ -147,7 +147,7 @@
       font-size: 0.62rem;
       font-weight: 800;
       border: 1px solid rgba(212,175,55,0.22);
-      background: rgba(255,255,255,0.08);
+      background: rgba(12, 7, 6, 0.92);
       color: var(--ink);
       box-shadow: 0 16px 48px rgba(0,0,0,0.2);
       position: relative;
@@ -197,13 +197,17 @@
       color: var(--ink);
       border-color: rgba(212,175,55,0.22);
     }
+    /* Explicit color variants: only black, red, gold */
+    .pill.black,
+    .pill.red,
+    .pill.gold { color: var(--ink); }
+    .pill.black { background: rgba(12, 7, 6, 0.92); border-color: rgba(255,255,255,0.06); }
     .pill.red { background: rgba(178, 14, 19, 0.18); border-color: rgba(178, 14, 19, 0.36); }
-    .pill.black { background: rgba(12, 7, 6, 0.74); }
-    .pill.dark { background: rgba(255,255,255,0.08); }
-    .pill.dark::before,
+    .pill.gold { background: rgba(212,175,55,0.14); border-color: rgba(212,175,55,0.28); }
+    .pill.black::before,
     .pill.red::before,
-    .pill.black::before {
-      background: radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 46%);
+    .pill.gold::before {
+      background: radial-gradient(circle at top left, rgba(212,175,55,0.10), transparent 46%);
     }
     .button-cta,
     .button-secondary {

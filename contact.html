@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Contact Aureum | Concierge & Reserve</title>
-  <meta name="description" content="Contact Aureum for concierge reservations, private hospitality inquiries, and high-end reserve service requests." />
+  <title>About Aureum | Heritage, Craft, Ritual</title>
+  <meta name="description" content="Learn about Aureum's house story, material philosophy, and the craft behind the new reserve toothpick collection." />
   <script>
     tailwind.config = {
       theme: {
@@ -147,27 +147,14 @@
       font-size: 0.62rem;
       font-weight: 800;
       border: 1px solid rgba(212,175,55,0.22);
-      background: rgba(12, 7, 6, 0.74);
+      background: rgba(12, 7, 6, 0.92);
       color: var(--ink);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.2);
       position: relative;
       isolation: isolate;
       overflow: hidden;
       transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background 240ms ease;
       animation: pillEnter 420ms ease;
-    }
-    .pill.dark,
-    .pill.red,
-    .pill.black {
-      color: var(--ink);
-      border-color: rgba(212,175,55,0.22);
-    }
-    .pill.red { background: rgba(178, 14, 19, 0.18); border-color: rgba(178, 14, 19, 0.36); }
-    .pill.black { background: rgba(12, 7, 6, 0.74); }
-    .pill.dark { background: rgba(12, 7, 6, 0.74); }
-    .pill.red {
-      background: rgba(178, 14, 19, 0.18);
-      border-color: rgba(178, 14, 19, 0.36);
     }
     .pill::before {
       content: '';
@@ -175,8 +162,8 @@
       inset: 0;
       border-radius: inherit;
       pointer-events: none;
-      background: radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 42%);
-      opacity: 0.9;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 46%);
+      opacity: 0.95;
       z-index: -1;
     }
     .pill::after {
@@ -186,7 +173,7 @@
       border-radius: inherit;
       pointer-events: none;
       opacity: 0;
-      box-shadow: inset 0 0 0 1px rgba(212,175,55,0.45), 0 0 24px rgba(212,175,55,0.26);
+      box-shadow: inset 0 0 0 1px rgba(212,175,55,0.45), 0 0 24px rgba(212,175,55,0.22);
       filter: blur(6px);
       transition: opacity 220ms ease, transform 220ms ease;
       transform: scale(0.96);
@@ -195,14 +182,32 @@
     .pill:hover,
     .pill:focus-visible {
       transform: translateY(-2px) scale(1.02);
-      border-color: rgba(212,175,55,0.86);
-      box-shadow: 0 26px 84px rgba(212,175,55,0.22);
-      background: rgba(255,255,255,0.08);
+      border-color: rgba(212,175,55,0.8);
+      box-shadow: 0 26px 84px rgba(212,175,55,0.16);
+      background: rgba(255,255,255,0.12);
     }
     .pill:hover::after,
     .pill:focus-visible::after {
       opacity: 1;
       transform: scale(1);
+    }
+    .pill.dark,
+    .pill.red,
+    .pill.black {
+      color: var(--ink);
+      border-color: rgba(212,175,55,0.22);
+    }
+    /* Explicit color variants: only black, red, gold */
+    .pill.black,
+    .pill.red,
+    .pill.gold { color: var(--ink); }
+    .pill.black { background: rgba(12, 7, 6, 0.92); border-color: rgba(255,255,255,0.06); }
+    .pill.red { background: rgba(178, 14, 19, 0.18); border-color: rgba(178, 14, 19, 0.36); }
+    .pill.gold { background: rgba(212,175,55,0.14); border-color: rgba(212,175,55,0.28); }
+    .pill.black::before,
+    .pill.red::before,
+    .pill.gold::before {
+      background: radial-gradient(circle at top left, rgba(212,175,55,0.10), transparent 46%);
     }
     .button-cta,
     .button-secondary {
@@ -237,38 +242,6 @@
       transform: translateY(-2px);
       background: rgba(255,255,255,0.08);
     }
-    .form-field {
-      display: grid;
-      gap: 0.65rem;
-      font-size: 0.9rem;
-      color: var(--ink);
-    }
-    .form-field label {
-      color: var(--muted);
-    }
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      min-height: 3rem;
-      border-radius: 1.35rem;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      padding: 1rem 1.1rem;
-      outline: none;
-      transition: border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
-    }
-    .form-field textarea { min-height: 10rem; resize: vertical; }
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: rgba(212,175,55,0.7);
-      box-shadow: 0 0 0 4px rgba(212,175,55,0.12);
-      background: rgba(255,255,255,0.12);
-    }
-    .card-item { position: relative; overflow: hidden; border-radius: 1.4rem; border: 1px solid var(--line); background: rgba(16,9,8,0.95); color: var(--ink); }
-    .card-item::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(212,175,55,0.12), transparent 40%); opacity: 0.85; }
     .section-highlight {
       width: 5rem;
       height: 2px;
@@ -284,6 +257,21 @@
     .reveal-on-scroll.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.35rem;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(178,14,19,0.15);
     }
     .text-stone-900,
     .text-stone-800,
@@ -339,67 +327,87 @@
       </a>
       <nav class="hidden md:flex items-center gap-8">
         <a href="index.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-stone-700 hover:text-brand-700">Home</a>
-        <a href="about.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-stone-700 hover:text-brand-700">About</a>
-        <a href="contact.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-brand-700 font-bold">Contact</a>
+        <a href="about.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-brand-700 font-bold">About</a>
+        <a href="contact.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-stone-700 hover:text-brand-700">Contact</a>
       </nav>
       <button id="menu-toggle" class="md:hidden rounded-full border border-brand-200 px-4 py-2 text-sm font-bold text-brand-700">Menu</button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-brand-100 bg-white/95 px-4 pb-4 pt-3">
       <a href="index.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-stone-700">Home</a>
-      <a href="about.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-stone-700">About</a>
-      <a href="contact.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-brand-700">Contact</a>
+      <a href="about.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-brand-700">About</a>
+      <a href="contact.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-stone-700">Contact</a>
     </div>
   </header>
 
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
-    <section class="panel p-6 lg:p-8 reveal-on-scroll">
-      <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-6 items-center">
+    <section class="lead-card p-6 lg:p-8 reveal-on-scroll">
+      <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-6 items-center">
         <div>
-          <div class="pill dark">Contact concierge</div>
-          <h1 class="mt-4 font-display text-5xl sm:text-6xl leading-none text-stone-900">Let the house shape your next table moment.</h1>
-          <p class="mt-4 text-base leading-8 text-stone-700">Use the contact form for reserve requests, private host consultations, hospitality partnerships, or a tasting set inquiry. The house responds with curated options and a tailored service path.</p>
-          <div class="mt-6 grid gap-3">
-            <div class="card-item p-4">
-              <div class="relative z-10 text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">Email</div>
-              <div class="relative z-10 mt-2 text-base text-stone-800">hello@aureumlux.com</div>
-            </div>
-            <div class="card-item p-4">
-              <div class="relative z-10 text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">Private line</div>
-              <div class="relative z-10 mt-2 text-base text-stone-800">+254 700 000 000</div>
-            </div>
+          <div class="pill">About the house</div>
+          <h1 class="mt-4 font-display text-5xl sm:text-6xl leading-none text-stone-900">A house built for the ritual between a plate and a pause.</h1>
+          <p class="mt-4 max-w-2xl text-base leading-8 text-stone-700">Aureum began with a simple proposition: refine the objects that accompany high-end hospitality. The result is a toothpick collection that feels less like a disposable afterthought and more like a crafted finishing detail—direct, elegant, and full of atmosphere.</p>
+          <div class="mt-6 grid sm:grid-cols-3 gap-3">
+            <div class="rounded-2xl border border-brand-100 bg-white/90 p-4"><div class="text-2xl font-display text-brand-700">2018</div><div class="text-xs uppercase tracking-[0.28em] text-stone-600">House founded</div></div>
+            <div class="rounded-2xl border border-brand-100 bg-white/90 p-4"><div class="text-2xl font-display text-brand-700">3</div><div class="text-xs uppercase tracking-[0.28em] text-stone-600">signature palettes</div></div>
+            <div class="rounded-2xl border border-brand-100 bg-white/90 p-4"><div class="text-2xl font-display text-brand-700">∞</div><div class="text-xs uppercase tracking-[0.28em] text-stone-600">Host moments</div></div>
           </div>
         </div>
         <div class="rounded-[1.75rem] overflow-hidden border border-brand-100 bg-white shadow-lg shadow-brand-100/30">
-          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80" alt="Luxury table and service lighting" class="h-full min-h-[360px] w-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80" alt="Elegant dining ambience" class="h-full min-h-[340px] w-full object-cover" />
         </div>
       </div>
     </section>
 
     <section class="mt-6 grid lg:grid-cols-[1fr_1fr] gap-6 reveal-on-scroll">
-      <div class="panel p-6 lg:p-8">
-        <div class="pill">Request a reserve</div>
-        <form class="mt-5 grid gap-4">
-          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Full name</span><input type="text" placeholder="Adrian Gold" class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500" /></label>
-          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Email address</span><input type="email" placeholder="hello@aureumlux.com" class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500" /></label>
-          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Phone</span><input type="tel" placeholder="+254 700 000 000" class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500" /></label>
-          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Service type</span><select class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500"><option>Collector reserve</option><option>Private tasting</option><option>Hospitality partnership</option><option>Gifting inquiry</option></select></label>
-          <label class="grid gap-2 text-sm font-semibold text-stone-700"><span>Details</span><textarea rows="5" placeholder="Tell us your preferred set, timeline, or hosting notes." class="rounded-2xl border border-brand-200 bg-white px-4 py-3 text-stone-800 outline-none focus:border-brand-500"></textarea></label>
-          <button type="button" class="button-cta">Send inquiry</button>
-        </form>
+      <div class="lead-card p-6 lg:p-8">
+        <div class="pill dark">Craft</div>
+        <h2 class="mt-4 font-display text-4xl leading-none text-stone-900">The design language is restrained, but never plain.</h2>
+        <p class="mt-4 text-stone-700 leading-8">Every upright profile, every siren-red accent, and every darkened finish is intended to mimic the presence of a luxury object: subtle, confident, and instantly recognizable the moment it hits the table.</p>
+        <div class="mt-5 grid gap-3">
+          <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">Material philosophy: matte, satin, and smoked finishes selected to read as tactile rather than decorative.</div>
+          <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">Sensory philosophy: pleasure is measured through tone, aroma, and the quiet drama of presentation.</div>
+        </div>
       </div>
+      <div class="lead-card p-6 lg:p-8">
+        <div class="pill">Method</div>
+        <h2 class="mt-4 font-display text-4xl leading-none text-stone-900">Made to sit between course and conversation.</h2>
+        <p class="mt-4 text-stone-700 leading-8">The signature set is not meant to shout. Instead, it frames a dining experience with better pacing, stronger sensory recall, and a polished house note that feels distinctly high-end.</p>
+        <div class="mt-5 grid gap-3">
+          <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">Small-batch finishing with exacting quality control for every collector release.</div>
+          <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">Designed for refined homes, hospitality groups, and gifting moments that require memorable detail.</div>
+        </div>
+      </div>
+    </section>
 
-      <div class="grid gap-6">
-        <div class="panel p-6 lg:p-8">
-          <div class="pill dark">Why contact us</div>
-          <p class="mt-4 text-stone-700 leading-8">Whether you are preparing a signature dinner, refreshing a boutique hospitality menu, or arranging a luxury gift, the Aureum concierge helps you choose a finish and profile that fits the room.</p>
-          <div class="mt-5 space-y-3">
-            <div class="card-item p-4"><div class="relative z-10 text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">Collector reserve</div><div class="relative z-10 mt-2 text-sm text-stone-700">Access limited seasonal drops and tasting sets.</div></div>
-            <div class="card-item p-4"><div class="relative z-10 text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">Hospitality styling</div><div class="relative z-10 mt-2 text-sm text-stone-700">Pair flavour notes and finishing details to fit a luxury table service.</div></div>
-          </div>
+    <section class="mt-6 lead-card p-6 lg:p-8 reveal-on-scroll">
+      <div class="pill dark">Timeline</div>
+      <div class="mt-5 grid lg:grid-cols-3 gap-4">
+        <div class="timeline-item">
+          <h3 class="font-display text-2xl text-brand-700">Workshop origins</h3>
+          <p class="mt-2 text-sm leading-7 text-stone-700">The brand started as a quiet experiment in elevating everyday host details through material restraint and better finish discipline.</p>
         </div>
-        <div class="rounded-[2rem] overflow-hidden border border-brand-100 shadow-lg shadow-brand-100/30">
-          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Restaurant service styling" class="h-[290px] w-full object-cover" />
+        <div class="timeline-item">
+          <h3 class="font-display text-2xl text-brand-700">Reserve release</h3>
+          <p class="mt-2 text-sm leading-7 text-stone-700">A curated new line emerged with stronger flavour identities, polished packaging, and a cleaner collector-focused presentation.</p>
         </div>
+        <div class="timeline-item">
+          <h3 class="font-display text-2xl text-brand-700">Global clientele</h3>
+          <p class="mt-2 text-sm leading-7 text-stone-700">Today the house serves elevated homes and hospitality venues looking for a tactile, premium finishing gesture.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 grid lg:grid-cols-[0.92fr_1.08fr] gap-6 reveal-on-scroll">
+      <div class="lead-card p-6 lg:p-8">
+        <div class="pill">Values</div>
+        <ul class="mt-4 space-y-3 text-stone-700 leading-8">
+          <li><strong class="text-brand-700">Precision:</strong> clear proportions, clean presentation, and no wasteful excess.</li>
+          <li><strong class="text-brand-700">Atmosphere:</strong> sensory identity and table contrast through carefully chosen notes.</li>
+          <li><strong class="text-brand-700">Hostability:</strong> easy to place into a fine dining or private home setting with minimal effort.</li>
+        </ul>
+      </div>
+      <div class="rounded-[2rem] overflow-hidden border border-brand-100 shadow-lg shadow-brand-100/30">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" alt="Restaurant plating detail" class="h-full min-h-[280px] w-full object-cover" />
       </div>
     </section>
   </main>
@@ -408,7 +416,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div>
         <div class="font-display text-[0.78rem] tracking-[0.38em] text-brand-700 uppercase">Aureum</div>
-        <div class="text-sm text-stone-600">The house concierge for tasteful, high-end service moments.</div>
+        <div class="text-sm text-stone-600">A house of elevated endings, refined rituals, and careful presence.</div>
       </div>
     </div>
   </footer>

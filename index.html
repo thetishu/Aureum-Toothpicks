@@ -20,16 +20,16 @@
           },
           colors: {
             brand: {
-              50: '#fff6f5',
-              100: '#ffe4e1',
-              200: '#ffc4bf',
-              300: '#ff978f',
-              400: '#ff6e66',
+              50: '#fff7f5',
+              100: '#f9e7e4',
+              200: '#f2bebc',
+              300: '#e58f8d',
+              400: '#d85d5a',
               500: '#b20e13',
               600: '#8c0b10',
-              700: '#6d0a10',
-              800: '#380408',
-              900: '#160204'
+              700: '#68080d',
+              800: '#320406',
+              900: '#120203'
             }
           }
         }
@@ -38,228 +38,106 @@
   </script>
   <style>
     :root {
-      --bg: #050202;
-      --surface: rgba(16, 9, 8, 0.92);
-      --surface-soft: rgba(18, 10, 8, 0.75);
-      --ink: #f8efe7;
-      --muted: #c9b5a2;
-      --accent: #d49c3a;
-      --accent-strong: #f1d48c;
-      --border: rgba(255,255,255,0.12);
-      --line: rgba(212,175,55,0.16);
-      --shadow: 0 32px 120px rgba(0,0,0,0.45);
+      --bg: #050505;
+      --panel: rgba(12, 12, 12, 0.96);
+      --panel-strong: #090909;
+      --ink: #f8f4ec;
+      --muted: #bfb4a9;
+      --accent: #b20e13;
+      --accent-strong: #d4a63a;
+      --border: rgba(212, 166, 58, 0.2);
+      --line: rgba(212, 166, 58, 0.18);
+      --shadow: 0 24px 90px rgba(0, 0, 0, 0.38);
     }
-    *, *::before, *::after { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
       min-height: 100vh;
-      color: var(--ink);
       font-family: 'Inter', sans-serif;
+      color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(212,175,55,0.16), transparent 18%),
-        radial-gradient(circle at 88% 14%, rgba(255,255,255,0.08), transparent 12%),
-        linear-gradient(135deg, #050202 0%, #120506 45%, #090205 100%);
+        radial-gradient(circle at top left, rgba(178, 14, 19, 0.22), transparent 20%),
+        radial-gradient(circle at 85% 12%, rgba(212, 166, 58, 0.16), transparent 16%),
+        linear-gradient(135deg, #020202 0%, #090909 50%, #050505 100%);
     }
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.04), transparent 24%, transparent 76%, rgba(255,255,255,0.04)),
-        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 20%, transparent 80%, rgba(255,255,255,0.02));
-      opacity: 0.9;
+      background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent 28%, transparent 72%, rgba(255,255,255,0.02));
+      opacity: 0.8;
       z-index: 0;
     }
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(circle at center, rgba(212,175,55,0.06), transparent 32%);
-      z-index: 0;
-    }
-    .page-shell {
+    .page-shell { position: relative; overflow: hidden; isolation: isolate; min-height: 100vh; }
+    header { background: rgba(3, 3, 3, 0.94) !important; border-bottom: 1px solid rgba(212, 166, 58, 0.24) !important; backdrop-filter: blur(14px); }
+    header a { color: var(--ink) !important; }
+    header a:hover { color: var(--accent-strong) !important; }
+    .panel, .lead-card, .card-item {
       position: relative;
       overflow: hidden;
-      isolation: isolate;
-      min-height: 100vh;
-    }
-    .grid-overlay {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.06;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 92%);
-    }
-    header {
-      background: rgba(6, 3, 2, 0.78) !important;
-      border-bottom: 1px solid rgba(212,175,55,0.12) !important;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.22) !important;
-      backdrop-filter: blur(18px);
-    }
-    header a {
-      color: var(--ink) !important;
-    }
-    header a:hover {
-      color: var(--accent-strong) !important;
-    }
-    .panel,
-    .lead-card,
-    .card-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 2rem;
-      background: linear-gradient(180deg, rgba(18,10,8,0.96), rgba(12,5,4,0.98));
+      border-radius: 1.8rem;
       border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(12, 12, 12, 0.98), rgba(8, 8, 8, 0.98));
       box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
-      transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background 240ms ease;
+      backdrop-filter: blur(16px);
     }
-    .panel::before,
-    .lead-card::before,
-    .card-item::before {
+    .panel::before, .lead-card::before, .card-item::before {
       content: '';
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(circle at top left, rgba(212,175,55,0.18), transparent 36%);
-      opacity: 0.92;
-    }
-    .panel:hover,
-    .lead-card:hover,
-    .card-item:hover {
-      transform: translateY(-6px);
-      border-color: rgba(212,175,55,0.25);
-      box-shadow: 0 42px 110px rgba(0,0,0,0.48);
-    }
-    .panel > *:not(.pill),
-    .lead-card > *:not(.pill),
-    .card-item > *:not(.pill) {
-      position: relative;
-      z-index: 1;
-    }
-    .section-highlight {
-      width: 5rem;
-      height: 2px;
-      margin-top: 1rem;
-      background: linear-gradient(90deg, rgba(212,175,55,0.96), rgba(255,255,255,0.14));
-      border-radius: 999px;
-    }
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 700ms ease, transform 700ms ease;
-    }
-    .reveal-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
+      background: linear-gradient(125deg, rgba(212, 166, 58, 0.09), transparent 35%, transparent 70%, rgba(178, 14, 19, 0.08));
     }
     .pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.7rem;
-      padding: 0.78rem 1.1rem;
+      gap: 0.55rem;
+      padding: 0.6rem 0.95rem;
       border-radius: 999px;
       text-transform: uppercase;
-      letter-spacing: 0.32em;
-      font-size: 0.62rem;
+      letter-spacing: 0.24em;
+      font-size: 0.64rem;
       font-weight: 800;
-      border: 1px solid rgba(212,175,55,0.22);
-      background: rgba(12, 7, 6, 0.92);
-      color: var(--ink);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.2);
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background 240ms ease;
-      animation: pillEnter 420ms ease;
+      color: var(--accent-strong);
+      border: 1px solid rgba(212, 166, 58, 0.28);
+      background: transparent;
     }
-    .pill::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      background: none;
-      opacity: 0;
-      z-index: -1;
-    }
-    .pill::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      opacity: 0;
-      box-shadow: inset 0 0 0 1px rgba(212,175,55,0.45), 0 0 24px rgba(212,175,55,0.22);
-      filter: blur(6px);
-      transition: opacity 220ms ease, transform 220ms ease;
-      transform: scale(0.96);
-      z-index: -1;
-    }
-    .pill:hover,
-    .pill:focus-visible {
-      transform: translateY(-2px) scale(1.02);
-      border-color: rgba(212,175,55,0.8);
-      box-shadow: 0 26px 84px rgba(212,175,55,0.16);
-      background: rgba(12, 7, 6, 0.98);
-    }
-    .pill:hover::after,
-    .pill:focus-visible::after {
-      opacity: 1;
-      transform: scale(1);
-    }
-    /* Explicit color variants: only black, red, gold */
-    .pill.black,
-    .pill.red,
-    .pill.gold { color: var(--ink); }
-    .pill.black { background: rgba(12, 7, 6, 0.92); border-color: rgba(255,255,255,0.06); }
-    .pill.red { background: rgba(178, 14, 19, 0.18); border-color: rgba(178, 14, 19, 0.36); }
-    .pill.gold { background: rgba(212,175,55,0.14); border-color: rgba(212,175,55,0.28); }
-    .pill.black::before,
-    .pill.red::before,
-    .pill.gold::before {
-      background: radial-gradient(circle at top left, rgba(212,175,55,0.10), transparent 46%);
-    }
-    .button-cta,
-    .button-secondary {
+    .button-cta, .button-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 999px;
-      padding: 0.95rem 1.6rem;
+      padding: 0.95rem 1.5rem;
       font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+      transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
     }
     .button-cta {
-      border: 1px solid rgba(212,175,55,0.28);
-      background: rgba(212,175,55,0.16);
       color: #fff;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.16);
+      background: linear-gradient(135deg, var(--accent), #7b0a0f);
+      border: 1px solid rgba(212, 166, 58, 0.25);
+      box-shadow: 0 16px 34px rgba(178, 14, 19, 0.18);
     }
-    .button-cta:hover {
-      transform: translateY(-2px);
-      background: rgba(212,175,55,0.22);
-      box-shadow: 0 22px 46px rgba(0,0,0,0.22);
-    }
+    .button-cta:hover { transform: translateY(-2px); box-shadow: 0 20px 42px rgba(178, 14, 19, 0.26); }
     .button-secondary {
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.05);
       color: var(--ink);
+      background: transparent;
+      border: 1px solid rgba(212, 166, 58, 0.28);
     }
-    .button-secondary:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.08);
+    .button-secondary:hover { transform: translateY(-2px); }
+    .section-line {
+      width: 4.5rem;
+      height: 2px;
+      margin-top: 1rem;
+      background: linear-gradient(90deg, var(--accent), rgba(212, 166, 58, 0.8));
+      border-radius: 999px;
     }
+    .reveal-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity 700ms ease, transform 700ms ease; }
+    .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -268,55 +146,25 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
-      background: rgba(7, 2, 2, 0.72);
+      background: rgba(2, 2, 2, 0.72);
       backdrop-filter: blur(20px);
       opacity: 0;
       transition: opacity 360ms cubic-bezier(.2,.9,.2,1);
     }
-    .modal-backdrop.active {
-      display: flex;
-      opacity: 1;
-    }
+    .modal-backdrop.active { display: flex; opacity: 1; }
     .modal-card {
       position: relative;
       width: min(100%, 760px);
       border-radius: 2rem;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(16, 9, 7, 0.98);
-      box-shadow: 0 40px 120px rgba(0,0,0,0.55);
+      border: 1px solid rgba(212, 166, 58, 0.2);
+      background: rgba(8, 8, 8, 0.98);
+      box-shadow: 0 36px 100px rgba(0,0,0,0.5);
       transform: translateY(18px) scale(0.996);
       opacity: 0;
       transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
     }
-    .modal-card.open {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    .modal-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(130deg, rgba(255,255,255,0.08), transparent 34%);
-    }
-    .modal-content {
-      position: relative;
-      z-index: 1;
-    }
-    .modal-panel {
-      padding: 2rem;
-    }
-    .modal-panel h2 {
-      margin: 0;
-      font-size: 2rem;
-      line-height: 1.05;
-      color: #fff;
-    }
-    .modal-panel p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
+    .modal-card.open { transform: translateY(0) scale(1); opacity: 1; }
     .modal-close {
       position: absolute;
       top: 1rem;
@@ -324,199 +172,127 @@
       width: 3rem;
       height: 3rem;
       border: none;
+      border-radius: 999px;
       background: rgba(255,255,255,0.08);
       color: #fff;
-      border-radius: 999px;
       cursor: pointer;
-      transition: transform 180ms ease, background 180ms ease;
     }
-    .modal-close:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.16);
+    .form-field { display: grid; gap: 0.65rem; font-size: 0.9rem; color: var(--ink); }
+    .form-field label { color: var(--muted); }
+    .form-field input, .form-field select, .form-field textarea {
+      width: 100%; min-height: 3rem; border-radius: 1rem; border: 1px solid rgba(212, 166, 58, 0.2); background: rgba(255,255,255,0.05); color: #fff; padding: 0.95rem 1rem; outline: none;
     }
-    .form-field {
-      display: grid;
-      gap: 0.65rem;
-      font-size: 0.9rem;
-      color: var(--ink);
-    }
-    .form-field label {
-      color: var(--muted);
-    }
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      min-height: 3rem;
-      border-radius: 1.35rem;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.07);
-      color: #fff;
-      padding: 1rem 1.1rem;
-      outline: none;
-      transition: border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
-    }
-    .form-field textarea { min-height: 10rem; resize: vertical; }
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: rgba(212,175,55,0.7);
-      box-shadow: 0 0 0 4px rgba(212,175,55,0.12);
-      background: rgba(255,255,255,0.12);
-    }
-    .text-stone-900,
-    .text-stone-800,
-    .text-stone-700,
-    .text-stone-600,
-    .text-stone-500,
-    .text-stone-400 {
-      color: #f8efe7 !important;
-    }
-    .text-brand-700 {
-      color: #f1d48c !important;
-    }
-    .table-card table { border-collapse: collapse; width: 100%; }
-    .table-card th, .table-card td { padding: 1rem 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; }
-    .table-card th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.24em; color: #c9b5a2; }
-    .table-card td { color: #d9c2a7; }
-    .glow-ring {
-      position: absolute; width: 14rem; height: 14rem; border-radius: 999px; filter: blur(14px);
-      background: rgba(178, 14, 19, 0.14); z-index: 0; pointer-events: none;
-    }
-    @media (max-width: 900px) {
-      .table-card th, .table-card td { padding: 0.8rem 0.85rem; }
-    }
+    .form-field textarea { min-height: 9rem; resize: vertical; }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: rgba(212, 166, 58, 0.45); }
   </style>
 </head>
 <body>
   <div class="page-shell">
-    <div class="grid-overlay"></div>
-    <header class="sticky top-0 z-40 border-b border-brand-200/80 bg-white/90 backdrop-blur-2xl">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+    <header class="sticky top-0 z-40 border-b">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="index.html" class="flex items-center gap-3 no-underline">
-          <span class="flex h-11 w-11 items-center justify-center rounded-full border border-brand-500/30 bg-white text-lg text-brand-700 shadow-sm"><i class="fa-solid fa-crown"></i></span>
+          <span class="flex h-11 w-11 items-center justify-center rounded-full border border-[#d4a63a]/40 bg-black text-lg text-[#d4a63a]"><i class="fa-solid fa-crown"></i></span>
           <div>
-            <div class="font-display text-[0.7rem] tracking-[0.42em] text-brand-700 uppercase">Aureum</div>
-            <div class="font-display text-[0.72rem] tracking-[0.36em] text-stone-900 uppercase">Toothpicks</div>
+            <div class="font-display text-[0.7rem] tracking-[0.42em] uppercase text-[#d4a63a]">Aureum</div>
+            <div class="font-display text-[0.72rem] tracking-[0.36em] uppercase text-white">Toothpicks</div>
           </div>
         </a>
-        <nav class="hidden md:flex items-center gap-8">
-          <a href="index.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-brand-700 font-bold">Home</a>
-          <a href="about.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-stone-700 hover:text-brand-700">About</a>
-          <a href="contact.html" class="text-[0.72rem] tracking-[0.34em] uppercase text-stone-700 hover:text-brand-700">Contact</a>
+        <nav class="hidden items-center gap-8 md:flex">
+          <a href="index.html" class="text-[0.72rem] font-bold uppercase tracking-[0.34em] text-white">Home</a>
+          <a href="about.html" class="text-[0.72rem] uppercase tracking-[0.34em] text-[#cdb59c] hover:text-[#d4a63a]">About</a>
+          <a href="contact.html" class="text-[0.72rem] uppercase tracking-[0.34em] text-[#cdb59c] hover:text-[#d4a63a]">Contact</a>
         </nav>
-        <button id="menu-toggle" class="md:hidden rounded-full border border-brand-200 px-4 py-2 text-sm font-bold text-brand-700">Menu</button>
+        <button id="menu-toggle" class="rounded-full border border-[#d4a63a]/30 px-4 py-2 text-sm font-bold text-[#d4a63a] md:hidden">Menu</button>
       </div>
-      <div id="mobile-menu" class="hidden md:hidden border-t border-brand-100 bg-white/95 px-4 pb-4 pt-3">
-        <a href="index.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-brand-700">Home</a>
-        <a href="about.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-stone-700">About</a>
-        <a href="contact.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-stone-700">Contact</a>
+      <div id="mobile-menu" class="hidden border-t border-[#d4a63a]/20 bg-black/95 px-4 pb-4 pt-3 md:hidden">
+        <a href="index.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-white">Home</a>
+        <a href="about.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-[#cdb59c]">About</a>
+        <a href="contact.html" class="block rounded-xl px-3 py-3 text-sm font-bold text-[#cdb59c]">Contact</a>
       </div>
     </header>
 
     <main>
-      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12 reveal-on-scroll">
-        <div class="panel p-4 sm:p-5 lg:p-7">
-          <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-stretch">
-            <div class="flex flex-col justify-between gap-6 p-3 sm:p-5">
-              <div class="pill red">Reserve edition</div>
-              <div>
-                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-none text-stone-900">The dramatic edge of <span class="text-brand-700">luxury toothpicks</span>.</h1>
-                <div class="section-highlight"></div>
-                <div class="hero-accent">
-                  <span></span>
-                  <div class="text-xs uppercase tracking-[0.28em] text-stone-600">Curated for the modern host</div>
-                </div>
-              </div>
-              <p class="max-w-2xl text-base leading-8 text-stone-700">Aureum pairs architecturally clean forms, crafted spice blends, and a house-made finish philosophy that turns a minimal ritual into a statement piece.</p>
-              <div class="flex flex-wrap gap-3">
+      <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+        <div class="panel reveal-on-scroll p-6 sm:p-8 lg:p-10">
+          <div class="grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div class="max-w-3xl">
+              <div class="pill">Reserve edition</div>
+              <h1 class="mt-5 font-display text-4xl leading-none text-white sm:text-5xl lg:text-6xl">The sharp edge of luxury, framed in black, red, and gold.</h1>
+              <div class="section-line"></div>
+              <p class="mt-5 max-w-2xl text-base leading-8 text-[#d7cbc0]">Aureum turns the ordinary toothpick into a sculptural ritual—dark materials, precise finishing, and a presence that feels collected rather than casual.</p>
+              <div class="mt-7 flex flex-wrap gap-3">
                 <a href="#collection" class="button-secondary">See collection</a>
                 <button onclick="openReserveModal('Reserve a set')" class="button-cta">Reserve now</button>
               </div>
-              <div class="grid sm:grid-cols-3 gap-3 mt-2">
-                <div class="rounded-2xl border border-brand-100 bg-white/80 p-4">
-                  <div class="text-2xl font-display text-brand-700">12</div>
-                  <div class="text-xs uppercase tracking-[0.28em] text-stone-600">signature profiles</div>
-                </div>
-                <div class="rounded-2xl border border-brand-100 bg-white/80 p-4">
-                  <div class="text-2xl font-display text-brand-700">4</div>
-                  <div class="text-xs uppercase tracking-[0.28em] text-stone-600">seasonal finishes</div>
-                </div>
-                <div class="rounded-2xl border border-brand-100 bg-white/80 p-4">
-                  <div class="text-2xl font-display text-brand-700">1</div>
-                  <div class="text-xs uppercase tracking-[0.28em] text-stone-600">collector's ritual</div>
-                </div>
-              </div>
             </div>
-            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-              <div class="rounded-[1.75rem] overflow-hidden border border-brand-100 bg-white shadow-lg shadow-brand-100/40">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Luxury appetizer table styling" class="h-72 w-full object-cover" />
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              <div class="rounded-[1.5rem] border border-[#d4a63a]/20 bg-black/70 p-5">
+                <div class="text-[0.62rem] uppercase tracking-[0.32em] text-[#d4a63a]">House note</div>
+                <div class="mt-3 text-3xl font-display text-white">12</div>
+                <p class="mt-2 text-sm leading-7 text-[#b7a79b]">Signature profiles, each tuned for a different moment at table.</p>
               </div>
-              <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
-                <div class="rounded-[1.75rem] overflow-hidden border border-brand-100 bg-white shadow-lg shadow-brand-100/40">
-                  <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80" alt="Premium dining detail" class="h-40 w-full object-cover" />
-                </div>
-                <div class="rounded-[1.75rem] overflow-hidden border border-brand-100 bg-white shadow-lg shadow-brand-100/40">
-                  <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80" alt="Restaurant service styling" class="h-40 w-full object-cover" />
-                </div>
+              <div class="rounded-[1.5rem] border border-[#d4a63a]/20 bg-black/70 p-5">
+                <div class="text-[0.62rem] uppercase tracking-[0.32em] text-[#d4a63a]">Concierge</div>
+                <div class="mt-3 text-3xl font-display text-white">24/7</div>
+                <p class="mt-2 text-sm leading-7 text-[#b7a79b]">Reserve consultations, tasting requests, and private hosting support.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="collection" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-10 reveal-on-scroll">
-        <div class="grid lg:grid-cols-[0.88fr_1.12fr] gap-6 items-start">
-          <div class="panel p-6 lg:p-8">
-            <div class="pill red">Collection</div>
-            <h2 class="mt-4 font-display text-4xl sm:text-5xl leading-none text-stone-900">A modern table of three house signatures.</h2>
-            <p class="mt-4 text-stone-700 leading-8">Each profile is built around clean materiality and a distinct sensory cue, from smoky spice to bright citrus and velvet cocoa tones.</p>
+      <section id="collection" class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+        <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+          <div class="panel reveal-on-scroll p-6 lg:p-8">
+            <div class="pill">Collection</div>
+            <h2 class="mt-4 font-display text-3xl leading-none text-white sm:text-4xl">Three signatures built for dramatic hosting.</h2>
+            <p class="mt-4 text-base leading-8 text-[#d7cbc0]">Each profile is kept restrained but unmistakable, balancing spice, citrus, and cocoa with a polished finish that feels quietly expensive.</p>
             <div class="mt-6 grid gap-3">
-              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
-                <div class="font-display text-xl text-brand-700">No. 01 | Ember Ash</div>
-                <p class="text-sm text-stone-600 mt-2">Smoked chili, black tea, and dark cedar for late-night dinners and dramatic pairings.</p>
+              <div class="rounded-[1.25rem] border border-[#d4a63a]/20 bg-black/65 p-4">
+                <div class="font-display text-xl text-[#d4a63a]">No. 01 | Ember Ash</div>
+                <p class="mt-2 text-sm leading-7 text-[#b7a79b]">Smoked chili, black tea, and dark cedar.</p>
               </div>
-              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
-                <div class="font-display text-xl text-brand-700">No. 02 | Saffron Bloom</div>
-                <p class="text-sm text-stone-600 mt-2">Bright citrus, saffron warmth, and a subtly glossy finish for elevated hosting.</p>
+              <div class="rounded-[1.25rem] border border-[#d4a63a]/20 bg-black/65 p-4">
+                <div class="font-display text-xl text-[#d4a63a]">No. 02 | Saffron Bloom</div>
+                <p class="mt-2 text-sm leading-7 text-[#b7a79b]">Bright citrus, saffron warmth, and a gloss finish.</p>
               </div>
-              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
-                <div class="font-display text-xl text-brand-700">No. 03 | Velvet Smoke</div>
-                <p class="text-sm text-stone-600 mt-2">Soft cocoa, bitter cherry, and black pepper for a polished and intimate finish.</p>
+              <div class="rounded-[1.25rem] border border-[#d4a63a]/20 bg-black/65 p-4">
+                <div class="font-display text-xl text-[#d4a63a]">No. 03 | Velvet Smoke</div>
+                <p class="mt-2 text-sm leading-7 text-[#b7a79b]">Cocoa, cherry, and black pepper for intimate evenings.</p>
               </div>
             </div>
           </div>
-          <div class="panel table-card p-4 sm:p-5 lg:p-6">
-            <div class="pill black">Menu / Pricing</div>
-            <div class="overflow-x-auto mt-5">
-              <table>
+          <div class="panel reveal-on-scroll p-4 sm:p-5 lg:p-6">
+            <div class="pill">Menu / Pricing</div>
+            <div class="mt-5 overflow-x-auto">
+              <table class="min-w-full text-left text-sm">
                 <thead>
-                  <tr>
-                    <th>Toothpick</th>
-                    <th>Flavour</th>
-                    <th>Price</th>
+                  <tr class="border-b border-[#d4a63a]/15 text-[#b7a79b]">
+                    <th class="px-3 py-3 font-semibold uppercase tracking-[0.24em]">Toothpick</th>
+                    <th class="px-3 py-3 font-semibold uppercase tracking-[0.24em]">Flavour</th>
+                    <th class="px-3 py-3 font-semibold uppercase tracking-[0.24em]">Price</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Ember Ash</td>
-                    <td>Smoked chili + black tea</td>
-                    <td>$18 / box</td>
+                  <tr class="border-b border-white/10 text-[#efe7dc]">
+                    <td class="px-3 py-3">Ember Ash</td>
+                    <td class="px-3 py-3">Smoked chili + black tea</td>
+                    <td class="px-3 py-3">$18 / box</td>
                   </tr>
-                  <tr>
-                    <td>Saffron Bloom</td>
-                    <td>Citrus + saffron</td>
-                    <td>$21 / box</td>
+                  <tr class="border-b border-white/10 text-[#efe7dc]">
+                    <td class="px-3 py-3">Saffron Bloom</td>
+                    <td class="px-3 py-3">Citrus + saffron</td>
+                    <td class="px-3 py-3">$21 / box</td>
                   </tr>
-                  <tr>
-                    <td>Velvet Smoke</td>
-                    <td>Cocoa + cherry + pepper</td>
-                    <td>$24 / box</td>
+                  <tr class="border-b border-white/10 text-[#efe7dc]">
+                    <td class="px-3 py-3">Velvet Smoke</td>
+                    <td class="px-3 py-3">Cocoa + cherry + pepper</td>
+                    <td class="px-3 py-3">$24 / box</td>
                   </tr>
-                  <tr>
-                    <td>Reserve Tasting Set</td>
-                    <td>3 bottle-profile sampler</td>
-                    <td>$39 / set</td>
+                  <tr class="text-[#efe7dc]">
+                    <td class="px-3 py-3">Reserve set</td>
+                    <td class="px-3 py-3">Three-profile sampler</td>
+                    <td class="px-3 py-3">$39 / set</td>
                   </tr>
                 </tbody>
               </table>
@@ -525,43 +301,42 @@
         </div>
       </section>
 
-      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
-        <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6">
-          <div class="panel p-6 lg:p-8">
-            <div class="pill black">House philosophy</div>
-            <h2 class="mt-4 font-display text-4xl sm:text-5xl leading-none text-stone-900">Quiet luxury, but with an unmistakable edge.</h2>
-            <div class="grid md:grid-cols-2 gap-4 mt-6">
-              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
-                <div class="font-display text-xl text-brand-700">Materials</div>
-                <p class="mt-2 text-sm text-stone-600 leading-7">Every finish is selected for tactile clarity, from polished dark walnut to satin carbon black and deep oxblood tone.</p>
+      <section class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+        <div class="grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
+          <div class="panel reveal-on-scroll p-6 lg:p-8">
+            <div class="pill">House philosophy</div>
+            <h2 class="mt-4 font-display text-3xl leading-none text-white sm:text-4xl">Quiet luxury with a deliberate edge.</h2>
+            <p class="mt-4 text-base leading-8 text-[#d7cbc0]">Every surface, finish, and colour cue is chosen to create contrast without excess. The effect is crisp and memorable, never ornamental for its own sake.</p>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-[1.25rem] border border-[#d4a63a]/20 bg-black/65 p-4">
+                <div class="font-display text-xl text-[#d4a63a]">Material</div>
+                <p class="mt-2 text-sm leading-7 text-[#b7a79b]">Smoked black, oxblood red, and burnished gold create a precise premium language.</p>
               </div>
-              <div class="rounded-2xl border border-brand-100 bg-white/90 p-4">
-                <div class="font-display text-xl text-brand-700">Atmosphere</div>
-                <p class="mt-2 text-sm text-stone-600 leading-7">The house creates the same high-end presence you expect from a wine list or a boutique fragrance shelf.</p>
+              <div class="rounded-[1.25rem] border border-[#d4a63a]/20 bg-black/65 p-4">
+                <div class="font-display text-xl text-[#d4a63a]">Atmosphere</div>
+                <p class="mt-2 text-sm leading-7 text-[#b7a79b]">Designed for hosts who prefer impact over noise.</p>
               </div>
             </div>
           </div>
-          <div class="panel p-5 lg:p-7">
-            <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80" alt="High-end dining with elegant presentation" class="h-[360px] w-full rounded-[1.5rem] object-cover" />
+          <div class="panel reveal-on-scroll p-5 lg:p-6">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Luxury dining atmosphere" class="h-[320px] w-full rounded-[1.3rem] object-cover" />
           </div>
         </div>
       </section>
 
-      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
-        <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-6">
-          <div class="panel p-6 lg:p-8">
-            <div class="pill red">Reserve CTA</div>
-            <h2 class="mt-4 font-display text-4xl sm:text-5xl leading-none text-stone-900">Reserve a statement set for your next host ritual.</h2>
-            <p class="mt-4 text-stone-700 leading-8">Choose a signature profile, request a tasting set, or schedule a private consultation with the Aureum concierge.</p>
-            <button onclick="openReserveModal('Request a tasting set')" class="button-cta mt-5">Book a reserve request</button>
-          </div>
-          <div class="panel p-4 sm:p-5">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div class="rounded-[1.5rem] overflow-hidden border border-brand-100 bg-white">
-                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80" alt="Luxury tableware" class="h-52 w-full object-cover" />
+      <section class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+        <div class="panel reveal-on-scroll p-6 lg:p-8">
+          <div class="pill">Video slots</div>
+          <h2 class="mt-4 font-display text-3xl leading-none text-white sm:text-4xl">A closer look at the reserve world.</h2>
+          <div class="mt-6 grid gap-6 lg:grid-cols-2">
+            <div class="rounded-[1.5rem] border border-[#d4a63a]/20 bg-black/70 p-3">
+              <div class="aspect-video overflow-hidden rounded-[1.2rem]">
+                <iframe class="h-full w-full" src="https://www.youtube.com/embed/ScMzIvxBSi4?rel=0" title="Aureum editorial video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
-              <div class="rounded-[1.5rem] overflow-hidden border border-brand-100 bg-white">
-                <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80" alt="Fine dining atmosphere" class="h-52 w-full object-cover" />
+            </div>
+            <div class="rounded-[1.5rem] border border-[#d4a63a]/20 bg-black/70 p-3">
+              <div class="aspect-video overflow-hidden rounded-[1.2rem]">
+                <iframe class="h-full w-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Aureum tasting video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -569,16 +344,16 @@
       </section>
     </main>
 
-    <footer class="border-t border-brand-100 mt-10">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <footer class="mt-10 border-t border-[#d4a63a]/15">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
         <div>
-          <div class="font-display text-[0.78rem] tracking-[0.38em] text-brand-700 uppercase">Aureum</div>
-          <div class="text-sm text-stone-600">Making the everyday dinner ritual feel rare again.</div>
+          <div class="font-display text-[0.78rem] uppercase tracking-[0.38em] text-[#d4a63a]">Aureum</div>
+          <div class="mt-1 text-sm text-[#b7a79b]">Making the everyday dinner ritual feel rare again.</div>
         </div>
-        <div class="flex gap-4 text-brand-700">
-          <a href="https://instagram.com" aria-label="Instagram" class="hover:text-brand-800"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://pinterest.com" aria-label="Pinterest" class="hover:text-brand-800"><i class="fa-brands fa-pinterest-p"></i></a>
-          <a href="https://youtube.com" aria-label="YouTube" class="hover:text-brand-800"><i class="fa-brands fa-youtube"></i></a>
+        <div class="flex gap-4 text-[#d4a63a]">
+          <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://pinterest.com" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="https://youtube.com" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
       </div>
     </footer>
@@ -586,15 +361,15 @@
     <div id="welcome-modal" class="modal-backdrop active" aria-hidden="false">
       <div class="modal-card">
         <button id="welcome-close" class="modal-close" aria-label="Close welcome modal">✕</button>
-        <div class="grid lg:grid-cols-[0.98fr_1.02fr] modal-content">
-          <div class="modal-panel bg-brand-900 text-white">
-            <div class="pill red">Welcome</div>
-            <h2 class="mt-6 font-display text-4xl leading-none">Enter the reserve room.</h2>
-            <p class="mt-5 text-sm leading-7 text-white/75">Aureum is built for table rituals that feel elevated, sensory, and quietly dramatic.</p>
+        <div class="grid modal-content lg:grid-cols-[0.95fr_1.05fr]">
+          <div class="bg-[#0a0a0a] p-8 text-white">
+            <div class="pill">Welcome</div>
+            <h2 class="mt-6 font-display text-3xl leading-none">Enter the reserve room.</h2>
+            <p class="mt-4 text-sm leading-7 text-[#b7a79b]">An editorial collection of signatures, crafted for hosts who treat each detail as part of the experience.</p>
           </div>
-          <div class="modal-panel">
-            <p class="text-sm uppercase tracking-[0.28em] text-brand-700 font-bold">House note</p>
-            <p class="mt-4 text-base leading-8 text-stone-300">Preview the new collection, compare the house signatures, and save your preferred taste profile for a bespoke consult.</p>
+          <div class="p-8">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-[#d4a63a]">House note</p>
+            <p class="mt-4 text-base leading-8 text-[#d7cbc0]">Preview the collection, compare the profiles, and request a curator consultation tailored to your table.</p>
             <button onclick="closeWelcomeModal()" class="button-cta mt-8">Enter the collection</button>
           </div>
         </div>
@@ -604,13 +379,13 @@
     <div id="reserve-modal" class="modal-backdrop" aria-hidden="true">
       <div class="modal-card">
         <button onclick="closeReserveModal()" class="modal-close" aria-label="Close reserve modal">✕</button>
-        <div class="grid lg:grid-cols-[0.9fr_1.1fr] modal-content">
-          <div class="modal-panel bg-brand-950 text-white">
-            <div class="pill red">Reserve</div>
-            <h2 id="reserve-title" class="mt-6 font-display text-4xl leading-none">Reserve a set</h2>
-            <p class="mt-5 text-sm leading-7 text-white/75">Complete your selection and the Aureum concierge will share your dossier with the next available appointment.</p>
+        <div class="grid modal-content lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="bg-black p-8 text-white">
+            <div class="pill">Reserve</div>
+            <h2 id="reserve-title" class="mt-6 font-display text-3xl leading-none">Reserve a set</h2>
+            <p class="mt-4 text-sm leading-7 text-[#b7a79b]">Tell us what you need and the Aureum concierge will reply with the best next step.</p>
           </div>
-          <form class="modal-panel grid gap-4">
+          <form class="grid gap-4 p-8">
             <div class="form-field"><label>Name</label><input type="text" required placeholder="Adrian Gold" /></div>
             <div class="form-field"><label>Email</label><input type="email" required placeholder="hello@aureumlux.com" /></div>
             <div class="form-field"><label>Preferred profile</label><select><option>Ember Ash</option><option>Saffron Bloom</option><option>Velvet Smoke</option><option>Reserve sampler</option></select></div>
@@ -625,13 +400,15 @@
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    }
 
     const welcomeModal = document.getElementById('welcome-modal');
     const welcomeClose = document.getElementById('welcome-close');
     const reserveModal = document.getElementById('reserve-modal');
     const reserveTitle = document.getElementById('reserve-title');
-    welcomeClose.addEventListener('click', () => hideModal(welcomeModal));
+    if (welcomeClose) welcomeClose.addEventListener('click', () => hideModal(welcomeModal));
 
     function showModal(modal) {
       if (!modal) return;
@@ -652,7 +429,6 @@
       let finished = false;
       const onEnd = (e) => {
         if (e.target !== card) return;
-        // accept either opacity or transform finishing
         if (e.propertyName === 'opacity' || e.propertyName === 'transform') {
           finished = true;
           modal.classList.remove('active');
@@ -660,9 +436,7 @@
         }
       };
       card.addEventListener('transitionend', onEnd);
-      // kick off close animation
       card.classList.remove('open');
-      // fallback: ensure we remove active after max duration
       setTimeout(() => {
         if (!finished) {
           modal.classList.remove('active');
@@ -672,15 +446,12 @@
     }
 
     function closeWelcomeModal() { hideModal(welcomeModal); }
-
     function openReserveModal(label) {
-      reserveTitle.textContent = label;
+      if (reserveTitle) reserveTitle.textContent = label;
       showModal(reserveModal);
     }
-
     function closeReserveModal() { hideModal(reserveModal); }
 
-    // If welcome modal is initially active, animate it open
     if (welcomeModal && welcomeModal.classList.contains('active')) {
       requestAnimationFrame(() => {
         const card = welcomeModal.querySelector('.modal-card');

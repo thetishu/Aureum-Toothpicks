@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Aureum Toothpicks | Refined Reserve Collection</title>
@@ -121,6 +122,7 @@
       background: linear-gradient(135deg, var(--accent), #7b0a0f);
       border: 1px solid rgba(212, 166, 58, 0.25);
       box-shadow: 0 16px 34px rgba(178, 14, 19, 0.18);
+      cursor: pointer;
     }
     .button-cta:hover { transform: translateY(-2px); box-shadow: 0 20px 42px rgba(178, 14, 19, 0.26); }
     .button-secondary {
@@ -184,6 +186,7 @@
     }
     .form-field textarea { min-height: 9rem; resize: vertical; }
     .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: rgba(212, 166, 58, 0.45); }
+    .form-field select option { background: #111; color: #fff; }
   </style>
 </head>
 <body>
@@ -358,6 +361,7 @@
       </div>
     </footer>
 
+    <!-- Welcome Modal -->
     <div id="welcome-modal" class="modal-backdrop active" aria-hidden="false">
       <div class="modal-card">
         <button id="welcome-close" class="modal-close" aria-label="Close welcome modal">✕</button>
@@ -376,6 +380,7 @@
       </div>
     </div>
 
+    <!-- Reservation Modal Form -->
     <div id="reserve-modal" class="modal-backdrop" aria-hidden="true">
       <div class="modal-card">
         <button onclick="closeReserveModal()" class="modal-close" aria-label="Close reserve modal">✕</button>
@@ -385,12 +390,29 @@
             <h2 id="reserve-title" class="mt-6 font-display text-3xl leading-none">Reserve a set</h2>
             <p class="mt-4 text-sm leading-7 text-[#b7a79b]">Tell us what you need and the Aureum concierge will reply with the best next step.</p>
           </div>
-          <form class="grid gap-4 p-8">
-            <div class="form-field"><label>Name</label><input type="text" required placeholder="Adrian Gold" /></div>
-            <div class="form-field"><label>Email</label><input type="email" required placeholder="hello@aureumlux.com" /></div>
-            <div class="form-field"><label>Preferred profile</label><select><option>Ember Ash</option><option>Saffron Bloom</option><option>Velvet Smoke</option><option>Reserve sampler</option></select></div>
-            <div class="form-field"><label>Message</label><textarea rows="4" placeholder="Share your ideal event details."></textarea></div>
-            <button type="button" onclick="closeReserveModal()" class="button-cta">Send request</button>
+          <form id="reserve-form" class="grid gap-4 p-8">
+            <div class="form-field">
+              <label for="reserve-name">Name</label>
+              <input type="text" id="reserve-name" name="name" required placeholder="Adrian Gold" />
+            </div>
+            <div class="form-field">
+              <label for="reserve-email">Email</label>
+              <input type="email" id="reserve-email" name="email" required placeholder="hello@aureumlux.com" />
+            </div>
+            <div class="form-field">
+              <label for="reserve-profile">Preferred profile</label>
+              <select id="reserve-profile" name="subject">
+                <option value="Ember Ash">Ember Ash</option>
+                <option value="Saffron Bloom">Saffron Bloom</option>
+                <option value="Velvet Smoke">Velvet Smoke</option>
+                <option value="Reserve sampler">Reserve sampler</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="reserve-message">Message</label>
+              <textarea id="reserve-message" name="message" rows="4" placeholder="Share your ideal event details."></textarea>
+            </div>
+            <button type="submit" id="reserve-submit-btn" class="button-cta">Send request</button>
           </form>
         </div>
       </div>
@@ -398,6 +420,55 @@
   </div>
 
   <script>
+    // --- 1. Supabase Initialization ---
+    const SUPABASE_URL = "https://qtmdoiqgagutlbfngrbj.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0bWRvaXFnYWd1dGxiZm5ncmJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY0MzYyOTIsImV4cCI6MjEwMjAxMjI5Mn0.R5EY_kqKdYXTZYzwif935IM08AAZxhPz0tWy7EO2pm0";
+
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // --- 2. Reservation Form Handler ---
+    const reserveForm = document.getElementById('reserve-form');
+    if (reserveForm) {
+      reserveForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById('reserve-submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        const nameValue = document.getElementById('reserve-name').value.trim();
+        const emailValue = document.getElementById('reserve-email').value.trim();
+        const profileValue = document.getElementById('reserve-profile').value;
+        const messageValue = document.getElementById('reserve-message').value.trim();
+
+        const { data, error } = await supabaseClient
+          .from('contact_submissions')
+          .insert([
+            {
+              name: nameValue,
+              email: emailValue,
+              subject: profileValue,
+              message: messageValue || 'No additional note provided'
+            }
+          ]);
+
+        if (error) {
+          alert('Error sending reservation: ' + error.message);
+          console.error('Supabase error:', error);
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        } else {
+          alert('Thank you! Your reservation request has been submitted.');
+          reserveForm.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          closeReserveModal();
+        }
+      });
+    }
+
+    // --- 3. UI Navigation & Modals ---
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuToggle && mobileMenu) {

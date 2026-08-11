@@ -417,6 +417,23 @@
         </div>
       </div>
     </div>
+
+    <!-- Confirmation / Success Modal -->
+    <div id="confirmation-modal" class="modal-backdrop" aria-hidden="true">
+      <div class="modal-card max-w-lg text-center p-8 sm:p-10 bg-[#090909]">
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#d4a63a]/40 bg-black text-2xl text-[#d4a63a] shadow-[0_0_24px_rgba(212,166,58,0.2)]">
+          <i class="fa-solid fa-crown"></i>
+        </div>
+        <div class="mt-6">
+          <div class="pill">Concierge logged</div>
+          <h3 class="mt-4 font-display text-2xl sm:text-3xl text-white">Your request is inscribed.</h3>
+          <p class="mt-3 text-sm leading-7 text-[#b7a79b]">The Aureum concierge has received your selection. A private curator will be in touch shortly to finalize your set and hosting details.</p>
+        </div>
+        <div class="mt-8">
+          <button onclick="closeConfirmationModal()" class="button-cta w-full">Return to the room</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -459,11 +476,11 @@
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
         } else {
-          alert('Thank you! Your reservation request has been submitted.');
           reserveForm.reset();
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
           closeReserveModal();
+          showConfirmationModal();
         }
       });
     }
@@ -479,6 +496,8 @@
     const welcomeClose = document.getElementById('welcome-close');
     const reserveModal = document.getElementById('reserve-modal');
     const reserveTitle = document.getElementById('reserve-title');
+    const confirmationModal = document.getElementById('confirmation-modal');
+
     if (welcomeClose) welcomeClose.addEventListener('click', () => hideModal(welcomeModal));
 
     function showModal(modal) {
@@ -522,6 +541,8 @@
       showModal(reserveModal);
     }
     function closeReserveModal() { hideModal(reserveModal); }
+    function showConfirmationModal() { showModal(confirmationModal); }
+    function closeConfirmationModal() { hideModal(confirmationModal); }
 
     if (welcomeModal && welcomeModal.classList.contains('active')) {
       requestAnimationFrame(() => {
